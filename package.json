@@ -1,0 +1,19 @@
+{
+  "name": "vietteroxanne_6_23122020",
+  "version": "1.0.0",
+  "description": "P6 projet Openclassrooms",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:.css/style.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roxanne2904/VietteRoxanne_6_23122020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roxanne2904/VietteRoxanne_6_23122020/issues"
+  },
+  "homepage": "https://github.com/Roxanne2904/VietteRoxanne_6_23122020#readme"
+}
