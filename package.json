@@ -4,7 +4,7 @@
   "description": "P6 projet Openclassrooms",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:.css/style.css --style compressed"
+    "sass": "sass --watch ./sass/main.scss:./.css/style.css"
   },
   "repository": {
     "type": "git",

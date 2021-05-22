@@ -4,8 +4,102 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./.css/style.css" />
     <title>FishEyes</title>
   </head>
-  <body></body>
+  <body>
+
+
+    
+      
+      <!--FORMULAIRE-->
+      <div class="modalBgd">
+        <div class="modalBody">
+          <div class="modalBody__blockTitle">
+            <p 
+            class="modalBody__blockTitle__Title" 
+            data-photographer='Roxanne Viette'>Contactez-moi
+            </p>
+            <span class="modalBody__blockTitle__icone"><!--the cross btn--></span>
+          </div>
+          <form name="modalBody__contact" 
+            class="modalBody__form"
+            id="myForm" 
+            methode="post" 
+            action="index.html" 
+            onsubmit="return validate(event)" 
+            novalidate>
+            
+              <!--Prenom-->
+              <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
+                <label for="firstName">Prénom</label>
+                <input
+                type="text"
+                class="modalBody__inputsTxt"
+                id="firstName"
+                name="firstName"
+                pattern="[A-Z][a-z'-]+"
+                placeholder="Prénom"
+                required
+                />
+              </div>
+              
+              <!--Nom-->
+              <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
+                  <label for="familyName">Nom</label>
+                  <input
+                  type="text"
+                  class="modalBody__inputsTxt"
+                  id="familyName"
+                  name="familyName"
+                  pattern="[A-Z]+"
+                  placeholder="Nom"
+                  required
+                  />
+              </div>
+              
+              <!--E-mail-->
+              <div class="modalBody__block" data-error="il y a une erreur brouuuu" data-error-visible="false">
+                  <label for="email">Email</label>
+                  <input 
+                  type="email" 
+                  class="modalBody__inputsTxt"
+                  id="email"
+                  name="email" 
+                  pattern="[A-Z][a-z'-]+"
+                  placeholder="E-mail"
+                  required 
+                  />
+              </div>
+              
+              <!--textArea-->
+              <div class="modalBody__block" data-error="brou" data-error-visible="false">
+                <label for="textArea">Votre message</label>
+                <textarea 
+                  id="textArea" 
+                  class="modalBody__inputsTxt modalBody__inputsTxt--changeHeight" 
+                  name="textArea" 
+                  placeholder="Ecrivez-moi quelque chose ..." 
+                  required></textarea>
+              </div>
+              <!--BtnSubmit-->
+                <input
+                  type="submit"
+                  id="btnSubmit"
+                  name="btnSubmit"
+                  value="Envoyer"
+                  required
+                />
+          </form>
+        </div>
+      </div>
+      
+  </body>
 </html>
+
