@@ -3,3 +3,19 @@ $colorPrimary:#901C1C;
 $colorSecondary:#DB8876;
 $colorTertiary: #FFFFFF;
 
+//SIZE
+$sizelogoWidth:200px;
+
+//MAPS
+//options du bouton de sélection
+$selectValuesOptions:(
+    1:(
+        padd:12px
+    ),
+    2:(
+        padd:12px
+    ),
+    3:(
+        padd:12px
+    )
+)

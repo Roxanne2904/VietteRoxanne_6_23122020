@@ -10,3 +10,8 @@ Début de la réalisation des composants:
 ----> la modal + formulaire ok; 
 ----> les boutons: en cours de réalisation; 
 ________________________________________________
+
+25.05.2021
+
+le Logo ----> ok;
+la liste déroulante ----> ok pour le moment, revenir dessus plus tard;

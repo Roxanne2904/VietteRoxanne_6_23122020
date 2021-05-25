@@ -36,10 +36,21 @@
 @mixin btn-appearance{
     background-color:$colorPrimary ;
     color:$colorTertiary;
-    padding: 25px 55px;
+    width:170px;
+    height:69px;
     border:none;
     border-radius: 5px;
     font-size: 1.15rem;
     cursor:pointer;
     margin-top:13px;
+}
+//______________________
+//Options du BTN de séléction 
+//______________________
+@mixin optionsValues ($map){
+    @each $key, $values in $map{
+        &#{$key}{
+            padding: map-get($values, padd);
+        }
+    }
 }

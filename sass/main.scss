@@ -1,4 +1,11 @@
+//Utils
 @import "./Utils/variables.scss";
 @import "./Utils/mixins.scss";
+
+//Base
 @import "./Base/base.scss";
+
+//Components
+@import "./Components/logo.scss";
+@import "./Components/buttons.scss";
 @import "./Components/inputs.scss";

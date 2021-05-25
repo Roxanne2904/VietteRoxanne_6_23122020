@@ -14,92 +14,104 @@
     <title>FishEyes</title>
   </head>
   <body>
+   <!--Le logo-->
+    <div class="logo">
+      <img class="logo__img" src="img/logo.png" alt="image du logo; son nom est FishEyes"/>
+    </div>
 
-
+    <!--Select options-->
+    <div class="block">
+      <div class="block__content">
+        <select class="block__select">
+          <option class="block__select1" value="1">Popularité</option>
+          <option class="block__select2" value="2">Date</option>
+          <option class="block__select3" value="3">Titre</option>
+        </select>
+      </div>
+    </div>
     
-      
-      <!--FORMULAIRE-->
-      <div class="modalBgd">
-        <div class="modalBody">
-          <div class="modalBody__blockTitle">
-            <p 
-            class="modalBody__blockTitle__Title" 
-            data-photographer='Roxanne Viette'>Contactez-moi
-            </p>
-            <span class="modalBody__blockTitle__icone"><!--the cross btn--></span>
-          </div>
-          <form name="modalBody__contact" 
-            class="modalBody__form"
-            id="myForm" 
-            methode="post" 
-            action="index.html" 
-            onsubmit="return validate(event)" 
-            novalidate>
+    <!--FORMULAIRE-->
+    <div class="modalBgd">
+      <div class="modalBody">
+        <div class="modalBody__blockTitle">
+          <p 
+          class="modalBody__blockTitle__Title" 
+          data-photographer='Roxanne Viette'>Contactez-moi
+          </p>
+          <span class="modalBody__blockTitle__icone"><!--the cross btn--></span>
+        </div>
+        <form name="modalBody__contact" 
+          class="modalBody__form"
+          id="myForm" 
+          methode="post" 
+          action="index.html" 
+          onsubmit="return validate(event)" 
+          novalidate>
             
-              <!--Prenom-->
-              <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
-                <label for="firstName">Prénom</label>
+            <!--Prenom-->
+            <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
+              <label for="firstName">Prénom</label>
+              <input
+              type="text"
+              class="modalBody__inputsTxt"
+              id="firstName"
+              name="firstName"
+              pattern="[A-Z][a-z'-]+"
+              placeholder="Prénom"
+              required
+              />
+            </div>
+              
+            <!--Nom-->
+            <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
+                <label for="familyName">Nom</label>
                 <input
                 type="text"
                 class="modalBody__inputsTxt"
-                id="firstName"
-                name="firstName"
-                pattern="[A-Z][a-z'-]+"
-                placeholder="Prénom"
+                id="familyName"
+                name="familyName"
+                pattern="[A-Z]+"
+                placeholder="Nom"
                 required
                 />
-              </div>
+            </div>
               
-              <!--Nom-->
-              <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
-                  <label for="familyName">Nom</label>
-                  <input
-                  type="text"
-                  class="modalBody__inputsTxt"
-                  id="familyName"
-                  name="familyName"
-                  pattern="[A-Z]+"
-                  placeholder="Nom"
-                  required
-                  />
-              </div>
-              
-              <!--E-mail-->
-              <div class="modalBody__block" data-error="il y a une erreur brouuuu" data-error-visible="false">
-                  <label for="email">Email</label>
-                  <input 
-                  type="email" 
-                  class="modalBody__inputsTxt"
-                  id="email"
-                  name="email" 
-                  pattern="[A-Z][a-z'-]+"
-                  placeholder="E-mail"
-                  required 
-                  />
-              </div>
-              
-              <!--textArea-->
-              <div class="modalBody__block" data-error="brou" data-error-visible="false">
-                <label for="textArea">Votre message</label>
-                <textarea 
-                  id="textArea" 
-                  class="modalBody__inputsTxt modalBody__inputsTxt--changeHeight" 
-                  name="textArea" 
-                  placeholder="Ecrivez-moi quelque chose ..." 
-                  required></textarea>
-              </div>
-              <!--BtnSubmit-->
-                <input
-                  type="submit"
-                  id="btnSubmit"
-                  name="btnSubmit"
-                  value="Envoyer"
-                  required
+            <!--E-mail-->
+            <div class="modalBody__block" data-error="il y a une erreur brouuuu" data-error-visible="false">
+                <label for="email">Email</label>
+                <input 
+                type="email" 
+                class="modalBody__inputsTxt"
+                id="email"
+                name="email" 
+                pattern="[A-Z][a-z'-]+"
+                placeholder="E-mail"
+                required 
                 />
-          </form>
-        </div>
+            </div>
+              
+            <!--textArea-->
+            <div class="modalBody__block" data-error="brou!" data-error-visible="false">
+              <label for="textArea">Votre message</label>
+              <textarea 
+                id="textArea" 
+                class="modalBody__inputsTxt modalBody__inputsTxt--changeHeight" 
+                name="textArea" 
+                placeholder="Ecrivez-moi quelque chose ..." 
+                required></textarea>
+            </div>
+            <!--BtnSubmit-->
+              <input
+                type="submit"
+                id="btnSubmit"
+                name="btnSubmit"
+                value="Envoyer"
+                required
+              />
+        </form>
       </div>
-      
+    </div>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
 

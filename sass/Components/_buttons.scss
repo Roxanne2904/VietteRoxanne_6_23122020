@@ -1,0 +1,50 @@
+//LES BOUTONS
+//______________________________________
+//btn submit
+#btnSubmit{
+    @include btn-appearance;
+    transition: transform 200ms;
+    &:focus{
+        transform:scale(1.05);
+    }
+}
+//LA LISTE DEROULANTE 'SELECT'
+//______________________________________
+.block{
+    padding:12px;
+    &__content{
+        position:relative;
+        width:170px;
+        height: 69px;
+        overflow: hidden;
+        border-radius:5px;
+        background-color:$colorPrimary;
+        &::after{
+            content:'\f107'; // unicode de font awesome
+            font-family: "Font Awesome 5 Free"; // il faut changer la police 
+            font-weight: 900; // important !
+            position: absolute;
+            top: 35%;
+            right: 0;
+            padding: 0 20px;
+            color:$colorTertiary;
+            font-size: 1.3rem;
+            pointer-events: none; //on peut passer au travers de l'élément pour atteindre des contrôles qui serait en dessous...
+        }
+    }
+    &__select{
+        appearance:none;// retire la flèche 
+        outline: 0;
+        border:0; //retire la bordure 
+        background: $colorPrimary;// couleur de la liste 
+        background-image: none;
+        box-shadow: none;
+        font-size: 1.125rem;
+        width:100%;
+        height: 100%;
+        padding-left: 15px;
+        color:$colorTertiary;
+        cursor:pointer;
+        @include optionsValues($selectValuesOptions);
+    }
+}

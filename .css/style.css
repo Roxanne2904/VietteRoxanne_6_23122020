@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "DM Sans Regular";
   font-style: normal;
@@ -42,10 +43,19 @@
   font-family: "DM Sans Regular";
 }
 
+.logo {
+  max-width: 200px;
+  padding: 12px;
+}
+.logo__img {
+  max-width: 200px;
+}
+
 #btnSubmit {
   background-color: #901C1C;
   color: #FFFFFF;
-  padding: 25px 55px;
+  width: 170px;
+  height: 69px;
   border: none;
   border-radius: 5px;
   font-size: 1.15rem;
@@ -55,6 +65,53 @@
 }
 #btnSubmit:focus {
   transform: scale(1.05);
+}
+
+.block {
+  padding: 12px;
+}
+.block__content {
+  position: relative;
+  width: 170px;
+  height: 69px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #901C1C;
+}
+.block__content::after {
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 35%;
+  right: 0;
+  padding: 0 20px;
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  pointer-events: none;
+}
+.block__select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  background: #901C1C;
+  background-image: none;
+  box-shadow: none;
+  font-size: 1.125rem;
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.block__select1 {
+  padding: 12px;
+}
+.block__select2 {
+  padding: 12px;
+}
+.block__select3 {
+  padding: 12px;
 }
 
 .modalBgd {
