@@ -14,12 +14,79 @@
     <title>FishEyes</title>
   </head>
   <body>
-   <!--Le logo-->
+    <!--Le logo-->
     <div class="logo">
-      <img class="logo__img" src="img/logo.png" alt="image du logo; son nom est FishEyes"/>
+      <img
+        class="logo__img"
+        src="img/logo.png"
+        alt="FishEyes logo de la page"
+      />
     </div>
 
-    <!--Select options-->
+    <!--Btns-->
+    <button class="btn">
+      Engagez-moi
+      <span class="btn__bgd"></span>
+    </button>
+
+    <button class="btn" id="openModal">
+      Contactez-moi
+      <span class="btn__bgd"></span>
+    </button>
+
+    <!--tags-->
+    <a href="#" class="tagName">
+      #tag-name
+      <span class="tagName__bgd"></span>
+    </a>
+    <!--heart-->
+    <span class="heart">
+      <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+      <span class="heart__img"
+        ><img src="./img/Vector.png" alt="J'aime"
+      /></span>
+    </span>
+    <!--BlockPhotos-->
+    <figure class="blockPhoto__content">
+      <a class="blockPhoto__content__linkImg" href="#">
+        <div class="blockPhoto__content__linkImg__blockImg">
+          <img
+            class="blockPhoto__content__linkImg__blockImg__img"
+            src="img/thumb-img.png"
+            alt="oiseau"
+          />
+        </div>
+      </a>
+      <figcaption class="blockPhoto__content__legend">
+        <span>Photo</span>
+        <span class="heart">
+          <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+          <span class="heart__img"
+            ><img src="./img/Vector.png" alt="J'aime"
+          /></span>
+        </span>
+      </figcaption>
+    </figure>
+    <!--BlockIntroduceIndex-->
+    <h2 class="BlockIntroIndex" data-photographer="Roxanne Viette">
+      <a class="BlockIntroIndex__link" href="#">
+        <div class="BlockIntroIndex__link__blockImg">
+          <img
+            class="BlockIntroIndex__link__blockImg__img"
+            src="img/thumb-img.png"
+            alt=""
+          />
+        </div>
+      </a>
+    </h2>
+    <p class="BlockIntroIndex__blocktxt">
+      <span class="BlockIntroIndex__blocktxt1">London,UK</span>
+      <span class="BlockIntroIndex__blocktxt2">
+        Voir le beau dans le quotidien
+      </span>
+      <span class="BlockIntroIndex__blocktxt3">400€/jour</span>
+    </p>
+    <!--Select options//la liste déroulante-->
     <div class="block">
       <div class="block__content">
         <select class="block__select">
@@ -29,89 +96,116 @@
         </select>
       </div>
     </div>
-    
+
     <!--FORMULAIRE-->
-    <div class="modalBgd">
-      <div class="modalBody">
-        <div class="modalBody__blockTitle">
-          <p 
-          class="modalBody__blockTitle__Title" 
-          data-photographer='Roxanne Viette'>Contactez-moi
-          </p>
-          <span class="modalBody__blockTitle__icone"><!--the cross btn--></span>
-        </div>
-        <form name="modalBody__contact" 
-          class="modalBody__form"
-          id="myForm" 
-          methode="post" 
-          action="index.html" 
-          onsubmit="return validate(event)" 
-          novalidate>
-            
+    <div role="dialog" class="modal">
+      <div class="modalContent">
+        <div class="modalContent__body">
+          <div class="modalContent__body__blockTitle">
+            <h1
+              class="modalContent__body__blockTitle__Title"
+              data-photographer="Roxanne Viette"
+            >
+              Contactez-moi
+            </h1>
+            <span role="button" aria-label="Fermer la modal" class="iconeX"
+              ><!--the cross btn--></span
+            >
+          </div>
+          <form
+            name="modalContent__body__contact"
+            class="modalContent__body__form"
+            id="myForm"
+            methode="post"
+            action="index.html"
+            onsubmit="return validate(event)"
+            novalidate
+          >
             <!--Prenom-->
-            <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
+            <div
+              class="modalContent__body__block"
+              data-error="il y a une erreur"
+              data-error-visible="false"
+            >
               <label for="firstName">Prénom</label>
               <input
-              type="text"
-              class="modalBody__inputsTxt"
-              id="firstName"
-              name="firstName"
-              pattern="[A-Z][a-z'-]+"
-              placeholder="Prénom"
-              required
+                type="text"
+                class="modalContent__body__inputsTxt"
+                id="firstName"
+                name="firstName"
+                pattern="[A-Z][a-z'-]+"
+                placeholder="Prénom"
+                required
               />
             </div>
-              
+
             <!--Nom-->
-            <div class="modalBody__block" data-error="il y a une erreur" data-error-visible="false">
-                <label for="familyName">Nom</label>
-                <input
+            <div
+              class="modalContent__body__block"
+              data-error="il y a une erreur"
+              data-error-visible="false"
+            >
+              <label for="familyName">Nom</label>
+              <input
                 type="text"
-                class="modalBody__inputsTxt"
+                class="modalContent__body__inputsTxt"
                 id="familyName"
                 name="familyName"
                 pattern="[A-Z]+"
                 placeholder="Nom"
                 required
-                />
+              />
             </div>
-              
+
             <!--E-mail-->
-            <div class="modalBody__block" data-error="il y a une erreur brouuuu" data-error-visible="false">
-                <label for="email">Email</label>
-                <input 
-                type="email" 
-                class="modalBody__inputsTxt"
+            <div
+              class="modalContent__body__block"
+              data-error="il y a une erreur brouuuu"
+              data-error-visible="false"
+            >
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="modalContent__body__inputsTxt"
                 id="email"
-                name="email" 
+                name="email"
                 pattern="[A-Z][a-z'-]+"
                 placeholder="E-mail"
-                required 
-                />
-            </div>
-              
-            <!--textArea-->
-            <div class="modalBody__block" data-error="brou!" data-error-visible="false">
-              <label for="textArea">Votre message</label>
-              <textarea 
-                id="textArea" 
-                class="modalBody__inputsTxt modalBody__inputsTxt--changeHeight" 
-                name="textArea" 
-                placeholder="Ecrivez-moi quelque chose ..." 
-                required></textarea>
-            </div>
-            <!--BtnSubmit-->
-              <input
-                type="submit"
-                id="btnSubmit"
-                name="btnSubmit"
-                value="Envoyer"
                 required
               />
-        </form>
+            </div>
+
+            <!--textArea-->
+            <div
+              class="modalContent__body__block"
+              data-error="brou!"
+              data-error-visible="false"
+            >
+              <label for="textArea">Votre message</label>
+              <textarea
+                id="textArea"
+                class="
+                  modalContent__body__inputsTxt
+                  modalContent__body__inputsTxt--changeHeight
+                "
+                name="textArea"
+                placeholder="Ecrivez-moi quelque chose ..."
+                required
+              ></textarea>
+            </div>
+            <!--BtnSubmit-->
+            <input
+              type="submit"
+              id="btnSubmit"
+              name="btnSubmit"
+              value="Envoyer"
+              required
+            />
+          </form>
+        </div>
       </div>
     </div>
+
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
-

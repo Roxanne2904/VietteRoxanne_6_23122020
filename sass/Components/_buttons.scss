@@ -1,50 +1,88 @@
 //LES BOUTONS
 //______________________________________
 //btn submit
-#btnSubmit{
-    @include btn-appearance;
-    transition: transform 200ms;
-    &:focus{
-        transform:scale(1.05);
+#btnSubmit {
+  @include btn-appearance;
+  transition: transform 200ms;
+  &:focus {
+    transform: scale(1.05);
+  }
+}
+//______________________________________
+//btns
+.btn {
+  position: relative;
+  @include btn-appearance;
+  z-index: 1;
+  margin: $marginBlock;
+  &:focus {
+    color: black;
+    font-weight: bold;
+    & .btn__bgd {
+      //bien penser à mettre un espace !
+      opacity: 1;
     }
+  }
+  &__bgd {
+    @include btn-focus;
+  }
 }
 //LA LISTE DEROULANTE 'SELECT'
 //______________________________________
-.block{
-    padding:12px;
-    &__content{
-        position:relative;
-        width:170px;
-        height: 69px;
-        overflow: hidden;
-        border-radius:5px;
-        background-color:$colorPrimary;
-        &::after{
-            content:'\f107'; // unicode de font awesome
-            font-family: "Font Awesome 5 Free"; // il faut changer la police 
-            font-weight: 900; // important !
-            position: absolute;
-            top: 35%;
-            right: 0;
-            padding: 0 20px;
-            color:$colorTertiary;
-            font-size: 1.3rem;
-            pointer-events: none; //on peut passer au travers de l'élément pour atteindre des contrôles qui serait en dessous...
-        }
+.block {
+  margin: $marginBlock;
+  &__content {
+    position: relative;
+    width: 170px;
+    height: 69px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: $colorPrimary;
+    &::after {
+      content: "\f107"; // unicode de font awesome
+      font-family: "Font Awesome 5 Free"; // il faut changer la police
+      font-weight: 900; // important !
+      position: absolute;
+      top: 35%;
+      right: 0;
+      padding: 0 20px;
+      color: $colorTertiary;
+      font-size: 1.3rem;
+      pointer-events: none; //on peut passer au travers de l'élément pour atteindre des contrôles qui serait en dessous...
     }
-    &__select{
-        appearance:none;// retire la flèche 
-        outline: 0;
-        border:0; //retire la bordure 
-        background: $colorPrimary;// couleur de la liste 
-        background-image: none;
-        box-shadow: none;
-        font-size: 1.125rem;
-        width:100%;
-        height: 100%;
-        padding-left: 15px;
-        color:$colorTertiary;
-        cursor:pointer;
-        @include optionsValues($selectValuesOptions);
+  }
+  &__select {
+    appearance: none; // retire la flèche
+    outline: 0;
+    border: 0; //retire la bordure
+    background: $colorPrimary; // couleur de la liste
+    background-image: none;
+    box-shadow: none;
+    font-size: 1.125rem;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    color: $colorTertiary;
+    cursor: pointer;
+  }
+}
+//TAGS
+//______________________________________
+.tagName {
+  display: block;
+  position: relative;
+  width: 81px;
+  @include tags-appearance;
+  margin-left: $marginBlock;
+  z-index: 1; //visuel de base en z-index 1
+  &:hover {
+    color: $colorTertiary;
+    font-weight: inherit;
+    & .tagName__bgd {
+      opacity: 1;
     }
+  }
+  &__bgd {
+    @include tags-focus;
+  }
 }

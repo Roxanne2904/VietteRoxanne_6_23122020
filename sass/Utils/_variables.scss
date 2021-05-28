@@ -1,21 +1,41 @@
 //COLOR
-$colorPrimary:#901C1C;
-$colorSecondary:#DB8876;
-$colorTertiary: #FFFFFF;
+$colorPrimary: #901c1c;
+$colorSecondary: #db8876;
+$colorTertiary: #ffffff;
+$colorGrey: #c4c4c4;
+$black: #000000;
 
 //SIZE
-$sizelogoWidth:200px;
+$sizelogoWidth: 200px;
+
+//MARGIN
+$marginBlock: 12px;
+
+//TRANSITION DURATION
+$duration: 250ms;
 
 //MAPS
-//options du bouton de sélection
-$selectValuesOptions:(
-    1:(
-        padd:12px
-    ),
-    2:(
-        padd:12px
-    ),
-    3:(
-        padd:12px
-    )
-)
+//1).INDEX-BlockTxt des blocks introductions des photographes.
+$blockTxtIntroduction: (
+  1: (
+    type: block,
+    textAlign: center,
+    color: $colorPrimary,
+    fontWeight: bold,
+    sizefont: 0.813rem,
+  ),
+  2: (
+    type: block,
+    textAlign: center,
+    color: $black,
+    fontWeight: 100,
+    sizefont: 0.625rem,
+  ),
+  3: (
+    type: block,
+    textAlign: center,
+    color: $black,
+    fontWeight: 100,
+    sizefont: 0.625rem,
+  ),
+);
