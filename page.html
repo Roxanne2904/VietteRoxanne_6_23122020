@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>FishEyes || Photographers's Page</title>
+  </head>
+  <body>
+    <!-- ___________________________________________ -->
+    <!--FORMULAIRE-->
+    <div role="dialog" class="modal">
+      <div class="modalContent">
+        <div class="modalContent__body">
+          <div class="modalContent__body__blockTitle">
+            <h1
+              class="modalContent__body__blockTitle__Title"
+              data-photographer="Roxanne Viette"
+            >
+              Contactez-moi
+            </h1>
+            <button class="iconeX" aria-label="fermer la modale">
+              <!--X BUTTON-->
+            </button>
+          </div>
+          <form
+            name="modalContent__body__contact"
+            class="modalContent__body__form"
+            id="myForm"
+            methode="post"
+            action="index.html"
+            onsubmit="return validate(event)"
+            novalidate
+          >
+            <!--Prenom-->
+            <div
+              class="modalContent__body__block"
+              data-error="il y a une erreur"
+              data-error-visible="false"
+            >
+              <label for="firstName">Prénom</label>
+              <input
+                type="text"
+                class="modalContent__body__inputsTxt"
+                id="firstName"
+                name="firstName"
+                pattern="[A-Z][a-z'-]+"
+                placeholder="Prénom"
+                required
+              />
+            </div>
+
+            <!--Nom-->
+            <div
+              class="modalContent__body__block"
+              data-error="il y a une erreur"
+              data-error-visible="false"
+            >
+              <label for="familyName">Nom</label>
+              <input
+                type="text"
+                class="modalContent__body__inputsTxt"
+                id="familyName"
+                name="familyName"
+                pattern="[A-Z]+"
+                placeholder="Nom"
+                required
+              />
+            </div>
+
+            <!--E-mail-->
+            <div
+              class="modalContent__body__block"
+              data-error="il y a une erreur brouuuu"
+              data-error-visible="false"
+            >
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="modalContent__body__inputsTxt"
+                id="email"
+                name="email"
+                pattern="[A-Z][a-z'-]+"
+                placeholder="E-mail"
+                required
+              />
+            </div>
+
+            <!--textArea-->
+            <div
+              class="modalContent__body__block"
+              data-error="brou!"
+              data-error-visible="false"
+            >
+              <label for="textArea">Votre message</label>
+              <textarea
+                id="textArea"
+                class="
+                  modalContent__body__inputsTxt
+                  modalContent__body__inputsTxt--changeHeight
+                "
+                name="textArea"
+                placeholder="Ecrivez-moi quelque chose ..."
+                required
+              ></textarea>
+            </div>
+            <!--BtnSubmit-->
+            <input
+              type="submit"
+              id="btnSubmit"
+              name="btnSubmit"
+              value="Envoyer"
+              required
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- ___________________________________________ -->
+    <!-- BlockIntroducePages -->
+    <header
+      aria-label="en-tête de la page des photographe"
+      class="body__blockIntro"
+    >
+      <div class="blockIntro blockIntro--pages">
+        <h1 class="blockIntro__titlePages">Mimi Keel</h1>
+        <p class="blockIntro__blocktxt">
+          <strong class="blockIntro__blocktxt1p">London, UK</strong>
+          <span class="blockIntro__blocktxt2p"
+            >Voir le beau dans le quotidien</span
+          >
+        </p>
+        <div class="blockIntro__linksTags blockIntro__linksTags--pages">
+          <a aria-label="tags" href="#" class="tagName">
+            #tag-name
+            <span class="tagName__bgd"></span>
+          </a>
+          <a aria-label="tags" href="#" class="tagName">
+            #tag-name
+            <span class="tagName__bgd"></span>
+          </a>
+          <a aria-label="tags" href="#" class="tagName">
+            #tag-name
+            <span class="tagName__bgd"></span>
+          </a>
+          <a aria-label="tags" href="#" class="tagName">
+            #tag-name
+            <span class="tagName__bgd"></span>
+          </a>
+        </div>
+      </div>
+
+      <button class="btn blockIntro__btn" id="openModal">
+        Contactez-moi
+        <span class="btn__bgd"></span>
+      </button>
+    </header>
+    <!-- ___________________________________________ -->
+    <!--BlockPhotos-->
+    <figure class="blockPhoto__content">
+      <a class="blockPhoto__content__linkImg" href="#">
+        <div class="blockPhoto__content__linkImg__blockImg">
+          <img
+            class="blockPhoto__content__linkImg__blockImg__img"
+            src="img/thumb-img.png"
+            alt="oiseau"
+          />
+        </div>
+      </a>
+      <figcaption class="blockPhoto__content__legend">
+        <span>Photo</span>
+        <span class="heart">
+          <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+          <span class="heart__img"
+            ><img src="./img/Vector.png" alt="J'aime"
+          /></span>
+        </span>
+      </figcaption>
+    </figure>
+    <!-- ___________________________________________ -->
+    <!--heart-->
+    <span class="heart">
+      <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+      <span class="heart__img"
+        ><img src="./img/Vector.png" alt="J'aime"
+      /></span>
+    </span>
+    <!-- ___________________________________________ -->
+    <!--Btns-->
+    <button class="btn">
+      Engagez-moi
+      <span class="btn__bgd"></span>
+    </button>
+
+    <button class="btn">
+      Contactez-moi
+      <span class="btn__bgd"></span>
+    </button>
+    <!-- __________________________________________ -->
+    <!--Select options//la liste déroulante-->
+    <div class="block">
+      <div class="block__content">
+        <select class="block__select">
+          <option class="block__select1" value="1">Popularité</option>
+          <option class="block__select2" value="2">Date</option>
+          <option class="block__select3" value="3">Titre</option>
+        </select>
+      </div>
+    </div>
+    <script type="text/javascript" src="./page.js"></script>
+  </body>
+</html>

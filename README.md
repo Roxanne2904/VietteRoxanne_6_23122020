@@ -32,3 +32,10 @@ Résumé des composants réalisés à ce jour:
 
 Note:
 Mettre en place la liste à puce des tags pour les block présentations photographes;
+
+03.06.2021
+
+- fin des composants (manque juste l'icone photo sur le composant présentation des pages individuel);
+- Index : Mise en place du header, avec la nav et du block main + le contenu du main;
+- Index : Ajout des composants qui présentent les photographes;
+- Page : Création de la page HTML "page" et Déplacement des composants à l'intérieur;
