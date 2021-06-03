@@ -1,75 +1,70 @@
 //LE FORMULAIRE
 //______________________________________
-.modal{
-    display: none;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: auto;
-    background: rgba(255, 255, 255, 0.7);
-    .modalContent{
-        margin:77px auto;
-        max-width:669px;
-        animation: animModal 0.9s ease-in-out;
-        animation-fill-mode: both;
-        &__body{
-            background-color:$colorSecondary;
-            border-radius:5px;
-            &__blockTitle{
-                display: flex;
-                justify-content: space-between;
-                padding: 15px 35px;
-                &__Title{
-                    font-size: 3.6rem;
-                    &::after{
-                        content:attr(data-photographer);
-                        display: block;
-                    }
-                }
-            }
-            &__form{
-                padding: 0 35px 35px 35px;
-            }
-            &__block{
-                font-size: 2.25rem;
-                position: relative;
-                &[data-error]::before{
-                    content:attr(data-error);
-                    color:#bb1212;
-                    display: block;
-                    position: absolute;
-                    right: 5px;
-                    top:20px;
-                    font-size: 1rem;
-                    font-weight: bolder;
-                    opacity:0;
-                    transition: 0.3s;
-                }
-                &[data-error-visible="true"]::before{
-                    opacity:1;
-                }
-                &[data-error-visible="true"] .modalBody__inputsTxt{
-                    border:#bb1212 solid 3px;
-                }
-            }
-            &__inputsTxt{
-                @include inputsTxt-appearance;
-                &--changeHeight{
-                    height:170px;
-                    padding-top: 0.5rem;
-                    resize:none; // pour empécher l'utilisation de changer la taille du block
-                }
-            }
+.modal {
+  display: none;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.7);
+  .modalContent {
+    margin: 77px auto;
+    max-width: 669px;
+    animation: animModal 0.9s ease-in-out;
+    animation-fill-mode: both;
+    &__body {
+      background-color: $colorSecondary;
+      border-radius: $radiusBlocks;
+      &__blockTitle {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 35px;
+        &__Title {
+          font-size: 3.6rem;
+          &::after {
+            content: attr(data-photographer);
+            display: block;
+          }
         }
+      }
+      &__form {
+        padding: 0 35px 35px 35px;
+      }
+      &__block {
+        font-size: 2.25rem;
+        position: relative;
+        &[data-error]::before {
+          content: attr(data-error);
+          color: #bb1212;
+          display: block;
+          position: absolute;
+          right: 5px;
+          top: 20px;
+          font-size: 1rem;
+          font-weight: bolder;
+          opacity: 0;
+          transition: 0.3s;
+        }
+        &[data-error-visible="true"]::before {
+          opacity: 1;
+        }
+        &[data-error-visible="true"] .modalBody__inputsTxt {
+          border: #bb1212 solid 3px;
+        }
+      }
+      &__inputsTxt {
+        @include inputsTxt-appearance;
+        &--changeHeight {
+          height: 170px;
+          padding-top: 0.5rem;
+          resize: none; // pour empécher l'utilisation de changer la taille du block
+        }
+      }
     }
+  }
 }
 
 //______________________________________
-
-    
-
-
-

@@ -14,7 +14,6 @@
   position: relative;
   @include btn-appearance;
   z-index: 1;
-  margin: $marginBlock;
   &:focus {
     color: black;
     font-weight: bold;
@@ -30,13 +29,12 @@
 //LA LISTE DEROULANTE 'SELECT'
 //______________________________________
 .block {
-  margin: $marginBlock;
   &__content {
     position: relative;
     width: 170px;
     height: 69px;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: $radiusBlocks;
     background-color: $colorPrimary;
     &::after {
       content: "\f107"; // unicode de font awesome
@@ -71,9 +69,7 @@
 .tagName {
   display: block;
   position: relative;
-  width: 81px;
   @include tags-appearance;
-  margin-left: $marginBlock;
   z-index: 1; //visuel de base en z-index 1
   &:hover {
     color: $colorTertiary;

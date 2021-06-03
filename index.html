@@ -13,32 +13,86 @@
     <link rel="stylesheet" href="./css/style.css" />
     <title>FishEyes</title>
   </head>
-  <body>
-    <!--Le logo-->
-    <div class="logo">
-      <img
-        class="logo__img"
-        src="img/logo.png"
-        alt="FishEyes logo de la page"
-      />
-    </div>
+  <body id="bodyIndex">
+    <!--Le lien pour remonter en haut de la page-->
+    <a href="#mainTitleIndex" onscroll="isHappening()" id="linkTogoUp"
+      >Passer au contenu
+    </a>
+    <header class="headerIndex" aria-label="main page header">
+      <div class="headerIndex__banner" role="banner">
+        <!--Le logo-->
+        <a href="./index.html" class="logo headerIndex__banner__linkLogo">
+          <img class="logo__img" src="img/logo.png" alt="FishEyes Home page" />
+        </a>
+        <!-- ___________________________________________ -->
+        <nav
+          class="headerIndex__banner__nav"
+          aria-label="photographer categories"
+        >
+          <!--tags-portrait-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Portrait
+            <span class="tagName__bgd"></span>
+          </a>
+          <!--tags-art-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Art
+            <span class="tagName__bgd"></span>
+          </a>
+          <!--tags-fashion-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Fashion
+            <span class="tagName__bgd"></span>
+          </a>
+          <!--tags-architecture-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Architecture
+            <span class="tagName__bgd"></span>
+          </a>
+          <!--tags-travel-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Travel
+            <span class="tagName__bgd"></span>
+          </a>
 
+          <!--tags-sport-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Sport
+            <span class="tagName__bgd"></span>
+          </a>
+          <!--tags-animals-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Animals
+            <span class="tagName__bgd"></span>
+          </a>
+          <!--tags-events-->
+          <a aria-label="tags" href="#" class="tagName">
+            #Events
+            <span class="tagName__bgd"></span>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main class="mainContent">
+      <h1 class="mainContent__title" role="heading" id="mainTitleIndex">
+        Nos Photographes
+      </h1>
+    </main>
+
+    <!-- ___________________________________________ -->
     <!--Btns-->
     <button class="btn">
       Engagez-moi
       <span class="btn__bgd"></span>
     </button>
 
-    <button class="btn" id="openModal">
+    <button class="btn">
       Contactez-moi
       <span class="btn__bgd"></span>
     </button>
+    <!-- ___________________________________________ -->
 
-    <!--tags-->
-    <a href="#" class="tagName">
-      #tag-name
-      <span class="tagName__bgd"></span>
-    </a>
+    <!-- ___________________________________________ -->
     <!--heart-->
     <span class="heart">
       <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
@@ -46,6 +100,7 @@
         ><img src="./img/Vector.png" alt="J'aime"
       /></span>
     </span>
+    <!-- ___________________________________________ -->
     <!--BlockPhotos-->
     <figure class="blockPhoto__content">
       <a class="blockPhoto__content__linkImg" href="#">
@@ -67,25 +122,81 @@
         </span>
       </figcaption>
     </figure>
+    <!-- ___________________________________________ -->
     <!--BlockIntroduceIndex-->
-    <h2 class="BlockIntroIndex" data-photographer="Roxanne Viette">
-      <a class="BlockIntroIndex__link" href="#">
-        <div class="BlockIntroIndex__link__blockImg">
+    <h2 class="blockIntro" data-photographer="Roxanne Viette">
+      <a class="blockIntro__link" href="#">
+        <div class="blockIntro__link__blockImg">
           <img
-            class="BlockIntroIndex__link__blockImg__img"
+            class="blockIntro__link__blockImg__img"
             src="img/thumb-img.png"
             alt=""
           />
         </div>
       </a>
     </h2>
-    <p class="BlockIntroIndex__blocktxt">
-      <span class="BlockIntroIndex__blocktxt1">London,UK</span>
-      <span class="BlockIntroIndex__blocktxt2">
+    <p class="blockIntro__blocktxt">
+      <strong class="blockIntro__blocktxt1">London, UK</strong>
+      <span class="blockIntro__blocktxt2">
         Voir le beau dans le quotidien
       </span>
-      <span class="BlockIntroIndex__blocktxt3">400€/jour</span>
+      <span class="blockIntro__blocktxt3">400€/jour</span>
     </p>
+    <div class="blockIntro__links">
+      <a aria-label="tags" href="#" class="tagName blockIntro__links__theLink">
+        #tag-name
+        <span class="tagName__bgd"></span>
+      </a>
+      <a aria-label="tags" href="#" class="tagName blockIntro__links__theLink">
+        #tag-name
+        <span class="tagName__bgd"></span>
+      </a>
+      <a aria-label="tags" href="#" class="tagName blockIntro__links__theLink">
+        #tag-name
+        <span class="tagName__bgd"></span>
+      </a>
+      <a aria-label="tags" href="#" class="tagName blockIntro__links__theLink">
+        #tag-name
+        <span class="tagName__bgd"></span>
+      </a>
+    </div>
+    <!-- ___________________________________________ -->
+    <!-- BlockIntroducePages -->
+    <header
+      aria-label="en-tête de la page des photographe"
+      class="blockIntro blockIntro--pages"
+    >
+      <h1 class="blockIntro__titlePages">Mimi Keel</h1>
+      <p class="blockIntro__blocktxt">
+        <strong class="blockIntro__blocktxt1p">London, UK</strong>
+        <span class="blockIntro__blocktxt2p"
+          >Voir le beau dans le quotidien</span
+        >
+      </p>
+      <div class="blockIntro__links blockIntro__links--pages">
+        <a aria-label="tags" href="#" class="tagName">
+          #tag-name
+          <span class="tagName__bgd"></span>
+        </a>
+        <a aria-label="tags" href="#" class="tagName">
+          #tag-name
+          <span class="tagName__bgd"></span>
+        </a>
+        <a aria-label="tags" href="#" class="tagName">
+          #tag-name
+          <span class="tagName__bgd"></span>
+        </a>
+        <a aria-label="tags" href="#" class="tagName">
+          #tag-name
+          <span class="tagName__bgd"></span>
+        </a>
+      </div>
+      <button class="btn blockIntro__btn" id="openModal">
+        Contactez-moi
+        <span class="btn__bgd"></span>
+      </button>
+    </header>
+    <!-- ___________________________________________ -->
     <!--Select options//la liste déroulante-->
     <div class="block">
       <div class="block__content">
@@ -96,7 +207,7 @@
         </select>
       </div>
     </div>
-
+    <!-- ___________________________________________ -->
     <!--FORMULAIRE-->
     <div role="dialog" class="modal">
       <div class="modalContent">
@@ -108,9 +219,9 @@
             >
               Contactez-moi
             </h1>
-            <span role="button" aria-label="Fermer la modal" class="iconeX"
-              ><!--the cross btn--></span
-            >
+            <button class="iconeX" aria-label="fermer la modale">
+              <!--X BUTTON-->
+            </button>
           </div>
           <form
             name="modalContent__body__contact"

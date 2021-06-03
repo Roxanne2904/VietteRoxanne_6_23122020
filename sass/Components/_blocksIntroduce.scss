@@ -25,18 +25,32 @@
   }
 }
 //____________________________
-//INDEX-Block introduction des photographes-le titre h2-
-.BlockIntroIndex {
+//INDEX et PAGES -Block introduction des photographes
+.blockIntro {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: $colorPrimary;
+  color: $colorOrange;
   &::after {
     content: attr(data-photographer);
     text-align: center;
-    font-size: 2.5rem;
+    font-size: $fontPhotographerName;
     padding-top: 20px;
+  }
+  &--pages {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: $colorOrangeLighter;
+    padding: 60px 0px 40px 40px;
+    &::after {
+      content: "";
+      display: none;
+    }
+  }
+  &__titlePages {
+    font-size: 4rem;
   }
   &__link {
     &__blockImg {
@@ -57,5 +71,21 @@
   &__blocktxt {
     //les blocks txt
     @include blockTxtIntroIndex($blockTxtIntroduction);
+  }
+  &__links {
+    //les liens #tags
+    display: flex;
+    justify-content: center;
+    //max-width: 263px;
+    flex-wrap: wrap;
+    &--pages {
+      justify-content: flex-start;
+      margin: 0px 3px;
+    }
+  }
+  &__btn {
+    align-self: center;
+    position: absolute;
+    top: 60px;
   }
 }

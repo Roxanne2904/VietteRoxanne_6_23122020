@@ -1,7 +1,5 @@
-.logo{
+.logo {
+  &__img {
     max-width: $sizelogoWidth;
-    padding:12px;
-    &__img{
-        max-width: $sizelogoWidth;
-    }
+  }
 }

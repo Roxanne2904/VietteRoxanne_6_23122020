@@ -57,3 +57,8 @@ html {
   scroll-behavior: smooth;
   transition: 1s ease;
 }
+
+#bodyIndex {
+  display: flex;
+  flex-wrap: wrap;
+}
