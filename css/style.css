@@ -332,6 +332,11 @@ html {
   padding: 10px 0;
 }
 
+#photographerIndex {
+  display: contents;
+  list-style-type: none;
+}
+
 .body__blockIntro {
   width: 33%;
   padding-bottom: 70px;
@@ -343,8 +348,7 @@ html {
   flex-direction: column;
   color: #d3573c;
 }
-.body__blockIntro .blockIntro::after {
-  content: attr(data-photographer);
+.body__blockIntro .blockIntro__title {
   text-align: center;
   font-size: 2.5rem;
   padding-top: 20px;
@@ -362,18 +366,20 @@ html {
   font-size: 4rem;
 }
 .body__blockIntro .blockIntro__link__blockImg {
+  display: block;
   position: relative;
   overflow: hidden;
   width: 199px;
   height: 199px;
   border-radius: 50%;
+  background-color: #c4c4c4;
 }
 .body__blockIntro .blockIntro__link__blockImg__img {
-  width: 120%;
+  width: 155%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-44%, -50%);
 }
 .body__blockIntro .blockIntro__blocktxt1 {
   display: block;
@@ -415,12 +421,15 @@ html {
   font-size: 1.125rem;
   margin: 0px 0px 10px 3px;
 }
-.body__blockIntro .blockIntro__linksTags {
+.body__blockIntro .blockIntro__ul {
+  list-style-type: none;
+}
+.body__blockIntro .blockIntro__ul__linksTags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.body__blockIntro .blockIntro__linksTags--pages {
+.body__blockIntro .blockIntro__ul__linksTags--pages {
   justify-content: flex-start;
 }
 .body__blockIntro .blockIntro__btn {

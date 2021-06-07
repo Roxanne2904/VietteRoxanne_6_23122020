@@ -26,6 +26,11 @@
 }
 //____________________________
 //INDEX et PAGES -Block introduction des photographes
+#photographerIndex {
+  //<ul> des <li> blockIntro;
+  display: contents;
+  list-style-type: none;
+}
 .body__blockIntro {
   width: 33%;
   padding-bottom: 70px;
@@ -35,8 +40,7 @@
     align-items: center;
     flex-direction: column;
     color: $colorOrange;
-    &::after {
-      content: attr(data-photographer);
+    &__title {
       text-align: center;
       font-size: $fontPhotographerName;
       padding-top: 20px;
@@ -55,17 +59,19 @@
     }
     &__link {
       &__blockImg {
+        display: block;
         position: relative;
         overflow: hidden;
         width: 199px;
         height: 199px;
         border-radius: 50%;
+        background-color: $colorGrey;
         &__img {
-          width: 120%;
+          width: 155%;
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translate(-44%, -50%);
         }
       }
     }
@@ -73,14 +79,17 @@
       //les blocks txt
       @include blockTxtIntroIndex($blockTxtIntroduction);
     }
-    &__linksTags {
-      //les liens #tags
-      display: flex;
-      justify-content: center;
-      //max-width: 263px;
-      flex-wrap: wrap;
-      &--pages {
-        justify-content: flex-start;
+    &__ul {
+      list-style-type: none;
+      &__linksTags {
+        //les liens #tags
+        display: flex;
+        justify-content: center;
+        //max-width: 263px;
+        flex-wrap: wrap;
+        &--pages {
+          justify-content: flex-start;
+        }
       }
     }
     &__btn {
