@@ -13,8 +13,7 @@ const getData = () => {
   //       photographersIndex.innerHTML = `<div><h2>${items.name}</h2></div>`;
   //     });
   //   });
-  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul>;
-
+  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   let datas; //les données des photographes;
   //API REQUEST
   const fetchDataPhotographers = async () => {
@@ -56,8 +55,48 @@ const getData = () => {
           </span>
           <span class="blockIntro__blocktxt3">${data.price}/jour</span>
         </p>
-        <ul id="tagNameIndex" class="blockIntro__ul__linksTags">
-        </ul>
+        <ul class="blockIntro__ul">
+            <li class="blockIntro__ul__linksTags">
+              <a
+                aria-label="tags"
+                href="#"
+                class="tagName blockIntro__links__theLink"
+              >
+                #${data.tags[0]}
+                <span class="tagName__bgd"></span>
+              </a>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <a
+                aria-label="tags"
+                href="#"
+                class="tagName blockIntro__links__theLink"
+              >
+                #${data.tags[1]}
+                <span class="tagName__bgd"></span>
+              </a>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <a
+                aria-label="tags"
+                href="#"
+                class="tagName blockIntro__links__theLink"
+              >
+                #${data.tags[2]}
+                <span class="tagName__bgd"></span>
+              </a>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <a
+                aria-label="tags"
+                href="#"
+                class="tagName blockIntro__links__theLink"
+              >
+                #${data.tags[3]}
+                <span class="tagName__bgd"></span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
       </li>`

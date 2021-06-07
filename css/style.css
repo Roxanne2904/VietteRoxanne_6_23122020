@@ -422,7 +422,8 @@ html {
   margin: 0px 0px 10px 3px;
 }
 .body__blockIntro .blockIntro__ul {
-  list-style-type: none;
+  display: flex;
+  justify-content: center;
 }
 .body__blockIntro .blockIntro__ul__linksTags {
   display: flex;

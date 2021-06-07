@@ -80,7 +80,8 @@
       @include blockTxtIntroIndex($blockTxtIntroduction);
     }
     &__ul {
-      list-style-type: none;
+      display: flex;
+      justify-content: center;
       &__linksTags {
         //les liens #tags
         display: flex;
