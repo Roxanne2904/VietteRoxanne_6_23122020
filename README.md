@@ -39,3 +39,9 @@ Mettre en place la liste à puce des tags pour les block présentations photogra
 - Index : Mise en place du header, avec la nav et du block main + le contenu du main;
 - Index : Ajout des composants qui présentent les photographes;
 - Page : Création de la page HTML "page" et Déplacement des composants à l'intérieur;
+
+  07.06.2021
+
+- Récupération des données du fichier.json avec fetch;
+- Injection du htlm des données avec un .map();
+- Il reste a injecter les #tags de façon dynamique.git
