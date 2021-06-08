@@ -1,3 +1,67 @@
+let datas; //les données des photographes;
+//API REQUEST
+const fetchDataPhotographers = async () => {
+  datas = await fetch("./data/photographes.json")
+    .then((response) => {
+      return response.json(); //response.json = response.body.json;
+    })
+    .then((body) => {
+      return body;
+    });
+  // console.log(datas); //la variable qui renferme les données;ici il y a deux array(photographers et media)
+};
+
+//SHOWING DATAS PHOTOGRAPHERS
+const showDataPhotographers = async () => {
+  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
+  await fetchDataPhotographers(); // on attend que cette fonction récupère les donnée;
+
+  contentPhotographer.innerHTML = datas.photographers
+    .map(
+      (data) =>
+        `<!-- ___________________________________________ -->
+    <!--BlockIntroduceIndex 01<li>-->
+    <li class="body__blockIntro">
+      <h2 class="blockIntro">
+        <a class="blockIntro__link" href="#">
+          <span class="blockIntro__link__blockImg">
+            <img
+              class="blockIntro__link__blockImg__img"
+              src="./img/Photographers ID Photos/${data.portrait}"
+              alt="profile pictures"
+            />
+          </span>
+        </a>
+        <span class="blockIntro__title">${data.name}</span>
+      </h2>
+      <p class="blockIntro__blocktxt">
+        <strong class="blockIntro__blocktxt1">${data.city}, ${data.country}</strong>
+        <span class="blockIntro__blocktxt2">
+          ${data.tagline}
+        </span>
+        <span class="blockIntro__blocktxt3">${data.price}/jour</span>
+      </p><ul class="blockIntro__ul">` +
+        data.tags
+          .map(
+            (tag) => `<li class="blockIntro__ul__linksTags">
+        <a
+          aria-label="tags"
+          href="#"
+          class="tagName blockIntro__links__theLink"
+        >
+          #${tag}
+          <span class="tagName__bgd"></span>
+        </a>
+      </li>`
+          )
+          .join("") +
+        `</ul></li>
+      </ul>
+      </li>`
+    )
+    .join(""); // c'est pour retirer les virgules entre chaque éléments;
+};
+
 const getData = () => {
   // //On crée la fonction getData pour récupérer les données
   // fetch("./data/photographes.json") // on utilise fetch (qui attend une promise, toujours!)
@@ -13,98 +77,8 @@ const getData = () => {
   //       photographersIndex.innerHTML = `<div><h2>${items.name}</h2></div>`;
   //     });
   //   });
-  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
-  let datas; //les données des photographes;
-  //API REQUEST
-  const fetchDataPhotographers = async () => {
-    datas = await fetch("./data/photographes.json")
-      .then((response) => {
-        return response.json(); //response.json = response.body.json;
-      })
-      .then((body) => {
-        return body;
-      });
-    console.log(datas); //la variable qui renferme les données;ici il y a deux array(photographers et media)
-  };
-
-  //SHOWING DATAS PHOTOGRAPHERS
-  const showDataPhotographers = async () => {
-    await fetchDataPhotographers(); // c'est ici qu'on appel notre fonction qui a récupéré les données;
-
-    contentPhotographer.innerHTML = datas.photographers
-      .map(
-        (data) => `<!-- ___________________________________________ -->
-      <!--BlockIntroduceIndex 01<li>-->
-      <li class="body__blockIntro">
-        <h2 class="blockIntro">
-          <a class="blockIntro__link" href="#">
-            <span class="blockIntro__link__blockImg">
-              <img
-                class="blockIntro__link__blockImg__img"
-                src="./img/Photographers ID Photos/${data.portrait}"
-                alt="profile pictures"
-              />
-            </span>
-          </a>
-          <span class="blockIntro__title">${data.name}</span>
-        </h2>
-        <p class="blockIntro__blocktxt">
-          <strong class="blockIntro__blocktxt1">${data.city}, ${data.country}</strong>
-          <span class="blockIntro__blocktxt2">
-            ${data.tagline}
-          </span>
-          <span class="blockIntro__blocktxt3">${data.price}/jour</span>
-        </p>
-        <ul class="blockIntro__ul">
-            <li class="blockIntro__ul__linksTags">
-              <a
-                aria-label="tags"
-                href="#"
-                class="tagName blockIntro__links__theLink"
-              >
-                #${data.tags[0]}
-                <span class="tagName__bgd"></span>
-              </a>
-            </li>
-            <li class="blockIntro__ul__linksTags">
-              <a
-                aria-label="tags"
-                href="#"
-                class="tagName blockIntro__links__theLink"
-              >
-                #${data.tags[1]}
-                <span class="tagName__bgd"></span>
-              </a>
-            </li>
-            <li class="blockIntro__ul__linksTags">
-              <a
-                aria-label="tags"
-                href="#"
-                class="tagName blockIntro__links__theLink"
-              >
-                #${data.tags[2]}
-                <span class="tagName__bgd"></span>
-              </a>
-            </li>
-            <li class="blockIntro__ul__linksTags">
-              <a
-                aria-label="tags"
-                href="#"
-                class="tagName blockIntro__links__theLink"
-              >
-                #${data.tags[3]}
-                <span class="tagName__bgd"></span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      </li>`
-      )
-      .join(""); // c'est pour retirer les virgules entre chaque éléments;
-  };
-
-  showDataPhotographers();
+  fetchDataPhotographers(); //ici on récupère les données;
+  showDataPhotographers(); //ici on fait apparaitre dynamiquement les données;
 };
 window.addEventListener("load", () => {
   // un event qui permet d'attendre que tout le html soit chargé avant d'exectuter le js(attendre que le html soit chargé )
