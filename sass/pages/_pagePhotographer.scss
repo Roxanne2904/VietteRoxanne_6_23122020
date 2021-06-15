@@ -1,0 +1,29 @@
+.block__bodyPhotos {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__li {
+    width: 28%;
+    margin-bottom: 20px;
+  }
+}
+
+.blockPrice {
+  display: flex;
+  justify-content: space-around;
+  width: 376px;
+  font-size: 1.5rem;
+  background-color: $colorOrangePaler;
+  padding: 21px 0 37px 0;
+  position: fixed;
+  bottom: -21px;
+  right: 36px;
+  border-radius: $radiusBlocks;
+  &__nbsOfLikes {
+    display: block;
+  }
+  &__thePrice {
+    display: block;
+  }
+}

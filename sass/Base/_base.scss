@@ -58,7 +58,11 @@ html {
   transition: 1s ease;
 }
 
-#bodyIndex {
-  display: flex;
-  flex-wrap: wrap;
+.body {
+  padding: 43px 100px;
+  &--index {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

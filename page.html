@@ -11,9 +11,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>FishEyes || Photographers's Page</title>
+    <title>FishEyes | Photographers's Page</title>
   </head>
-  <body>
+  <body class="body">
     <!-- ___________________________________________ -->
     <!--FORMULAIRE-->
     <div role="dialog" class="modal">
@@ -123,11 +123,16 @@
         </div>
       </div>
     </div>
+    <!--Le logo-->
+    <a href="./index.html" class="logo headerIndex__banner__linkLogo">
+      <img class="logo__img" src="img/logo.png" alt="FishEyes Home page" />
+    </a>
+    <!-- ___________________________________________ -->
     <!-- ___________________________________________ -->
     <!-- BlockIntroducePages -->
     <header
       aria-label="en-tête de la page des photographe"
-      class="body__blockIntro"
+      class="body__blockIntro body__blockIntro--page"
     >
       <div class="blockIntro blockIntro--pages">
         <h1 class="blockIntro__titlePages">Mimi Keel</h1>
@@ -137,64 +142,191 @@
             >Voir le beau dans le quotidien</span
           >
         </p>
-        <div class="blockIntro__linksTags blockIntro__linksTags--pages">
-          <a aria-label="tags" href="#" class="tagName">
-            #tag-name
-            <span class="tagName__bgd"></span>
-          </a>
-          <a aria-label="tags" href="#" class="tagName">
-            #tag-name
-            <span class="tagName__bgd"></span>
-          </a>
-          <a aria-label="tags" href="#" class="tagName">
-            #tag-name
-            <span class="tagName__bgd"></span>
-          </a>
-          <a aria-label="tags" href="#" class="tagName">
-            #tag-name
-            <span class="tagName__bgd"></span>
-          </a>
+        <ul class="blockIntro__ul blockIntro__ul--page">
+          <li class="blockIntro__ul__linksTags">
+            <a aria-label="tags" href="#" class="tagName">
+              #tag-name
+              <span class="tagName__bgd"></span>
+            </a>
+          </li>
+          <li class="blockIntro__ul__linksTags">
+            <a aria-label="tags" href="#" class="tagName">
+              #tag-name
+              <span class="tagName__bgd"></span>
+            </a>
+          </li>
+          <li class="blockIntro__ul__linksTags">
+            <a aria-label="tags" href="#" class="tagName">
+              #tag-name
+              <span class="tagName__bgd"></span>
+            </a>
+          </li>
+          <li class="blockIntro__ul__linksTags">
+            <a aria-label="tags" href="#" class="tagName">
+              #tag-name
+              <span class="tagName__bgd"></span>
+            </a>
+          </li>
+          <li class="blockIntro__ul__linksTags">
+            <a aria-label="tags" href="#" class="tagName">
+              #tag-name
+              <span class="tagName__bgd"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="blockIntro__contentForAttach">
+        <button class="btn blockIntro__contentForAttach__btn" id="openModal">
+          Contactez-moi
+          <span class="btn__bgd"></span>
+        </button>
+
+        <div class="blockIntro__link blockIntro__link--page">
+          <span
+            class="blockIntro__link__blockImg blockIntro__link__blockImg--page"
+          >
+            <img class="blockIntro__link__blockImg__img" src="" alt="" />
+          </span>
         </div>
       </div>
-
-      <button class="btn blockIntro__btn" id="openModal">
-        Contactez-moi
-        <span class="btn__bgd"></span>
-      </button>
     </header>
-    <!-- ___________________________________________ -->
-    <!--BlockPhotos-->
-    <figure class="blockPhoto__content">
-      <a class="blockPhoto__content__linkImg" href="#">
-        <div class="blockPhoto__content__linkImg__blockImg">
-          <img
-            class="blockPhoto__content__linkImg__blockImg__img"
-            src="img/thumb-img.png"
-            alt="oiseau"
-          />
-        </div>
-      </a>
-      <figcaption class="blockPhoto__content__legend">
-        <span>Photo</span>
-        <span class="heart">
-          <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
-          <span class="heart__img"
-            ><img src="./img/Vector.png" alt="J'aime"
-          /></span>
-        </span>
-      </figcaption>
-    </figure>
+    <!-- __________________________________________ -->
+    <!--Select options//la liste déroulante-->
+    <div class="block">
+      <label class="block__label" for="sort-select">Trier par</label>
+      <div class="block__content">
+        <select class="block__select" name="sort" id="sort-select">
+          <option class="block__select1" value="1">Popularité</option>
+          <option class="block__select2" value="2">Date</option>
+          <option class="block__select3" value="3">Titre</option>
+        </select>
+      </div>
+    </div>
+
+    <ul id="photosBody" class="block__bodyPhotos">
+      <li class="block__bodyPhotos__li">
+        <!-- ___________________________________________ -->
+        <!--BlockPhotos 01-->
+        <figure class="blockPhoto__content">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div class="blockPhoto__content__linkImg__blockImg">
+              <img
+                class="blockPhoto__content__linkImg__blockImg__img"
+                src="img/thumb-img.png"
+                alt="oiseau"
+              />
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span>Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+        <!-- ___________________________________________ -->
+      </li>
+      <li class="block__bodyPhotos__li">
+        <!-- ___________________________________________ -->
+        <!--BlockPhotos 02-->
+        <figure class="blockPhoto__content">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div class="blockPhoto__content__linkImg__blockImg">
+              <img
+                class="blockPhoto__content__linkImg__blockImg__img"
+                src="img/thumb-img.png"
+                alt="oiseau"
+              />
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span>Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+        <!-- ___________________________________________ -->
+      </li>
+      <li class="block__bodyPhotos__li">
+        <!-- ___________________________________________ -->
+        <!--BlockPhotos 03-->
+        <figure class="blockPhoto__content">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div class="blockPhoto__content__linkImg__blockImg">
+              <img
+                class="blockPhoto__content__linkImg__blockImg__img"
+                src="img/thumb-img.png"
+                alt="oiseau"
+              />
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span>Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+        <!-- ___________________________________________ -->
+      </li>
+      <li class="block__bodyPhotos__li">
+        <!-- ___________________________________________ -->
+        <!--BlockPhotos 04-->
+        <figure class="blockPhoto__content">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div class="blockPhoto__content__linkImg__blockImg">
+              <img
+                class="blockPhoto__content__linkImg__blockImg__img"
+                src="img/thumb-img.png"
+                alt="oiseau"
+              />
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span>Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+        <!-- ___________________________________________ -->
+      </li>
+    </ul>
+    <div class="blockPrice">
+      <span class="blockPrice__nbsOfLikes"
+        >297 081
+        <img
+          class="blockPrice____nbsOfLikes__heartIcone"
+          src="./img/heart__black.png"
+          alt=""
+      /></span>
+      <span class="blockPrice__thePrice">300€/jour</span>
+    </div>
+
     <!-- ___________________________________________ -->
     <!--heart-->
-    <span class="heart">
+    <!-- <span class="heart">
       <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
       <span class="heart__img"
         ><img src="./img/Vector.png" alt="J'aime"
       /></span>
-    </span>
+    </span> -->
     <!-- ___________________________________________ -->
     <!--Btns-->
-    <button class="btn">
+    <!-- <button class="btn">
       Engagez-moi
       <span class="btn__bgd"></span>
     </button>
@@ -202,18 +334,8 @@
     <button class="btn">
       Contactez-moi
       <span class="btn__bgd"></span>
-    </button>
-    <!-- __________________________________________ -->
-    <!--Select options//la liste déroulante-->
-    <div class="block">
-      <div class="block__content">
-        <select class="block__select">
-          <option class="block__select1" value="1">Popularité</option>
-          <option class="block__select2" value="2">Date</option>
-          <option class="block__select3" value="3">Titre</option>
-        </select>
-      </div>
-    </div>
+    </button> -->
+
     <script type="text/javascript" src="./page.js"></script>
   </body>
 </html>

@@ -59,7 +59,11 @@ html {
   transition: 1s ease;
 }
 
-#bodyIndex {
+.body {
+  padding: 43px 100px;
+}
+.body--index {
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -71,7 +75,7 @@ html {
 #btnSubmit {
   background-color: #901c1c;
   color: #ffffff;
-  width: 170px;
+  padding: 0 15px;
   height: 69px;
   border: none;
   border-radius: 5px;
@@ -87,7 +91,7 @@ html {
   position: relative;
   background-color: #901c1c;
   color: #ffffff;
-  width: 170px;
+  padding: 0 15px;
   height: 69px;
   border: none;
   border-radius: 5px;
@@ -116,6 +120,17 @@ html {
   transition: opacity 250ms;
 }
 
+.block {
+  display: flex;
+  margin: 0 0 60px;
+}
+.block__label {
+  margin: 0 20px 0 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  position: relative;
+  top: 10px;
+}
 .block__content {
   position: relative;
   width: 170px;
@@ -188,6 +203,12 @@ html {
   transition: opacity 250ms;
 }
 
+.tagName__onclick {
+  color: #ffffff;
+  background-color: #901c1c;
+  font-weight: inherit;
+}
+
 .modal {
   display: none;
   height: 100%;
@@ -198,6 +219,7 @@ html {
   left: 0;
   overflow: auto;
   background: rgba(255, 255, 255, 0.7);
+  z-index: 2;
 }
 .modal .modalContent {
   margin: 77px auto;
@@ -308,21 +330,12 @@ html {
   transform: rotateZ(-45deg);
 }
 
-.blockPhoto__content {
-  max-width: 350px;
-}
 .blockPhoto__content__linkImg__blockImg {
   border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-  height: 300px;
 }
 .blockPhoto__content__linkImg__blockImg__img {
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
 }
 .blockPhoto__content__legend {
   display: flex;
@@ -339,10 +352,17 @@ html {
 
 .body__blockIntro {
   width: 33%;
-  padding-bottom: 70px;
+  padding: 0 0 60px 0;
+}
+.body__blockIntro--page {
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fafafa;
+  margin: 40px 0;
+  padding: 0;
 }
 .body__blockIntro .blockIntro {
-  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -355,7 +375,6 @@ html {
 }
 .body__blockIntro .blockIntro--pages {
   align-items: flex-start;
-  background-color: #fafafa;
   padding: 60px 0px 40px 40px;
 }
 .body__blockIntro .blockIntro--pages::after {
@@ -365,6 +384,11 @@ html {
 .body__blockIntro .blockIntro__titlePages {
   font-size: 4rem;
 }
+.body__blockIntro .blockIntro__link--page {
+  display: flex;
+  align-items: center;
+  padding: 0 50px 0;
+}
 .body__blockIntro .blockIntro__link__blockImg {
   display: block;
   position: relative;
@@ -373,6 +397,10 @@ html {
   height: 199px;
   border-radius: 50%;
   background-color: #c4c4c4;
+}
+.body__blockIntro .blockIntro__link__blockImg--page {
+  width: 170px;
+  height: 170px;
 }
 .body__blockIntro .blockIntro__link__blockImg__img {
   width: 155%;
@@ -424,19 +452,24 @@ html {
 .body__blockIntro .blockIntro__ul {
   display: flex;
   justify-content: center;
+  list-style-type: none;
 }
-.body__blockIntro .blockIntro__ul__linksTags {
+.body__blockIntro .blockIntro__ul--page {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.body__blockIntro .blockIntro__linksTags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.body__blockIntro .blockIntro__ul__linksTags--pages {
-  justify-content: flex-start;
+.body__blockIntro .blockIntro__contentForAttach {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
 }
-.body__blockIntro .blockIntro__btn {
-  align-self: center;
-  position: absolute;
-  top: 60px;
+.body__blockIntro .blockIntro__contentForAttach__btn {
+  margin: 60px 0;
 }
 
 #linkToGoUp {
@@ -479,6 +512,36 @@ html {
   font-size: 2.25rem;
   padding: 45px 0px;
   color: #901c1c;
+}
+
+.block__bodyPhotos {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.block__bodyPhotos__li {
+  width: 28%;
+  margin-bottom: 20px;
+}
+
+.blockPrice {
+  display: flex;
+  justify-content: space-around;
+  width: 376px;
+  font-size: 1.5rem;
+  background-color: #db8876;
+  padding: 21px 0 37px 0;
+  position: fixed;
+  bottom: -21px;
+  right: 36px;
+  border-radius: 5px;
+}
+.blockPrice__nbsOfLikes {
+  display: block;
+}
+.blockPrice__thePrice {
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */

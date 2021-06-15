@@ -39,7 +39,7 @@
 @mixin btn-appearance {
   background-color: $colorPrimary;
   color: $colorTertiary;
-  width: 170px;
+  padding: 0 15px;
   height: 69px;
   border: none;
   border-radius: $radiusBlocks;

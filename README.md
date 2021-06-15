@@ -64,6 +64,17 @@
 
 ---
 
+### 15.06.2021
+
+- [x] La page des photographes a été mise en place, les données sont statiques pour le moment;
+- [x] les données des tags sont injectées et retirées dynamiquement lors du click, dans l'url;
+- [x] Début: essayer de filter les photographes en fonctions des tags sélectionnés;
+- [x] Lors d'un click sur un tag: un nouveau tableau de données est crée dynamiquement, en fonction du filtre;
+
+> Notes:
+> Essayer d'injecter dynamiquement ces nouvelles données dans le bloc `<ul>`;
+> nouveau pb à régler : certain photographes risquent d'être duppliquer...
+
 ## Data
 
 [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)
