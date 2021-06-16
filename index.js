@@ -66,25 +66,88 @@ const showDataPhotographers = async () => {
 
 const onClickNavTags = () => {
   fetchDataPhotographers();
+  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   const tagsContent = document.querySelectorAll("nav .tagName"); // On récupère les tags de la navigation;
   const arrayTags = [];
+  const arrayBasedOnTagsClicked = [];
   let url;
   tagsContent.forEach((tag) => {
     let tagValue = "#" + tag.dataset.value;
     tag.addEventListener("click", (e) => {
       e.preventDefault();
+      //--------------------------------------------------------
+      //1/a.On créer des nouveaux tableaux de données, dynamiques et filtrés, en fonction des tags cliqués.
+      //--------------------------------------------------------
+      const isMatching = datas.photographers.filter((data) => {
+        data.tags.includes(`${tag.dataset.value}`);
+        return data.tags.includes(`${tag.dataset.value}`);
+      });
+      //1/b.Ici on ajoute dans un tableau vide, l'index de chaque tableaux isMatching;
+      for (i = 0; i < isMatching.length; i++) {
+        arrayBasedOnTagsClicked.push(isMatching[i]);
+      }
+      //1/c.Il faut transformer ce Set en array;
+      const uniqueSetFromTagsBasedOnClick = new Set(arrayBasedOnTagsClicked);
+      //1/d.On vient de transformer le set en array;
+      const backToArrayFromTagsBasedOnClick = [
+        ...uniqueSetFromTagsBasedOnClick,
+      ];
+      //--------------------------------------------
+      //On met en place notre condition;
+      //--------------------------------------------
       if (arrayTags.includes(tagValue) === false) {
         //1/. On ajoute une classList pour changer l'apparence des tags lors du click;
         tag.classList.add("tagName__onclick");
         //2/.ARRAY DATA TAGS_ON_CLICK //--> On range toutes les données dans un array;
         arrayTags.push(tagValue); //-->On ajoute les valeur dans le tableau lors du clic;
-        // console.log(datas);
-        //3/.On créer des nouveaux tableaux, dynamiques et filtrés, des photographes en fonction des tags.
-        const isMatching = datas.photographers.filter((data) => {
-          data.tags.includes(`${tag.dataset.value}`);
-          return data.tags.includes(`${tag.dataset.value}`);
-        });
-        console.log(isMatching);
+
+        //3/e.On utilise le tableau qui contient le nouvelles données filtrées,
+        //pour les injecter avec un innerHTML, tjrs en fonction des tags cliqués;
+        contentPhotographer.innerHTML = backToArrayFromTagsBasedOnClick
+          .map(
+            (data) => `<!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 01<li>-->
+        <li class="body__blockIntro">
+          <h2 class="blockIntro">
+            <a class="blockIntro__link" href="#">
+              <span class="blockIntro__link__blockImg">
+                <img
+                  class="blockIntro__link__blockImg__img"
+                  src="./img/Photographers ID Photos/${data.portrait}"
+                  alt="profile pictures"
+                />
+              </span>
+            </a>
+            <span class="blockIntro__title">${data.name}</span>
+          </h2>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">${data.city}, ${
+              data.country
+            }</strong>
+            <span class="blockIntro__blocktxt2">
+              ${data.tagline}
+            </span>
+            <span class="blockIntro__blocktxt3">${data.price}/jour</span>
+          </p><ul class="blockIntro__ul"> ${data.tags
+            .map(
+              (tag) => `<li class="blockIntro__ul__linksTags">
+            <a
+              aria-label="tags"
+              href="#"
+              class="tagName blockIntro__links__theLink"
+              data-value="${tag}"
+            >
+              #${tag}
+              <span class="tagName__bgd"></span>
+            </a>
+          </li>`
+            )
+            .join("")}
+            </ul></li>
+          </ul>
+          </li>`
+          )
+          .join("");
       } else if (arrayTags.includes(tagValue) === true) {
         tag.classList.remove("tagName__onclick");
         for (i = 0; i < arrayTags.length; i++) {
@@ -92,6 +155,7 @@ const onClickNavTags = () => {
             arrayTags.splice(i, 1);
           }
         }
+        console.log(backToArrayFromTagsBasedOnClick);
       }
       url = new URL(
         `../?tags=${arrayTags}`,

@@ -75,6 +75,13 @@
 > Essayer d'injecter dynamiquement ces nouvelles données dans le bloc `<ul>`;
 > nouveau pb à régler : certain photographes risquent d'être duppliquer...
 
+### 16.06.2021
+
+- [x] Un nouveau tableau, vient ranger chaque données 'photographes', dynamiquement en fonction des tags ciblés;
+- [x] les photographes apparaissent en fonction des tags cliqués ou non, dans le bloc `<ul></ul>`;
+
+> Il reste à mettre en place la disparition des photographes liés au tag, si celui-ci est décoché;
+
 ## Data
 
 [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)
