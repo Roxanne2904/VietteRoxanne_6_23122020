@@ -3,6 +3,7 @@
 //btn submit
 #btnSubmit {
   @include btn-appearance;
+  padding: 0 50px;
   transition: transform 200ms;
   &:focus {
     transform: scale(1.05);
@@ -12,6 +13,7 @@
 //btns
 .btn {
   position: relative;
+  padding: 0 15px;
   @include btn-appearance;
   z-index: 1;
   &:focus {

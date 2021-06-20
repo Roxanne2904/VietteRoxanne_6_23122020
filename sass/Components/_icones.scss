@@ -21,10 +21,26 @@
   transition: 0.3s;
   &::after {
     @include iconeClose-line;
+    background-color: $colorTertiary;
     transform: rotateZ(45deg);
   }
   &::before {
     @include iconeClose-line;
+    background-color: $colorTertiary;
     transform: rotateZ(-45deg);
   }
+  // &--change {
+  //   display: block;
+
+  //   &::after {
+  //     @include iconeClose-line;
+  //     background-color: $colorPrimary;
+  //     transform: rotateZ(45deg);
+  //   }
+  //   &::before {
+  //     @include iconeClose-line;
+  //     background-color: $colorPrimary;
+  //     transform: rotateZ(-45deg);
+  //   }
+  // }
 }

@@ -82,6 +82,11 @@
 
 > Il reste à mettre en place la disparition des photographes liés au tag, si celui-ci est décoché;
 
+### 20.06.2021
+
+- [x] Les filtres sur l'index fonction correctement;
+- [x] Mise en place de la modal pour visualiser les photos; en cours de réa;
+
 ## Data
 
 [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)

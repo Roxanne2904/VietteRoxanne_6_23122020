@@ -1,16 +1,7 @@
 //LE FORMULAIRE
 //______________________________________
 .modal {
-  display: none;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: 2;
+  @include modal-appearance;
   .modalContent {
     margin: 77px auto;
     max-width: 669px;
@@ -69,3 +60,40 @@
 }
 
 //______________________________________
+//ZOOM SUR LES IMAGES
+//______________________________________
+.modalPhotographies {
+  @include modal-appearance;
+  &__content {
+    margin: 62px auto;
+    max-width: 800px;
+    animation: animModal 0.9s ease-in-out;
+    animation-fill-mode: both;
+    &__body {
+      border-radius: $radiusBlocks;
+      background-color: red;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      &__iconeX {
+        align-self: flex-start;
+      }
+      &__iconeToSwitch {
+        &--change {
+          transform: rotate(180deg);
+        }
+      }
+      &__blockPhoto {
+        width: 100%;
+      }
+      &__photo {
+        width: 100%;
+      }
+      &__legend {
+        font-size: 1.5rem;
+        color: $colorPrimary;
+        font-weight: bold;
+      }
+    }
+  }
+}
