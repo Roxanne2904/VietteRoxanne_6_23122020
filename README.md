@@ -87,6 +87,14 @@
 - [x] Les filtres sur l'index fonction correctement;
 - [x] Mise en place de la modal pour visualiser les photos; en cours de réa;
 
+### 22.06.2021
+
+- [x] Fin de la mise en place de la modal pour visualiser les photos;
+- [x] les medias : "image" ont été injectées dynamiquements;
+  > En cours de réa: Mise en place dynamique des données des médias sur la page des photographes;
+  > Il reste à mettre en place dynamiquement les medias "vidéos";
+  > Il faut revoir le css des block photos;
+
 ## Data
 
 [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)

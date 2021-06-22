@@ -64,27 +64,39 @@
 //______________________________________
 .modalPhotographies {
   @include modal-appearance;
+  &--change {
+    background: rgba(255, 255, 255, 0.9);
+  }
   &__content {
-    margin: 62px auto;
-    max-width: 800px;
+    margin: 99px auto;
+    max-width: 1253px;
     animation: animModal 0.9s ease-in-out;
     animation-fill-mode: both;
     &__body {
       border-radius: $radiusBlocks;
-      background-color: red;
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
       &__iconeX {
         align-self: flex-start;
+        margin: 37px 0 0 0;
+        position: relative;
+        right: 31px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
       }
       &__iconeToSwitch {
+        margin: 0 32px 0 32px;
+        cursor: pointer;
         &--change {
           transform: rotate(180deg);
+          margin: 0 0 0 32px;
         }
       }
       &__blockPhoto {
         width: 100%;
+        margin: 22px 0 0 0;
       }
       &__photo {
         width: 100%;
@@ -92,7 +104,7 @@
       &__legend {
         font-size: 1.5rem;
         color: $colorPrimary;
-        font-weight: bold;
+        margin: 19px 0 0 0;
       }
     }
   }

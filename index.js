@@ -1,4 +1,5 @@
-let datas; //les données des photographes;
+let datas; //les données seront stocké dans cette variable;
+//____________
 //API REQUEST
 const fetchDataPhotographers = async () => {
   datas = await fetch("./data/photographes.json")
@@ -10,7 +11,7 @@ const fetchDataPhotographers = async () => {
     });
   //console.log(datas); //la variable qui renferme les données;ici il y a deux array(photographers et media)
 };
-
+//____________________________
 //SHOWING DATAS PHOTOGRAPHERS
 const showDataPhotographers = async () => {
   const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
@@ -23,12 +24,12 @@ const showDataPhotographers = async () => {
     <!--BlockIntroduceIndex 01<li>-->
     <li class="body__blockIntro">
       <h2 class="blockIntro">
-        <a class="blockIntro__link" href="#">
+        <a class="blockIntro__link" href="./page.html?id=${data.id}">
           <span class="blockIntro__link__blockImg">
             <img
               class="blockIntro__link__blockImg__img"
               src="./img/Photographers ID Photos/${data.portrait}"
-              alt="profile pictures"
+              alt="${data.alt}"
             />
           </span>
         </a>
@@ -46,7 +47,6 @@ const showDataPhotographers = async () => {
         .map(
           (tag) => `<li class="blockIntro__ul__linksTags">
         <a
-          aria-label="tags"
           href="#"
           class="tagName blockIntro__links__theLink"
           data-value="${tag}"
@@ -63,7 +63,8 @@ const showDataPhotographers = async () => {
     )
     .join(""); // c'est pour retirer les virgules entre chaque éléments;
 };
-
+//_____________________________________________________________________
+//FONCTION: LORS DU CLICK SUR LES TAGS, LES PHOTOGRAPHES SONT FILTRES;
 const onClickNavTags = () => {
   fetchDataPhotographers();
   const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
@@ -73,7 +74,7 @@ const onClickNavTags = () => {
   let arrayBasedOnTagsClicked = []; //réorganiser le tableau "photographers" en fonction des tags séléctionnés;
   let url;
   tagsContent.forEach((tag) => {
-    let tagValue = "#" + tag.dataset.value;
+    let tagValue = "#!" + tag.dataset.value;
     tag.addEventListener("click", (e) => {
       e.preventDefault();
       //--------------------------------------------------------
@@ -109,12 +110,12 @@ const onClickNavTags = () => {
         <!--BlockIntroduceIndex 01<li>-->
         <li class="body__blockIntro">
           <h2 class="blockIntro">
-            <a class="blockIntro__link" href="#">
+            <a class="blockIntro__link" href="./page.html?id=${data.id}">
               <span class="blockIntro__link__blockImg">
                 <img
                   class="blockIntro__link__blockImg__img"
                   src="./img/Photographers ID Photos/${data.portrait}"
-                  alt="profile pictures"
+                  alt="${data.alt}"
                 />
               </span>
             </a>
@@ -132,7 +133,6 @@ const onClickNavTags = () => {
             .map(
               (tag) => `<li class="blockIntro__ul__linksTags">
             <a
-              aria-label="tags"
               href="#"
               class="tagName blockIntro__links__theLink"
               data-value="${tag}"
@@ -156,7 +156,6 @@ const onClickNavTags = () => {
             arrayTagsWithoutHastag.splice(i, 1);
           }
         }
-        console.log(arrayTagsWithoutHastag);
         arrayBasedOnTagsClicked = arrayBasedOnTagsClicked.filter((item) => {
           return item.tags.some((tag) => {
             return arrayTagsWithoutHastag.includes(tag);
@@ -174,12 +173,12 @@ const onClickNavTags = () => {
         <!--BlockIntroduceIndex 01<li>-->
         <li class="body__blockIntro">
           <h2 class="blockIntro">
-            <a class="blockIntro__link" href="#">
+            <a class="blockIntro__link" href="./page.html?id=${data.id}">
               <span class="blockIntro__link__blockImg">
                 <img
                   class="blockIntro__link__blockImg__img"
                   src="./img/Photographers ID Photos/${data.portrait}"
-                  alt="profile pictures"
+                  alt="${data.alt}"
                 />
               </span>
             </a>
@@ -197,7 +196,6 @@ const onClickNavTags = () => {
             .map(
               (tag) => `<li class="blockIntro__ul__linksTags">
             <a
-              aria-label="tags"
               href="#"
               class="tagName blockIntro__links__theLink"
               data-value="${tag}"
@@ -225,23 +223,11 @@ const onClickNavTags = () => {
 };
 
 const getData = () => {
-  // //On crée la fonction getData pour récupérer les données
-  // fetch("./data/photographes.json") // on utilise fetch (qui attend une promise, toujours!)
-  //   .then((response) => {
-  //     // voici la promise avec .then() --- apporte une réponse;
-  //     console.log(response); // petit console.log pour voir la réponse.
-  //     return response.json(); // on return la response pour obtenir un resultat de fetch !
-  //   })
-  //   .then((body) => {
-  //     const dataPhotographers = body.photographers;
-  //     dataPhotographers.forEach((items) => {
-  //       const photographersIndex = document.querySelector("#photographerIndex");
-  //       photographersIndex.innerHTML = `<div><h2>${items.name}</h2></div>`;
-  //     });
-  //   });
   fetchDataPhotographers(); //ici on récupère les données;
-  showDataPhotographers(); //ici on fait apparaitre dynamiquement les données;
+  showDataPhotographers(); //ici on fait apparaitre dynamiquement les données sur les photographes;
 };
+
+//Dès le chargement du contenu HTML;
 window.addEventListener("load", () => {
   // un event qui permet d'attendre que tout le html soit chargé avant d'exectuter le js(attendre que le html soit chargé )
   getData();

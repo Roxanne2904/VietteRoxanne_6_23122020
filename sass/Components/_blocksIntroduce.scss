@@ -1,11 +1,19 @@
 //BLOCKPHOTOS
 .blockPhoto__content {
+  width: 89.21%;
   &__linkImg {
     &__blockImg {
       border-radius: 5px;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
       &__img {
         width: 100%;
         display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }
@@ -74,10 +82,6 @@
         height: 199px;
         border-radius: 50%;
         background-color: $colorGrey;
-        &--page {
-          width: 170px;
-          height: 170px;
-        }
         &__img {
           width: 155%;
           position: absolute;
@@ -99,7 +103,6 @@
       &--page {
         //block <ul> de la page des photographes;
         justify-content: flex-start;
-        flex-wrap: wrap;
       }
     }
     &__linksTags {
@@ -113,6 +116,7 @@
       display: flex;
       width: 70%;
       justify-content: space-between;
+      margin: 0 0 0 30px;
       &__btn {
         margin: 60px 0;
       }

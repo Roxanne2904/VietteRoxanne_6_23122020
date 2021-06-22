@@ -125,19 +125,30 @@
     </div>
     <!-- ___________________________________________ -->
     <!--MODAL PHOTOGRAPHIES-->
-    <div role="dialog" class="modalPhotographies" style="display: block">
+    <div class="modalPhotographies modalPhotographies--change">
       <div class="modalPhotographies__content">
-        <div class="modalPhotographies__content__body">
-          <span class="modalPhotographies__content__body__iconeX"
-            ><img src="./img/cross icone.png" alt=""
-          /></span>
-          <span
+        <div
+          role="dialog"
+          class="modalPhotographies__content__body"
+          aria-label="image closeup view"
+        >
+          <button
+            class="modalPhotographies__content__body__iconeX"
+            aria-label="Close dialog"
+            tabindex="1"
+          >
+            <img src="./img/cross icone.png" alt="" />
+          </button>
+          <a
+            tabindex="0"
+            href=""
+            aria-label="Next image"
             class="
               modalPhotographies__content__body__iconeToSwitch
               modalPhotographies__content__body__iconeToSwitch--change
             "
             ><img src="img/icone L.png" alt=""
-          /></span>
+          /></a>
           <figure class="modalPhotographies__content__body__blockPhoto">
             <img
               class="modalPhotographies__content__body__photo"
@@ -148,9 +159,13 @@
               Legende de la photo
             </figcaption>
           </figure>
-          <span class="modalPhotographies__content__body__iconeToSwitch"
+          <a
+            tabindex="1"
+            aria-label="Previous image"
+            href=""
+            class="modalPhotographies__content__body__iconeToSwitch"
             ><img src="img/icone L.png" alt=""
-          /></span>
+          /></a>
         </div>
       </div>
     </div>
@@ -175,31 +190,31 @@
         </p>
         <ul class="blockIntro__ul blockIntro__ul--page">
           <li class="blockIntro__ul__linksTags">
-            <a aria-label="tags" href="#" class="tagName">
+            <a aria-label="tags" href="#" class="tagName tagName--change">
               #tag-name
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <a aria-label="tags" href="#" class="tagName">
+            <a aria-label="tags" href="#" class="tagName tagName--change">
               #tag-name
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <a aria-label="tags" href="#" class="tagName">
+            <a aria-label="tags" href="#" class="tagName tagName--change">
               #tag-name
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <a aria-label="tags" href="#" class="tagName">
+            <a aria-label="tags" href="#" class="tagName tagName--change">
               #tag-name
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <a aria-label="tags" href="#" class="tagName">
+            <a aria-label="tags" href="#" class="tagName tagName--change">
               #tag-name
               <span class="tagName__bgd"></span>
             </a>
@@ -213,9 +228,7 @@
         </button>
 
         <div class="blockIntro__link blockIntro__link--page">
-          <span
-            class="blockIntro__link__blockImg blockIntro__link__blockImg--page"
-          >
+          <span class="blockIntro__link__blockImg">
             <img class="blockIntro__link__blockImg__img" src="" alt="" />
           </span>
         </div>
@@ -344,7 +357,9 @@
           src="./img/heart__black.png"
           alt=""
       /></span>
-      <span class="blockPrice__thePrice">300€/jour</span>
+      <span class="blockPrice__thePrice"
+        ><span class="blockPrice__thePrice__data">300€/jour</span></span
+      >
     </div>
 
     <!-- ___________________________________________ -->

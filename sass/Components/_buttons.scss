@@ -82,6 +82,11 @@
   position: relative;
   @include tags-appearance;
   z-index: 1; //visuel de base en z-index 1
+  &--change {
+    font-size: 1.125rem;
+    padding: 0 8px;
+    border-radius: 12px;
+  }
   &:hover {
     color: $colorTertiary;
     font-weight: inherit;
