@@ -1,6 +1,10 @@
 //______________________________
-//I).Récupérer les données;
+//Declarations des variables;
 let datas; //variables qui va récupérer les données;
+let MediasIsMatchingWithId; //Les Médias correspondants à l'Id du photographes;
+//_________________________
+//I).RECUPERER LES DONNEES;
+// __________
 //API REQUEST
 const fetchDatas = async () => {
   datas = await fetch("./data/photographes.json")
@@ -11,8 +15,10 @@ const fetchDatas = async () => {
       return body;
     });
 };
+//_________________________
 //II).FONCTIONS POUR FERMER ET OUVRIR LA MODAL AVEC LE FORMULAIRE.
-//Ouvrir et fermer la modal FORM;
+// __________
+//IsOpeningTheModal(); // - Modal avec le formulaire;
 const isOpeningTheModal = async () => {
   await fetchDatas();
   const bgdModal = document.querySelector(".modal");
@@ -68,7 +74,7 @@ const isLaunchingTheCloseModalEvent = () => {
 //   });
 // };
 
-//IV).FONCTION QUI INJECTE LES DONNEES EN FONCTION DE L'ID.
+//III).FONCTION QUI INJECTE LES DONNEES EN FONCTION DE L'ID DU PHOTOGRAPHE;
 //___________
 //Show DATAS
 const showDatas = async () => {
@@ -79,10 +85,12 @@ const showDatas = async () => {
   const url = window.location.href;
   let url_idString = url.split("=")[1]; //par ex: 123; typeof ="string";
   const url_IdNmb = parseInt(url_idString); // notre id devient un typeof = number;
+  let arrayOfTotalLikes = [];
   const txtContent = document.querySelector(".blockIntro--pages"); //le header qui va contenir les données du photographe;
   const btnAndPhotoContent = document.querySelector(".blockIntro__link--page");
   const priceData = document.querySelector(".blockPrice__thePrice");
   const ulContentForPhotos = document.querySelector("#photosBody");
+  const blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
   //______________________________________________________________________________
   //On veut chercher dans le tableau des données le même id que celui de l'url;
   //On va comme cela récupérer automatiquement "Le" photographe en question et ses données;
@@ -133,7 +141,7 @@ const showDatas = async () => {
   // console.log(datas.media);
   //____________________________________
   //RECUPERER LES MEDIAS DU PHOTOGRAPHE;
-  const MediasIsMatchingWithId = datas.media.filter((item) => {
+  MediasIsMatchingWithId = datas.media.filter((item) => {
     const photosMatchWithId = item.photographerId === url_IdNmb;
     return photosMatchWithId === true;
   });
@@ -160,7 +168,7 @@ const showDatas = async () => {
              ></video>
            </div>
          </a>
-          <figcaption class="blockPhoto__content__legend">
+          <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
            <span class="blockPhoto__content__legend__photoName">${media.title}</span>
              <button class="heart">
               <span aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
@@ -182,11 +190,11 @@ const showDatas = async () => {
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
                 src="./img/${photographe.name}/${media.image}"
-                alt=""
+                alt="${media.title} by ${photographe.name}"
               />
             </div>
           </a>
-          <figcaption class="blockPhoto__content__legend">
+          <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">${media.title}</span>
             <button class="heart">
               <span aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
@@ -199,17 +207,79 @@ const showDatas = async () => {
         <!-- ___________________________________________ -->
       </li>`;
   }).join("");
+  // ___________________________________________
+  // ADDITIONNER LE TOTAL DE LIKES et INJECTER LA DONNEE;
+  MediasIsMatchingWithId.forEach((media) => {
+    const nbsOflikes = Object.values(media);
+    const likesInArray = [nbsOflikes[5]]; //output :[52]; pour chaque likes de chaque medias;
+    arrayOfTotalLikes.push(...likesInArray); //output :[1,2,3,36,12,36]par ex; tout est regroupé dans 1 seul tableau;
+    return arrayOfTotalLikes;
+  });
+  const reducer = (accumulator, currentValue) => {
+    return accumulator + currentValue;
+  };
+  let TotalDataOfLikes = arrayOfTotalLikes.reduce(reducer);
+  blockOfTotalLikes.innerHTML = `${TotalDataOfLikes}
+      <img
+        class="blockPrice____nbsOfLikes__heartIcone"
+        src="./img/heart__black.png"
+        alt=""
+    />`;
 };
-//V).FONCTION QUI INCREMENTE LE NOMBRE DE LIKES/MEDIA;
-const addLikes = async () => {
+//_________________________________________________________________________
+//IV).FONCTION QUI INCREMENTE LE NOMBRE DE LIKES/MEDIA ET AFFICHE LE TOTAL;
+//_________________
+//UptdatingLikes();
+const UpdatingLikes = async () => {
   await showDatas();
-  console.log(datas);
-  let btnLikesPerBlocks = document.querySelectorAll(".heart");
-  console.log(btnLikesPerBlocks);
+  let likesBtnPerBlocks = document.querySelectorAll(".heart");
+  let blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
+  likesBtnPerBlocks.forEach((btn) => {
+    const isAddingLikes = () => {
+      let arrayOfTotalLikes = [];
+      const idDataTypeOfString = btn.parentElement.dataset.value; //La valeur est une string;
+      const idDataTypeOfNumb = parseInt(idDataTypeOfString); //elle devient un type number;
+      let idMediaDatas = MediasIsMatchingWithId.filter((item) => {
+        return item.id === idDataTypeOfNumb;
+      });
+      let storeNumberOfLikes = idMediaDatas[0].likes; //output le nbs de likes actuel
+      storeNumberOfLikes++;
+      idMediaDatas[0].likes = storeNumberOfLikes;
+      idMediaDatas = MediasIsMatchingWithId.filter((item) => {
+        return item.id === idDataTypeOfNumb;
+      });
+      btn.innerHTML = `<span aria-label="nombre de j'aime" class="heart__nbs">${idMediaDatas[0].likes}</span>
+      <span class="heart__img"
+        ><img src="./img/Vector.png" alt="J'aime"
+      /></span>`;
+      // ___________________________________________
+      // ADDITIONNER LE TOTAL DE LIKES DYNAMIQUEMENT
+      MediasIsMatchingWithId.forEach((media) => {
+        const nbsOflikes = Object.values(media);
+        const likesInArray = [nbsOflikes[5]]; //output :[52]; pour chaque likes de chaque medias;
+        arrayOfTotalLikes.push(...likesInArray); //output :[1,2,3,36,12,36]par ex; tout est regroupé dans 1 seul tableau;
+        return arrayOfTotalLikes;
+      });
+      const reducer = (accumulator, currentValue) => {
+        return accumulator + currentValue;
+      };
+      let TotalDataOfLikes = arrayOfTotalLikes.reduce(reducer);
+      blockOfTotalLikes.innerHTML = `${TotalDataOfLikes}
+      <img
+        class="blockPrice____nbsOfLikes__heartIcone"
+        src="./img/heart__black.png"
+        alt=""
+    />`;
+    };
+    btn.addEventListener("click", isAddingLikes);
+  });
+};
+const getDynamiqueContent = async () => {
+  await UpdatingLikes();
 };
 //_________________________________________________________________
-// VI).Dès le chargement du contenu HTML ont appel getDatas().
+// V).Dès le chargement du contenu HTML ont appel "La dernière fonction qui appelerai toute les autres".
 //______________________________
 window.addEventListener("load", () => {
-  addLikes();
+  getDynamiqueContent();
 });
