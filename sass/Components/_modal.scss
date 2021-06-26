@@ -2,6 +2,7 @@
 //______________________________________
 .modal {
   @include modal-appearance;
+  display: none;
   .modalContent {
     margin: 77px auto;
     max-width: 669px;

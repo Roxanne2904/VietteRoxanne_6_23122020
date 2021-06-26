@@ -14,9 +14,8 @@ const fetchDataPhotographers = async () => {
 //____________________________
 //SHOWING DATAS PHOTOGRAPHERS
 const showDataPhotographers = async () => {
-  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   await fetchDataPhotographers(); // on attend que cette fonction récupère les donnée;
-
+  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   contentPhotographer.innerHTML = datas.photographers
     .map(
       (data) =>
@@ -65,14 +64,15 @@ const showDataPhotographers = async () => {
 };
 //_____________________________________________________________________
 //FONCTION: LORS DU CLICK SUR LES TAGS, LES PHOTOGRAPHES SONT FILTRES;
-const onClickNavTags = () => {
-  fetchDataPhotographers();
+const onClickNavTags = async () => {
+  await showDataPhotographers();
+
   const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   const tagsContent = document.querySelectorAll("nav .tagName"); // On récupère les tags de la navigation;
   const arrayTags = []; //pour afficher dans l'url;
   const arrayTagsWithoutHastag = []; //pour ranger les données de l'url sans le #;
   let arrayBasedOnTagsClicked = []; //réorganiser le tableau "photographers" en fonction des tags séléctionnés;
-  let url;
+  let url = `http://127.0.0.1:5500/index.html/`;
   tagsContent.forEach((tag) => {
     let tagValue = "#!" + tag.dataset.value;
     tag.addEventListener("click", (e) => {
@@ -212,21 +212,15 @@ const onClickNavTags = () => {
           )
           .join("");
       }
-
-      url = new URL(
-        `../?tags=${arrayTags}`,
-        `http://127.0.0.1:5500/index.html`
-      );
+      url = new URL(`..?tags=${arrayTags}`, url);
       window.location.href = url;
     });
   });
 };
-
 const getData = () => {
   fetchDataPhotographers(); //ici on récupère les données;
   showDataPhotographers(); //ici on fait apparaitre dynamiquement les données sur les photographes;
 };
-
 //Dès le chargement du contenu HTML;
 window.addEventListener("load", () => {
   // un event qui permet d'attendre que tout le html soit chargé avant d'exectuter le js(attendre que le html soit chargé )

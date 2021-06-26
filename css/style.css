@@ -215,7 +215,6 @@ html {
 }
 
 .modal {
-  display: none;
   height: 100%;
   width: 100%;
   z-index: 1;
@@ -225,6 +224,7 @@ html {
   overflow: auto;
   background: rgba(255, 255, 255, 0.7);
   z-index: 2;
+  display: none;
 }
 .modal .modalContent {
   margin: 77px auto;
@@ -289,7 +289,6 @@ html {
 }
 
 .modalPhotographies {
-  display: none;
   height: 100%;
   width: 100%;
   z-index: 1;
@@ -347,6 +346,8 @@ html {
 
 .heart {
   display: block;
+  border: none;
+  background: transparent;
 }
 .heart__nbs {
   font-size: 1.5rem;
@@ -397,17 +398,21 @@ html {
 }
 .blockPhoto__content__linkImg__blockImg {
   border-radius: 5px;
-  height: 300px;
   overflow: hidden;
   position: relative;
+  background-color: #c4c4c4;
 }
-.blockPhoto__content__linkImg__blockImg__img {
+.blockPhoto__content__linkImg__blockImg__video {
+  height: 300px;
   width: 100%;
   display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+.blockPhoto__content__linkImg__blockImg__img {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+  display: block;
 }
 .blockPhoto__content__legend {
   display: flex;
@@ -415,6 +420,9 @@ html {
   font-size: 1.5rem;
   color: #901c1c;
   padding: 10px 0;
+}
+.blockPhoto__content__legend__photoName {
+  max-width: 70%;
 }
 
 #photographerIndex {

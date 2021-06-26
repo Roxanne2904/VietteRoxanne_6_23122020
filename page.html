@@ -15,7 +15,7 @@
   </head>
   <body class="body">
     <!-- ___________________________________________ -->
-    <!--FORMULAIRE & MODAL FORM-->
+    <!--MODAL FORMULAIRE-->
     <div role="dialog" class="modal">
       <div class="modalContent">
         <div class="modalContent__body">
@@ -123,52 +123,6 @@
         </div>
       </div>
     </div>
-    <!-- ___________________________________________ -->
-    <!--MODAL PHOTOGRAPHIES-->
-    <div class="modalPhotographies modalPhotographies--change">
-      <div class="modalPhotographies__content">
-        <div
-          role="dialog"
-          class="modalPhotographies__content__body"
-          aria-label="image closeup view"
-        >
-          <button
-            class="modalPhotographies__content__body__iconeX"
-            aria-label="Close dialog"
-            tabindex="1"
-          >
-            <img src="./img/cross icone.png" alt="" />
-          </button>
-          <a
-            tabindex="0"
-            href=""
-            aria-label="Next image"
-            class="
-              modalPhotographies__content__body__iconeToSwitch
-              modalPhotographies__content__body__iconeToSwitch--change
-            "
-            ><img src="img/icone L.png" alt=""
-          /></a>
-          <figure class="modalPhotographies__content__body__blockPhoto">
-            <img
-              class="modalPhotographies__content__body__photo"
-              src="./img/thumb-img.png"
-              alt=""
-            />
-            <figcaption class="modalPhotographies__content__body__legend">
-              Legende de la photo
-            </figcaption>
-          </figure>
-          <a
-            tabindex="1"
-            aria-label="Previous image"
-            href=""
-            class="modalPhotographies__content__body__iconeToSwitch"
-            ><img src="img/icone L.png" alt=""
-          /></a>
-        </div>
-      </div>
-    </div>
     <!--Le logo-->
     <a href="./index.html" class="logo headerIndex__banner__linkLogo">
       <img class="logo__img" src="img/logo.png" alt="FishEyes Home page" />
@@ -181,9 +135,9 @@
       class="body__blockIntro body__blockIntro--page"
     >
       <div class="blockIntro blockIntro--pages">
-        <h1 class="blockIntro__titlePages">Mimi Keel</h1>
+        <h1 class="blockIntro__titlePages">Undefined</h1>
         <p class="blockIntro__blocktxt">
-          <strong class="blockIntro__blocktxt1p">London, UK</strong>
+          <strong class="blockIntro__blocktxt1p">Ville, Pays</strong>
           <span class="blockIntro__blocktxt2p"
             >Voir le beau dans le quotidien</span
           >
@@ -256,15 +210,15 @@
             <div class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
-                src="img/thumb-img.png"
-                alt="oiseau"
+                src=""
+                alt=""
               />
             </div>
           </a>
           <figcaption class="blockPhoto__content__legend">
-            <span>Photo</span>
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
               <span class="heart__img"
                 ><img src="./img/Vector.png" alt="J'aime"
               /></span>
@@ -281,15 +235,15 @@
             <div class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
-                src="img/thumb-img.png"
-                alt="oiseau"
+                src=""
+                alt=""
               />
             </div>
           </a>
           <figcaption class="blockPhoto__content__legend">
-            <span>Photo</span>
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
               <span class="heart__img"
                 ><img src="./img/Vector.png" alt="J'aime"
               /></span>
@@ -298,57 +252,164 @@
         </figure>
         <!-- ___________________________________________ -->
       </li>
+      <!-- ___________________________________________ -->
+      <!--BlockVideo-valide- 01-->
       <li class="block__bodyPhotos__li">
-        <!-- ___________________________________________ -->
-        <!--BlockPhotos 03-->
         <figure class="blockPhoto__content">
           <a class="blockPhoto__content__linkImg" href="#">
             <div class="blockPhoto__content__linkImg__blockImg">
-              <img
-                class="blockPhoto__content__linkImg__blockImg__img"
-                src="img/thumb-img.png"
-                alt="oiseau"
-              />
+              <video
+                controls
+                src="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
+                class="blockPhoto__content__linkImg__blockImg__video"
+              >
+                Votre navigateur ne vous permet pas de télécharger la vidéo.<br />
+                Mais vous pouvez toujours la télécharger
+              </video>
             </div>
           </a>
           <figcaption class="blockPhoto__content__legend">
-            <span>Photo</span>
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
               <span class="heart__img"
                 ><img src="./img/Vector.png" alt="J'aime"
               /></span>
             </span>
           </figcaption>
         </figure>
-        <!-- ___________________________________________ -->
       </li>
-      <li class="block__bodyPhotos__li">
-        <!-- ___________________________________________ -->
-        <!--BlockPhotos 04-->
-        <figure class="blockPhoto__content">
+      <!-- ___________________________________________ -->
+      <!-- ___________________________________________ -->
+      <!--BlockVideo-valide- 02-->
+      <li class="block__bodyPhotos__li block__bodyPhotos__li--changeForVideo">
+        <figure class="blockPhoto__content blockPhoto__content--changeForVideo">
           <a class="blockPhoto__content__linkImg" href="#">
-            <div class="blockPhoto__content__linkImg__blockImg">
-              <img
-                class="blockPhoto__content__linkImg__blockImg__img"
-                src="img/thumb-img.png"
-                alt="oiseau"
-              />
+            <div
+              class="
+                blockPhoto__content__linkImg__blockImg
+                blockPhoto__content__linkImg__blockImg--changeForVideo
+              "
+            >
+              <video
+                controls
+                src="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
+                class="blockPhoto__content__linkImg__blockImg__video"
+              >
+                Votre navigateur ne vous permet pas de télécharger la vidéo.<br />
+                Mais vous pouvez toujours la télécharger
+              </video>
             </div>
           </a>
           <figcaption class="blockPhoto__content__legend">
-            <span>Photo</span>
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
               <span class="heart__img"
                 ><img src="./img/Vector.png" alt="J'aime"
               /></span>
             </span>
           </figcaption>
         </figure>
-        <!-- ___________________________________________ -->
       </li>
+      <!-- ___________________________________________ -->
+      <!-- ___________________________________________ -->
+      <!--BlockVideo-valide- 03-->
+      <li class="block__bodyPhotos__li block__bodyPhotos__li--changeForVideo">
+        <figure class="blockPhoto__content blockPhoto__content--changeForVideo">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div
+              class="
+                blockPhoto__content__linkImg__blockImg
+                blockPhoto__content__linkImg__blockImg--changeForVideo
+              "
+            >
+              <video
+                controls
+                src="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
+                class="blockPhoto__content__linkImg__blockImg__video"
+              >
+                Votre navigateur ne vous permet pas de télécharger la vidéo.<br />
+                Mais vous pouvez toujours la télécharger
+              </video>
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+      </li>
+      <!-- ___________________________________________ -->
+      <!-- ___________________________________________ -->
+      <!--BlockVideo-valide- 04-->
+      <li class="block__bodyPhotos__li block__bodyPhotos__li--changeForVideo">
+        <figure class="blockPhoto__content blockPhoto__content--changeForVideo">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div
+              class="
+                blockPhoto__content__linkImg__blockImg
+                blockPhoto__content__linkImg__blockImg--changeForVideo
+              "
+            >
+              <video
+                controls
+                src="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
+                class="blockPhoto__content__linkImg__blockImg__video"
+              >
+                Votre navigateur ne vous permet pas de télécharger la vidéo.<br />
+                Mais vous pouvez toujours la télécharger
+              </video>
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+      </li>
+      <!-- ___________________________________________ -->
+      <!--Blockvideo 01 test -A garder au cas où--->
+      <!-- <li class="block__bodyVideo__li">
+        <figure class="block__bodyVideo__li__content">
+          <a class="block__bodyVideo__li__link">
+            <video
+              controls
+              src="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
+              class="block__bodyVideo__li__video"
+            >
+              Votre navigateur ne permet pas de lire la vidéo,<br />
+              mais vous pouvez toujours la télécharger ....<a
+                href="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
+                ><strong>Ici</strong></a
+              >
+            </video>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName">Photo</span>
+            <span class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </span>
+          </figcaption>
+        </figure>
+      </li> -->
+      <!-- ___________________________________________ -->
     </ul>
+    <!-- Block en bas avec prix et nbs de likes -->
+    <!-- ___________________________________________ -->
     <div class="blockPrice">
       <span class="blockPrice__nbsOfLikes"
         >297 081
@@ -361,7 +422,6 @@
         ><span class="blockPrice__thePrice__data">300€/jour</span></span
       >
     </div>
-
     <!-- ___________________________________________ -->
     <!--heart-->
     <!-- <span class="heart">

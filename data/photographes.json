@@ -102,7 +102,7 @@
       "id": 9275938,
       "photographerId": 82,
       "title": "Wedding Gazebo",
-      "image": "Event-_WeddingGazebo.jpg",
+      "image": "Event_WeddingGazebo.jpg",
       "tags": ["events"],
       "likes": 69,
       "date": "2018-02-22",
@@ -374,7 +374,7 @@
     {
       "id": 2525345343,
       "photographerId": 243,
-      "title": "Wednesday Potrait",
+      "title": "Wednesday Portrait",
       "image": "Portrait_Wednesday.jpg",
       "tags": ["portait"],
       "likes": 34,

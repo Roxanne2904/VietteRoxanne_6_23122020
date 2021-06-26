@@ -42,41 +42,40 @@ const isLaunchingTheCloseModalEvent = () => {
   btnCloseModal.addEventListener("click", isClosingTheModal);
 };
 //______________________________
-//III).FONCTIONS POUR FERMER ET OUVRIR LA MODAL POUR VISUALISER LES PHOTOS.
+//III).FONCTIONS POUR FERMER ET OUVRIR LA MODAL QUI VISUALISE LES PHOTOS.
 //Ouvrir et fermer la modal pour visualiser les photos;
 //ouvrir;
-const isOpeningTheModalPhoto = () => {
-  const btnOpenModalPhoto = document.querySelectorAll(
-    ".blockPhoto__content__linkImg"
-  );
-  btnOpenModalPhoto.forEach((photo) => {
-    photo.addEventListener("click", () => {
-      const bgdModalPhoto = document.querySelector(".modalPhotographies");
-      bgdModalPhoto.style.display = "block";
-    });
-  });
-};
-//______________________________
-//Fermer;
-const isClosingTheModalPhoto = () => {
-  const btnCloseModalPhoto = document.querySelector(
-    ".modalPhotographies__content__body__iconeX"
-  );
-  btnCloseModalPhoto.addEventListener("click", () => {
-    const bgdModalPhoto = document.querySelector(".modalPhotographies");
-    bgdModalPhoto.style.display = "none";
-  });
-};
-//IV).FONCTIONS QUI MONTRE LES DONNEES EN FONCTION DE L'ID.
+// const isOpeningTheModalPhoto = () => {
+//   const btnOpenModalPhoto = document.querySelectorAll(
+//     ".blockPhoto__content__linkImg"
+//   );
+//   btnOpenModalPhoto.forEach((photo) => {
+//     photo.addEventListener("click", () => {
+//       const bgdModalPhoto = document.querySelector(".modalPhotographies");
+//       bgdModalPhoto.style.display = "block";
+//     });
+//   });
+// };
+// //______________________________
+// //Fermer;
+// const isClosingTheModalPhoto = () => {
+//   const btnCloseModalPhoto = document.querySelector(
+//     ".modalPhotographies__content__body__iconeX"
+//   );
+//   btnCloseModalPhoto.addEventListener("click", () => {
+//     const bgdModalPhoto = document.querySelector(".modalPhotographies");
+//     bgdModalPhoto.style.display = "none";
+//   });
+// };
+
+//IV).FONCTION QUI INJECTE LES DONNEES EN FONCTION DE L'ID.
 //___________
 //Show DATAS
 const showDatas = async () => {
   await fetchDatas();
-  isLaunchingTheOpenModalEvent();
-  isLaunchingTheCloseModalEvent();
-  isOpeningTheModalPhoto();
-  isClosingTheModalPhoto();
-  console.log(datas);
+  isLaunchingTheOpenModalEvent(); //FORM MODAL
+  isLaunchingTheCloseModalEvent(); //FORM MODAL
+  // console.log(datas);
   const url = window.location.href;
   let url_idString = url.split("=")[1]; //par ex: 123; typeof ="string";
   const url_IdNmb = parseInt(url_idString); // notre id devient un typeof = number;
@@ -90,7 +89,7 @@ const showDatas = async () => {
   const photographe = datas.photographers.find((item) => {
     return item.id === url_IdNmb;
   });
-  console.log(photographe);
+  // console.log(photographe);
   //Maintenant on inject les données;
   //_________________________________
   //HEADER-Le block txt avec les infos photographes;
@@ -127,64 +126,90 @@ const showDatas = async () => {
   class="blockIntro__link__blockImg"
 >
   <img class="blockIntro__link__blockImg__img" src="./img/Photographers ID Photos/${photographe.portrait}" alt="${photographe.alt}" />
-</span>
-</div>`;
+</span>`;
   //_________________________________
-  //Le block qui contient le prix;
+  //Le block en bas de page, qui contient le prix;
   priceData.innerHTML = `<span class="blockPrice__thePrice__data">${photographe.price}€/jour</span>`;
-  console.log(datas.media);
-  //RECUPERER LES MEDIAS DU PHOTOGRAPHE;
+  // console.log(datas.media);
   //____________________________________
-  const filterMediasMatchingwithId = datas.media.filter((item) => {
+  //RECUPERER LES MEDIAS DU PHOTOGRAPHE;
+  const MediasIsMatchingWithId = datas.media.filter((item) => {
     const photosMatchWithId = item.photographerId === url_IdNmb;
     return photosMatchWithId === true;
   });
-  //RECUPERER LES IMAGES DU PHOTOGRAPHE;
-  //____________________________________
-  const imgMedias = filterMediasMatchingwithId.filter((img) => {
-    return img.image;
-  });
-  //INJECTER LES IMAGES DANS LA PAGE DYNAMIQUEMENT;
-  //____________________________________
-  ulContentForPhotos.innerHTML = imgMedias
-    .map(
-      (media) => `<li class="block__bodyPhotos__li">
-    <!-- ___________________________________________ -->
-    <!--BlockPhotos 01-->
-    <figure class="blockPhoto__content">
-      <a class="blockPhoto__content__linkImg" href="#">
-        <div class="blockPhoto__content__linkImg__blockImg">
-          <img
-            class="blockPhoto__content__linkImg__blockImg__img"
-            src="./img/${photographe.name}/${media.image}"
-            alt=""
-          />
-        </div>
-      </a>
-      <figcaption class="blockPhoto__content__legend">
-        <span>Photo</span>
-        <span class="heart">
-          <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
-          <span class="heart__img"
-            ><img src="./img/Vector.png" alt="J'aime"
-          /></span>
-        </span>
-      </figcaption>
-    </figure>
-    <!-- ___________________________________________ -->
-  </li>`
-    )
-    .join("");
+  //_____________________________________________________________
+  // INJECTER LES IMAGES + VIDEOS DANS LA PAGE DYNAMIQUEMENT;
+  ulContentForPhotos.innerHTML = MediasIsMatchingWithId.map((media) => {
+    const mediaInArray = Object.values(media);
+    const isVideo = mediaInArray[3].endsWith(".mp4");
+    if (isVideo === true) {
+      return `<li class="block__bodyPhotos__li ">
+       <!-- ___________________________________________ -->
+       <!--BlockVideo-valide- 03-->
+        <figure class="blockPhoto__content ">
+         <a class="blockPhoto__content__linkImg" href="#">
+           <div
+             class="
+               blockPhoto__content__linkImg__blockImg
+             "
+           >
+             <video
+               controls
+               src="./img/${photographe.name}/${media.video}"
+               class="blockPhoto__content__linkImg__blockImg__video"
+             ></video>
+           </div>
+         </a>
+          <figcaption class="blockPhoto__content__legend">
+           <span class="blockPhoto__content__legend__photoName">${media.title}</span>
+             <button class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
+             <span class="heart__img"
+               ><img src="./img/Vector.png" alt="J'aime"
+             /></span>
+           </button>
+         </figcaption>
+       </figure>
+       <!-- ___________________________________________ -->
+     </li>`;
+    }
+    return `<li class="block__bodyPhotos__li">
+        <!-- ___________________________________________ -->
+        <!--BlockPhotos 01-->
+        <figure class="blockPhoto__content">
+          <a class="blockPhoto__content__linkImg" href="#">
+            <div class="blockPhoto__content__linkImg__blockImg">
+              <img
+                class="blockPhoto__content__linkImg__blockImg__img"
+                src="./img/${photographe.name}/${media.image}"
+                alt=""
+              />
+            </div>
+          </a>
+          <figcaption class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName">${media.title}</span>
+            <button class="heart">
+              <span aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
+              <span class="heart__img"
+                ><img src="./img/Vector.png" alt="J'aime"
+              /></span>
+            </button>
+          </figcaption>
+        </figure>
+        <!-- ___________________________________________ -->
+      </li>`;
+  }).join("");
 };
-//______________________________________________________________
-// IV).FONCTIONS QUI APPELLE LA RECUP ET L'INJECTION DES DONNEES.
-const getDatas = () => {
-  fetchDatas();
-  showDatas();
+//V).FONCTION QUI INCREMENTE LE NOMBRE DE LIKES/MEDIA;
+const addLikes = async () => {
+  await showDatas();
+  console.log(datas);
+  let btnLikesPerBlocks = document.querySelectorAll(".heart");
+  console.log(btnLikesPerBlocks);
 };
 //_________________________________________________________________
-// V).Dès le chargement du contenu HTML ont appel getDatas().
+// VI).Dès le chargement du contenu HTML ont appel getDatas().
 //______________________________
 window.addEventListener("load", () => {
-  getDatas();
+  addLikes();
 });
