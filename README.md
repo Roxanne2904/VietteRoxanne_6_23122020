@@ -1,100 +1,60 @@
-# Projet FishEyes
+# **Projet FishEyes**
 
-## VietteRoxanne_6_23122020
-
----
-
-### 22.05.2021
-
-- [x] Mise en place de la 'branch components';
-- [x] Mise en place de Sass;
-- [x] Début de la réalisation des composants:
-  > ---> la modal + formulaire ok;
-  > ---> les boutons: en cours de réalisation;
+## **VietteRoxanne_6_23122020**
 
 ---
 
-### 25.05.2021
-
-- [x] Continuation sur la réalisation des composants:
-  > le Logo **FishEyes** ----> - [x] ok;
-  > la liste déroulante ----> - [ ] ok pour le moment, revenir dessus plus tard;
+### **GOAL**
 
 ---
 
-### 28.05.2021
+1. Page d'accueil
 
-> Résumé des composants réalisés à ce jour:[^1]
-
-- La modal form;
-- Keyframe de la modal form;
-- INDEX-Blocks Présentations des photographes;
-- Les Boutons;
-- Les tags;
-- Blocks photos;
-- La liste <-select-> déroulante;
-
-[^1]: Mettre en place la liste à puce des tags pour les block présentations photographes.
+- [x] Liste de tout les photographes injectée dans des blocks dynamiques;
+- [x] En cliquant sur une étiquette tag, la liste des photographes est filtrée;
+  > fonctionne **MAIS** problème de référencement url à règler;
+- [x] Lorsque qu'un utilisateur clique sur la vignette d'un photographe, il va vers sa page;
 
 ---
 
-### 03.06.2021
+2. Page des photographes
 
-> Fin des composants. Il manque juste l'icone photo sur le composant présentation des pages individuel;
-
----
-
-- [x] Index : Mise en place du header, avec la nav et du block main + le contenu du main
-- [x] Index : Ajout des composants qui présentent les photographes
-- [x] Page : Création de la page HTML "page" et Déplacement des composants à l'intérieur
-
----
-
-### 07.06.2021
-
-- Récupération des données du fichier.json avec fetch;
-- Injection du htlm des données avec un `.map()`;
-- Il reste a injecter les #tags de façon dynamique.
+- [x] Afficher la galerie de travail -les photos et vidéos injectées dynamiquement-;
+- [x] Les photographes peuvent montrer photos et vidéos;
+- [x] L'icone "like" est clicable, il doit incrémenter le nombre de "likes" au clic;
+- [x] Le nombre total de "likes" doit être mis à jour, pour chaque clic;
+- [x] Les médias peuvent être trié par popularité, date ou titres;
+  > Reste à faire :
+  > Lorsque qu'un utilisateur clique sur un média, il redirige le média vers la modal.
 
 ---
 
-### 08.06.2021
-
-- [x] injecter les tags dynamiquement;
+3. La modal -view Photos-
+   > La croix doit fermer la modal;
+   > Les btns permettent de passer d'un média à un autre;
+   > Les touches fléchées du clavier, permettent aussi de faire défiller les médias;
 
 ---
 
-### 15.06.2021
+6. La modal -Form-
+   >
 
-- [x] La page des photographes a été mise en place, les données sont statiques pour le moment;
-- [x] les données des tags sont injectées et retirées dynamiquement lors du click, dans l'url;
-- [x] Début: essayer de filter les photographes en fonctions des tags sélectionnés;
-- [x] Lors d'un click sur un tag: un nouveau tableau de données est crée dynamiquement, en fonction du filtre;
+---
 
-> Notes:
-> Essayer d'injecter dynamiquement ces nouvelles données dans le bloc `<ul>`;
-> nouveau pb à régler : certain photographes risquent d'être duppliquer...
+5. Les Finitions
+   > Il faire quelque chose de responsive -mobile et desktop uniquement-;
+   > L'Accessibilité :
 
-### 16.06.2021
+- Toutes les photos doivent comporter des descriptions textuelles;
+- L'utilisateur doit pouvoir utiliser les commandes du clavier + les touches fléchées pour la modal photo;
+- Utliser un max d'éléments sémantique;
+- Ajouter les attributs ARIA si nécessaire.
+- Le code devra passer le test "AChecker" sans "knownIssues" -Conforme au WCAG-
+- La gestion des évènement doit se faire au clavier;
+- Utiliser un lecteur d'écran gratuit pour tester;
 
-- [x] Un nouveau tableau, vient ranger chaque données 'photographes', dynamiquement en fonction des tags ciblés;
-- [x] les photographes apparaissent en fonction des tags cliqués ou non, dans le bloc `<ul></ul>`;
+---
 
-> Il reste à mettre en place la disparition des photographes liés au tag, si celui-ci est décoché;
-
-### 20.06.2021
-
-- [x] Les filtres sur l'index fonction correctement;
-- [x] Mise en place de la modal pour visualiser les photos; en cours de réa;
-
-### 22.06.2021
-
-- [x] Fin de la mise en place de la modal pour visualiser les photos;
-- [x] les medias : "image" ont été injectées dynamiquements;
-  > En cours de réa: Mise en place dynamique des données des médias sur la page des photographes;
-  > Il reste à mettre en place dynamiquement les medias "vidéos";
-  > Il faut revoir le css des block photos;
-
-## Data
+## **Data**
 
 [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)
