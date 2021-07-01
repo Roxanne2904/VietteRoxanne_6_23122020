@@ -14,6 +14,7 @@
 - [x] En cliquant sur une étiquette tag, la liste des photographes est filtrée;
   > fonctionne **MAIS** problème de référencement url à règler;
 - [x] Lorsque qu'un utilisateur clique sur la vignette d'un photographe, il va vers sa page;
+- [x] Le btn pour remonter en haut de la page apparait lors du onscroll;
 
 ---
 
@@ -24,20 +25,30 @@
 - [x] L'icone "like" est clicable, il doit incrémenter le nombre de "likes" au clic;
 - [x] Le nombre total de "likes" doit être mis à jour, pour chaque clic;
 - [x] Les médias peuvent être trié par popularité, date ou titres;
-  > Reste à faire :
-  > Lorsque qu'un utilisateur clique sur un média, il redirige le média vers la modal.
+- [x] Lorsque qu'un utilisateur clique sur un média, il redirige le média vers la modal.
+
+> le block select:
+> question: le laisser tel quel?
+> question: comment modifier la petite flèche lors de son activation ? OnClick event ?
 
 ---
 
 3. La modal -view Photos-
-   > La croix doit fermer la modal;
-   > Les btns permettent de passer d'un média à un autre;
-   > Les touches fléchées du clavier, permettent aussi de faire défiller les médias;
+
+- [x] La croix doit fermer la modal;
+  > Les btns permettent de passer d'un média à un autre;
+  > Les touches fléchées du clavier, permettent aussi de faire défiller les médias;
 
 ---
 
 6. La modal -Form-
-   >
+
+   > Le formulaire de contact est une modale qui s'affiche par-dessus le reste:
+   > question: Faut-il le modifier, ou je laisse comme cela ?
+
+   > Il comprend des champs pour les noms, l'adresse éléctronique et le message;
+   > Plus tard, le btn de contact enverra un msg au photographe.
+   > Pour le moment, il faut afficher le contenu des trois champs dans les logs de la console;
 
 ---
 

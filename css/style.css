@@ -70,6 +70,7 @@ html {
 
 .logo__img {
   max-width: 200px;
+  padding-top: 5px;
 }
 
 #btnSubmit {
@@ -164,6 +165,9 @@ html {
   padding-left: 15px;
   color: #ffffff;
   cursor: pointer;
+}
+.block__select:focus {
+  border: #000000 solid 2px;
 }
 
 .tagName {
@@ -314,7 +318,10 @@ html {
   flex-direction: row-reverse;
   align-items: center;
 }
-.modalPhotographies__content__body__iconeX {
+.modalPhotographies__content__body__BlockIconeX {
+  display: contents;
+}
+.modalPhotographies__content__body__BlockIconeX__iconeX {
   align-self: flex-start;
   margin: 37px 0 0 0;
   position: relative;
@@ -322,6 +329,9 @@ html {
   cursor: pointer;
   border: none;
   background: transparent;
+}
+.modalPhotographies__content__body__BlockIconeX__iconeX img {
+  display: block;
 }
 .modalPhotographies__content__body__iconeToSwitch {
   margin: 0 32px 0 32px;
@@ -331,12 +341,19 @@ html {
   transform: rotate(180deg);
   margin: 0 0 0 32px;
 }
+.modalPhotographies__content__body__iconeToSwitch--change img {
+  display: block;
+}
+.modalPhotographies__content__body__iconeToSwitch img {
+  display: block;
+}
 .modalPhotographies__content__body__blockPhoto {
   width: 100%;
   margin: 22px 0 0 0;
 }
 .modalPhotographies__content__body__photo {
   width: 100%;
+  border-radius: 5px;
 }
 .modalPhotographies__content__body__legend {
   font-size: 1.5rem;
@@ -549,7 +566,7 @@ html {
 }
 
 #linkToGoUp {
-  display: block;
+  display: none;
   position: fixed;
   top: 11px;
   left: 50%;

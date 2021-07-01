@@ -73,6 +73,9 @@
     padding-left: 15px;
     color: $colorTertiary;
     cursor: pointer;
+    &:focus {
+      border: $black solid 2px;
+    }
   }
 }
 //TAGS

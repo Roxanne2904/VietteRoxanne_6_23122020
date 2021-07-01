@@ -78,14 +78,20 @@
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
-      &__iconeX {
-        align-self: flex-start;
-        margin: 37px 0 0 0;
-        position: relative;
-        right: 31px;
-        cursor: pointer;
-        border: none;
-        background: transparent;
+      &__BlockIconeX {
+        display: contents;
+        &__iconeX {
+          align-self: flex-start;
+          margin: 37px 0 0 0;
+          position: relative;
+          right: 31px;
+          cursor: pointer;
+          border: none;
+          background: transparent;
+        }
+        &__iconeX img {
+          display: block;
+        }
       }
       &__iconeToSwitch {
         margin: 0 32px 0 32px;
@@ -94,6 +100,12 @@
           transform: rotate(180deg);
           margin: 0 0 0 32px;
         }
+        &--change img {
+          display: block;
+        }
+      }
+      &__iconeToSwitch img {
+        display: block;
       }
       &__blockPhoto {
         width: 100%;
@@ -101,6 +113,7 @@
       }
       &__photo {
         width: 100%;
+        border-radius: 5px;
       }
       &__legend {
         font-size: 1.5rem;

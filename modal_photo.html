@@ -23,14 +23,17 @@
           class="modalPhotographies__content__body"
           aria-label="image closeup view"
         >
-          <a
-            class="modalPhotographies__content__body__iconeX"
-            aria-label="Close dialog"
-            tabindex="1"
-            href="#"
-          >
-            <img src="./img/cross icone.png" alt="" />
-          </a>
+          <div class="modalPhotographies__content__body__BlockIconeX">
+            <a
+              class="modalPhotographies__content__body__BlockIconeX__iconeX"
+              aria-label="Close dialog"
+              tabindex="1"
+              href="#"
+            >
+              <img src="./img/cross icone.png" alt="" />
+            </a>
+          </div>
+
           <a
             tabindex="0"
             href=""
@@ -42,13 +45,16 @@
             ><img src="img/icone L.png" alt=""
           /></a>
           <figure class="modalPhotographies__content__body__blockPhoto">
-            <img
-              class="modalPhotographies__content__body__photo"
-              src="./img/thumb-img.png"
-              alt=""
-            />
+            <div id="imgContent">
+              <img
+                class="modalPhotographies__content__body__photo"
+                src="./img/thumb-img.png"
+                alt=""
+              />
+            </div>
+
             <figcaption class="modalPhotographies__content__body__legend">
-              Legende de la photo
+              <span id="modalLegend">Legende de la photo</span>
             </figcaption>
           </figure>
           <a
@@ -61,5 +67,6 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="./modal_photo.js"></script>
   </body>
 </html>

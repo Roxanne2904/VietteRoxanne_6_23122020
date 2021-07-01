@@ -1,72 +1,24 @@
+let scrollYPosition; //On déclare la variable
+const onScrollDisplayOn = () => {
+  const btnToGoUp = document.querySelector("#linkToGoUp");
+  window.addEventListener("scroll", (e) => {
+    scrollYPosition = e.path[1].scrollY;
+    // console.log(scrollYPosition);
+    if (scrollYPosition >= 49) {
+      btnToGoUp.style.display = "block";
+    } else if (scrollYPosition === 0) {
+      btnToGoUp.style.display = "none";
+    }
+  });
+};
+//_____________________________________________
+//_____________________________________________
+//GESTION DES DONNEES DYNAMIQUES
+//*******************************/
 let datas; //les données seront stocké dans cette variable;
-//____________
-//API REQUEST
-const fetchDataPhotographers = async () => {
-  datas = await fetch("./data/photographes.json")
-    .then((response) => {
-      return response.json(); //response.json = response.body.json;
-    })
-    .then((body) => {
-      return body;
-    });
-  //console.log(datas); //la variable qui renferme les données;ici il y a deux array(photographers et media)
-};
-//____________________________
-//SHOWING DATAS PHOTOGRAPHERS
-const showDataPhotographers = async () => {
-  await fetchDataPhotographers(); // on attend que cette fonction récupère les donnée;
-  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
-  contentPhotographer.innerHTML = datas.photographers
-    .map(
-      (data) =>
-        `<!-- ___________________________________________ -->
-    <!--BlockIntroduceIndex 01<li>-->
-    <li class="body__blockIntro">
-      <h2 class="blockIntro">
-        <a class="blockIntro__link" href="./page.html?id=${data.id}">
-          <span class="blockIntro__link__blockImg">
-            <img
-              class="blockIntro__link__blockImg__img"
-              src="./img/Photographers ID Photos/${data.portrait}"
-              alt="${data.alt}"
-            />
-          </span>
-        </a>
-        <span class="blockIntro__title">${data.name}</span>
-      </h2>
-      <p class="blockIntro__blocktxt">
-        <strong class="blockIntro__blocktxt1">${data.city}, ${
-          data.country
-        }</strong>
-        <span class="blockIntro__blocktxt2">
-          ${data.tagline}
-        </span>
-        <span class="blockIntro__blocktxt3">${data.price}/jour</span>
-      </p><ul class="blockIntro__ul"> ${data.tags
-        .map(
-          (tag) => `<li class="blockIntro__ul__linksTags">
-        <a
-          href="#"
-          class="tagName blockIntro__links__theLink"
-          data-value="${tag}"
-        >
-          #${tag}
-          <span class="tagName__bgd"></span>
-        </a>
-      </li>`
-        )
-        .join("")}
-        </ul></li>
-      </ul>
-      </li>`
-    )
-    .join(""); // c'est pour retirer les virgules entre chaque éléments;
-};
-//_____________________________________________________________________
 //FONCTION: LORS DU CLICK SUR LES TAGS, LES PHOTOGRAPHES SONT FILTRES;
-const onClickNavTags = async () => {
-  await showDataPhotographers();
-
+//applé dans ShowDatas();
+const onClickNavTags = () => {
   const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   const tagsContent = document.querySelectorAll("nav .tagName"); // On récupère les tags de la navigation;
   const arrayTags = []; //pour afficher dans l'url;
@@ -217,13 +169,73 @@ const onClickNavTags = async () => {
     });
   });
 };
-const getData = () => {
-  fetchDataPhotographers(); //ici on récupère les données;
-  showDataPhotographers(); //ici on fait apparaitre dynamiquement les données sur les photographes;
+//____________________________
+//I) API REQUEST
+const fetchDataPhotographers = async () => {
+  datas = await fetch("./data/photographes.json")
+    .then((response) => {
+      return response.json(); //response.json = response.body.json;
+    })
+    .then((body) => {
+      return body;
+    });
+  //console.log(datas); //la variable qui renferme les données;ici il y a deux array(photographers et media)
 };
-//Dès le chargement du contenu HTML;
-window.addEventListener("load", () => {
-  // un event qui permet d'attendre que tout le html soit chargé avant d'exectuter le js(attendre que le html soit chargé )
-  getData();
+//____________________________
+//II) SHOWING DATAS PHOTOGRAPHERS
+const showDataPhotographers = async () => {
+  await fetchDataPhotographers(); // on attend que cette fonction récupère les donnée;
+  const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
+  contentPhotographer.innerHTML = datas.photographers
+    .map(
+      (data) =>
+        `<!-- ___________________________________________ -->
+    <!--BlockIntroduceIndex 01<li>-->
+    <li class="body__blockIntro">
+      <h2 class="blockIntro">
+        <a class="blockIntro__link" href="./page.html?id=${data.id}">
+          <span class="blockIntro__link__blockImg">
+            <img
+              class="blockIntro__link__blockImg__img"
+              src="./img/Photographers ID Photos/${data.portrait}"
+              alt="${data.alt}"
+            />
+          </span>
+        </a>
+        <span class="blockIntro__title">${data.name}</span>
+      </h2>
+      <p class="blockIntro__blocktxt">
+        <strong class="blockIntro__blocktxt1">${data.city}, ${
+          data.country
+        }</strong>
+        <span class="blockIntro__blocktxt2">
+          ${data.tagline}
+        </span>
+        <span class="blockIntro__blocktxt3">${data.price}/jour</span>
+      </p><ul class="blockIntro__ul"> ${data.tags
+        .map(
+          (tag) => `<li class="blockIntro__ul__linksTags">
+        <a
+          href="#"
+          class="tagName blockIntro__links__theLink"
+          data-value="${tag}"
+        >
+          #${tag}
+          <span class="tagName__bgd"></span>
+        </a>
+      </li>`
+        )
+        .join("")}
+        </ul></li>
+      </ul>
+      </li>`
+    )
+    .join(""); // c'est pour retirer les virgules entre chaque éléments;
+
   onClickNavTags();
+};
+//Dès le chargement du contenu HTML, getData(); sera applée;
+window.addEventListener("load", () => {
+  onScrollDisplayOn();
+  showDataPhotographers();
 });

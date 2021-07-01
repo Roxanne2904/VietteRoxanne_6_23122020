@@ -9,7 +9,7 @@ const ulContentForPhotos = document.querySelector("#photosBody");
 const selectBtn = document.querySelector("#sort-select");
 //_________________________________________________________________________
 //FONCTION QUI RECUPERE LES BONS ELEMENTS DU DOM POUR LES LIKER LORS DU CLICK;
-const isTakingTheRightElementsForUpdatingLikesOnClick = (elements) => {
+const onClickAddOrRemoveLikes = (elements) => {
   elements.forEach((elt) => {
     let isAlreadyAdd = false;
 
@@ -68,9 +68,8 @@ const isTakingTheRightElementsForUpdatingLikesOnClick = (elements) => {
     });
   });
 };
-//_________________________
 //FONCTION QUI VIENT TRIER SI BLOCK VIDEO OU PHOTO;
-const isSortingVideosAndPhotosBlocks = (array) => {
+const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
   ulContentForPhotos.innerHTML = array
     .map((media) => {
       const mediaInArray = Object.values(media);
@@ -80,7 +79,7 @@ const isSortingVideosAndPhotosBlocks = (array) => {
        <!-- ___________________________________________ -->
        <!--BlockVideo-valide- 03-->
         <figure class="blockPhoto__content ">
-         <a class="blockPhoto__content__linkImg" href="#">
+         <a class="blockPhoto__content__linkImg" href="./modal_photo.html?photographerId=${media.photographerId}&id=${media.id}">
            <div
              class="
                blockPhoto__content__linkImg__blockImg
@@ -110,7 +109,7 @@ const isSortingVideosAndPhotosBlocks = (array) => {
         <!-- ___________________________________________ -->
         <!--BlockPhotos 01-->
         <figure class="blockPhoto__content">
-          <a class="blockPhoto__content__linkImg" href="#">
+          <a class="blockPhoto__content__linkImg" href="./modal_photo.html?photographerId=${media.photographerId}&id=${media.id}">
             <div class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
@@ -178,39 +177,46 @@ const fetchDatas = async () => {
       return body;
     });
 };
-//______________________________
-//?).FONCTIONS POUR FERMER ET OUVRIR LA MODAL QUI VISUALISE LES PHOTOS.
-//Ouvrir et fermer la modal pour visualiser les photos;
-//ouvrir;
-// const isOpeningTheModalPhoto = () => {
-//   const btnOpenModalPhoto = document.querySelectorAll(
-//     ".blockPhoto__content__linkImg"
-//   );
-//   btnOpenModalPhoto.forEach((photo) => {
-//     photo.addEventListener("click", () => {
-//       const bgdModalPhoto = document.querySelector(".modalPhotographies");
-//       bgdModalPhoto.style.display = "block";
-//     });
-//   });
-// };
-// //______________________________
-// //Fermer;
-// const isClosingTheModalPhoto = () => {
-//   const btnCloseModalPhoto = document.querySelector(
-//     ".modalPhotographies__content__body__iconeX"
-//   );
-//   btnCloseModalPhoto.addEventListener("click", () => {
-//     const bgdModalPhoto = document.querySelector(".modalPhotographies");
-//     bgdModalPhoto.style.display = "none";
-//   });
-// };
-//_________________________________________________________________________
-//II).FONCTION QUI "ONCLICK" INCREMENTE LE NOMBRE DE LIKES/MEDIA ET AFFICHE LE TOTAL;
-//Fonction appellée dans ShowDatas();
-const onClickUpdatingLikes = () => {
-  likesBtnPerBlocks = document.querySelectorAll(".heart");
-  blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
-  isTakingTheRightElementsForUpdatingLikesOnClick(likesBtnPerBlocks);
+//II).FONCTION QUI FILTRE LES MEDIAS PAR POPULARITE/DATE/TITRE;
+//Fonction appelée dans showDatas();
+const isFlitering = () => {
+  //____________________________________________
+  selectBtn.addEventListener("change", (e) => {
+    const value = e.target.value;
+    let newArray;
+    console.log(value);
+    if (value === "date") {
+      newArray = MediasIsMatchingWithId.sort((data1, data2) => {
+        return data1.date.localeCompare(data2.date);
+      });
+      console.log(newArray);
+      //On inject les nouveaux médias triés;
+      isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
+      //On appel les nouveaux éléments du DOM
+      likesBtnPerBlocks = document.querySelectorAll(".heart");
+      blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
+      //On applique la fonction qui "onclick" ajoute ou retire les likes;
+      onClickAddOrRemoveLikes(likesBtnPerBlocks);
+    }
+    if (value === "titre") {
+      newArray = MediasIsMatchingWithId.sort((data1, data2) => {
+        return data1.title.localeCompare(data2.title);
+      });
+      isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
+      likesBtnPerBlocks = document.querySelectorAll(".heart");
+      blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
+      onClickAddOrRemoveLikes(likesBtnPerBlocks);
+    }
+    if (value === "popularite") {
+      newArray = MediasIsMatchingWithId.sort((data1, data2) => {
+        return data2.likes - data1.likes;
+      });
+      isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
+      likesBtnPerBlocks = document.querySelectorAll(".heart");
+      blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
+      onClickAddOrRemoveLikes(likesBtnPerBlocks);
+    }
+  });
 };
 //III).FONCTION QUI INJECTE LES DONNEES EN FONCTION DE L'ID DU PHOTOGRAPHE;
 //Show DATAS
@@ -274,7 +280,6 @@ const showDatas = async () => {
   //_________________________________
   //Le block en bas de page, qui contient le prix;
   priceData.innerHTML = `<span class="blockPrice__thePrice__data">${photographe.price}€/jour</span>`;
-  // console.log(datas.media);
   //____________________________________
   //RECUPERER LES MEDIAS DU PHOTOGRAPHE;
   MediasIsMatchingWithId = datas.media.filter((item) => {
@@ -283,11 +288,11 @@ const showDatas = async () => {
   });
   //ON TRIE LES DONNEES RECUPEREES PAR POPULARITE
   let theMostPopular = MediasIsMatchingWithId.sort((data1, data2) => {
-    return data1.likes - data2.likes;
+    return data2.likes - data1.likes;
   });
   //_____________________________________________________________
   // INJECTER LES IMAGES + VIDEOS DANS LA PAGE DYNAMIQUEMENT;
-  isSortingVideosAndPhotosBlocks(theMostPopular);
+  isChoosingBlocksVideosOrPhotosToInjectMedias(theMostPopular);
   // ___________________________________________
   // ADDITIONNER LE TOTAL DE LIKES et INJECTER LA DONNEE;
   MediasIsMatchingWithId.forEach((media) => {
@@ -306,57 +311,17 @@ const showDatas = async () => {
         src="./img/heart__black.png"
         alt=""
     />`;
-  onClickUpdatingLikes();
-};
-//IV).FONCTION QUI FILTRE LES MEDIAS PAR POPULARITE/DATE/TITRE;
-//IsFlitering();
-const isFlitering = async () => {
-  await showDatas();
-  //____________________________________________
-  selectBtn.addEventListener("change", (e) => {
-    const value = e.target.value;
-    let newArray;
-    console.log(value);
-    if (value === "date") {
-      newArray = MediasIsMatchingWithId.sort((data1, data2) => {
-        return data1.date.localeCompare(data2.date);
-      });
-      console.log(newArray);
-      //On inject les nouveaux médias triés;
-      isSortingVideosAndPhotosBlocks(newArray);
-      //On appel les nouveaux éléments du DOM
-      likesBtnPerBlocks = document.querySelectorAll(".heart");
-      blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
-      //On applique la fonction qui "onclick" ajoute ou retire les likes;
-      isTakingTheRightElementsForUpdatingLikesOnClick(likesBtnPerBlocks);
-    }
-    if (value === "titre") {
-      newArray = MediasIsMatchingWithId.sort((data1, data2) => {
-        return data1.title.localeCompare(data2.title);
-      });
-      isSortingVideosAndPhotosBlocks(newArray);
-      likesBtnPerBlocks = document.querySelectorAll(".heart");
-      blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
-      isTakingTheRightElementsForUpdatingLikesOnClick(likesBtnPerBlocks);
-    }
-    if (value === "popularite") {
-      newArray = MediasIsMatchingWithId.sort((data1, data2) => {
-        return data1.likes - data2.likes;
-      });
-      isSortingVideosAndPhotosBlocks(newArray);
-      likesBtnPerBlocks = document.querySelectorAll(".heart");
-      blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
-      isTakingTheRightElementsForUpdatingLikesOnClick(likesBtnPerBlocks);
-    }
-  });
-};
-
-const getDynamiqueContent = async () => {
-  await isFlitering();
+  //On appel les éléments du DOM qui viennent d'être injectés dynamiquement;
+  likesBtnPerBlocks = document.querySelectorAll(".heart");
+  blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
+  //on appel la fonction qui vient ajouter ou retirer un like pour le média;
+  onClickAddOrRemoveLikes(likesBtnPerBlocks);
+  //Les médias peuvent être triés.
+  isFlitering();
 };
 //_________________________________________________________________
-// VI).Dès le chargement du contenu HTML ont appel "La dernière fonction qui appelerai toute les autres".
+// IV).Dès le chargement du contenu HTML ont appel "La dernière fonction qui appelerai toute les autres".
 //______________________________
 window.addEventListener("load", () => {
-  getDynamiqueContent();
+  showDatas();
 });
