@@ -25,7 +25,7 @@
 - [x] L'icone "like" est clicable, il doit incrémenter le nombre de "likes" au clic;
 - [x] Le nombre total de "likes" doit être mis à jour, pour chaque clic;
 - [x] Les médias peuvent être trié par popularité, date ou titres;
-- [x] Lorsque qu'un utilisateur clique sur un média, il redirige le média vers la modal.
+- [x] Lorsque qu'un utilisateur clique sur un média, la modale photo s'ouvre.
 
 > le block select:
 > question: le laisser tel quel?

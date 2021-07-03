@@ -15,6 +15,58 @@
   </head>
   <body class="body">
     <!-- ___________________________________________ -->
+    <!--MODAL PHOTOGRAPHIES-->
+    <div class="modalPhotographies modalPhotographies--change">
+      <div class="modalPhotographies__content">
+        <div
+          role="dialog"
+          class="modalPhotographies__content__body"
+          aria-label="image closeup view"
+        >
+          <div class="modalPhotographies__content__body__BlockIconeX">
+            <button
+              class="modalPhotographies__content__body__BlockIconeX__iconeX"
+              aria-label="Close dialog"
+              tabindex="1"
+            >
+              <img src="./img/cross icone.png" alt="" />
+            </button>
+          </div>
+
+          <button
+            tabindex="0"
+            aria-label="Next image"
+            class="
+              modalPhotographies__content__body__iconeToSwitch
+              modalPhotographies__content__body__iconeToSwitch--change
+            "
+          >
+            <img src="img/icone L.png" alt="" />
+          </button>
+          <figure class="modalPhotographies__content__body__blockPhoto">
+            <div id="imgContent">
+              <img
+                class="modalPhotographies__content__body__photo"
+                src="./img/thumb-img.png"
+                alt=""
+              />
+            </div>
+
+            <figcaption class="modalPhotographies__content__body__legend">
+              <span id="modalLegend">Legende de la photo</span>
+            </figcaption>
+          </figure>
+          <button
+            tabindex="1"
+            aria-label="Previous image"
+            class="modalPhotographies__content__body__iconeToSwitch"
+          >
+            <img src="img/icone L.png" alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- ___________________________________________ -->
     <!--MODAL FORMULAIRE-->
     <div role="dialog" class="modal">
       <div class="modalContent">
@@ -206,7 +258,7 @@
         <!-- ___________________________________________ -->
         <!--BlockPhotos 01-->
         <figure class="blockPhoto__content">
-          <a class="blockPhoto__content__linkImg" href="#">
+          <button class="blockPhoto__content__linkImg">
             <div class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
@@ -214,7 +266,7 @@
                 alt=""
               />
             </div>
-          </a>
+          </button>
           <figcaption class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">
@@ -231,7 +283,7 @@
         <!-- ___________________________________________ -->
         <!--BlockPhotos 02-->
         <figure class="blockPhoto__content">
-          <a class="blockPhoto__content__linkImg" href="#">
+          <button class="blockPhoto__content__linkImg">
             <div class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
@@ -239,7 +291,7 @@
                 alt=""
               />
             </div>
-          </a>
+          </button>
           <figcaption class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">
@@ -256,7 +308,7 @@
       <!--BlockVideo-valide- 01-->
       <li class="block__bodyPhotos__li">
         <figure class="blockPhoto__content">
-          <a class="blockPhoto__content__linkImg" href="#">
+          <button class="blockPhoto__content__linkImg">
             <div class="blockPhoto__content__linkImg__blockImg">
               <video
                 controls
@@ -267,7 +319,7 @@
                 Mais vous pouvez toujours la télécharger
               </video>
             </div>
-          </a>
+          </button>
           <figcaption class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">Photo</span>
             <span class="heart">

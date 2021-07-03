@@ -1,10 +1,11 @@
 let scrollYPosition; //On déclare la variable
 const onScrollDisplayOn = () => {
   const btnToGoUp = document.querySelector("#linkToGoUp");
+
   window.addEventListener("scroll", (e) => {
     scrollYPosition = e.path[1].scrollY;
-    // console.log(scrollYPosition);
-    if (scrollYPosition >= 49) {
+    console.log(scrollYPosition);
+    if (scrollYPosition >= 40) {
       btnToGoUp.style.display = "block";
     } else if (scrollYPosition === 0) {
       btnToGoUp.style.display = "none";

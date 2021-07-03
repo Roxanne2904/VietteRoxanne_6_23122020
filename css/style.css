@@ -54,6 +54,12 @@
   font-weight: 100;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+}
+
 html {
   scroll-behavior: smooth;
   transition: 1s ease;
@@ -70,19 +76,19 @@ html {
 
 .logo__img {
   max-width: 200px;
-  padding-top: 5px;
+  padding: 5px 2px 0 2px;
 }
 
 #btnSubmit {
   background-color: #901c1c;
   color: #ffffff;
   height: 69px;
-  border: none;
   border-radius: 5px;
   font-size: 1.15rem;
   cursor: pointer;
   padding: 0 50px;
   transition: transform 200ms;
+  border: none;
 }
 #btnSubmit:focus {
   transform: scale(1.05);
@@ -94,7 +100,6 @@ html {
   background-color: #901c1c;
   color: #ffffff;
   height: 69px;
-  border: none;
   border-radius: 5px;
   font-size: 1.15rem;
   cursor: pointer;
@@ -218,6 +223,19 @@ html {
   font-weight: inherit;
 }
 
+.heart {
+  display: block;
+}
+.heart__nbs {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+.heart__img {
+  height: 18.35px;
+  position: relative;
+  top: 0.5px;
+}
+
 .modal {
   height: 100%;
   width: 100%;
@@ -305,6 +323,7 @@ html {
 }
 .modalPhotographies--change {
   background: rgba(255, 255, 255, 0.9);
+  display: none;
 }
 .modalPhotographies__content {
   margin: 99px auto;
@@ -353,27 +372,14 @@ html {
 }
 .modalPhotographies__content__body__photo {
   width: 100%;
+  height: 900px;
+  object-fit: cover;
   border-radius: 5px;
 }
 .modalPhotographies__content__body__legend {
   font-size: 1.5rem;
   color: #901c1c;
   margin: 19px 0 0 0;
-}
-
-.heart {
-  display: block;
-  border: none;
-  background: transparent;
-}
-.heart__nbs {
-  font-size: 1.5rem;
-  margin-right: 5px;
-}
-.heart__img {
-  height: 18.35px;
-  position: relative;
-  top: 0.5px;
 }
 
 .iconeX {

@@ -53,6 +53,11 @@
   font-family: "DM Sans Regular";
   font-weight: 100;
 }
+button {
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+}
 html {
   scroll-behavior: smooth;
   transition: 1s ease;

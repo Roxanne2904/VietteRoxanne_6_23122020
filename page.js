@@ -1,14 +1,22 @@
 //______________________________
 //Declarations des variables;
 let datas; //variables qui va récupérer les données;
+let url;
 let MediasIsMatchingWithId; //Les Médias correspondants à l'Id du photographes;
 let photographe; //renferme les données du photographes;
+let blocksContentModalLink;
 let likesBtnPerBlocks; //les btns qui servent à liker les médias; DOM ELEMENTS
 let blockOfTotalLikes; //Le block fixe qui indique le total de likes -en bas à droite-; DOM ELEMENTS
+let theRightMedia; // Le media correspondant à la modal lors de sa visualisation;
+let theModalPhoto = document.querySelector(".modalPhotographies--change");
 const ulContentForPhotos = document.querySelector("#photosBody");
 const selectBtn = document.querySelector("#sort-select");
+const figureContent = document.querySelector(
+  ".modalPhotographies__content__body__blockPhoto"
+);
 //_________________________________________________________________________
 //FONCTION QUI RECUPERE LES BONS ELEMENTS DU DOM POUR LES LIKER LORS DU CLICK;
+//appelée dans showDatas(); et isFlitering();
 const onClickAddOrRemoveLikes = (elements) => {
   elements.forEach((elt) => {
     let isAlreadyAdd = false;
@@ -69,6 +77,7 @@ const onClickAddOrRemoveLikes = (elements) => {
   });
 };
 //FONCTION QUI VIENT TRIER SI BLOCK VIDEO OU PHOTO;
+//appelée dans showDatas(); et isFlitering();
 const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
   ulContentForPhotos.innerHTML = array
     .map((media) => {
@@ -78,8 +87,8 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
         return `<li class="block__bodyPhotos__li ">
        <!-- ___________________________________________ -->
        <!--BlockVideo-valide- 03-->
-        <figure class="blockPhoto__content ">
-         <a class="blockPhoto__content__linkImg" href="./modal_photo.html?photographerId=${media.photographerId}&id=${media.id}">
+        <figure class="blockPhoto__content" data-value="${media.id}">
+         <button class="blockPhoto__content__linkImg">
            <div
              class="
                blockPhoto__content__linkImg__blockImg
@@ -91,7 +100,7 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
                class="blockPhoto__content__linkImg__blockImg__video"
              ></video>
            </div>
-         </a>
+         </button>
           <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
            <span class="blockPhoto__content__legend__photoName">${media.title}</span>
              <button class="heart">
@@ -108,8 +117,8 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
       return `<li class="block__bodyPhotos__li">
         <!-- ___________________________________________ -->
         <!--BlockPhotos 01-->
-        <figure class="blockPhoto__content">
-          <a class="blockPhoto__content__linkImg" href="./modal_photo.html?photographerId=${media.photographerId}&id=${media.id}">
+        <figure class="blockPhoto__content" data-value="${media.id}">
+          <button class="blockPhoto__content__linkImg">
             <div class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
@@ -117,7 +126,7 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
                 alt="${media.title} by ${photographe.name}"
               />
             </div>
-          </a>
+          </button>
           <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">${media.title}</span>
             <button class="heart">
@@ -134,6 +143,7 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
     .join("");
 };
 //FONCTIONS POUR FERMER ET OUVRIR LA MODAL AVEC LE FORMULAIRE;
+//toute deux appellées dans isLaunchingTheOpenModalEvent(); et isLaunchingTheCloseModalEvent();
 const isOpeningTheModal = async () => {
   await fetchDatas();
   const bgdModal = document.querySelector(".modal");
@@ -162,6 +172,88 @@ const isLaunchingTheOpenModalEvent = () => {
 const isLaunchingTheCloseModalEvent = () => {
   const btnCloseModal = document.querySelector(".iconeX");
   btnCloseModal.addEventListener("click", isClosingTheModal);
+};
+//FONCTION POUR OUVRIR LA MODALE PHOTO
+//appelée dans la fonction isfocusingElementsToOpenModalPhoto();
+const isOpeningTheModalPhoto = () => {
+  theModalPhoto;
+  theModalPhoto.style.display = "block";
+};
+//FOCNTION POUR FERMER LA MODALE PHOTO
+const isClosingTheModalPhoto = () => {
+  theModalPhoto;
+  theModalPhoto.style.display = "none";
+};
+//FONCTION QUI AJOUTE LE CONTENU VIDEOS OU PHOTOS DANS LA MODALE;
+//appellée dans isfocusingElementToOpeningAndClosingModalPhoto;
+const isAddingVideoOrPhotoContentIntoTheModal = () => {
+  const mediaInArray = Object.values(theRightMedia);
+  const isVideo = mediaInArray[3].endsWith(".mp4");
+  if (isVideo === true) {
+    return (figureContent.innerHTML = `
+        
+          <div id="imgContent">
+          <video
+          controls
+          src="./img/${photographe.name}/${theRightMedia.video}"
+          class="modalPhotographies__content__body__photo"
+          >
+          </video>
+          </div>
+  
+          <figcaption class="modalPhotographies__content__body__legend">
+            <span id="modalLegend">${theRightMedia.title}</span>
+          </figcaption>
+       `);
+  }
+  return (figureContent.innerHTML = `
+      
+        <div id="imgContent">
+        <img
+           class="modalPhotographies__content__body__photo"
+           src="./img/${photographe.name}/${theRightMedia.image}"
+           alt="${theRightMedia.image} by ${photographe.name}"
+         />
+        </div>
+
+        <figcaption class="modalPhotographies__content__body__legend">
+          <span id="modalLegend">${theRightMedia.title}</span>
+        </figcaption>
+      
+`);
+};
+//FONCTION QUI RECUPERE LES BTNS QUI VONT PERMETTRE L'OUVERTURE DE LA MODALE;
+//appelée dans showDatas();
+const isfocusingElementToOpeningAndClosingModalPhoto = (elements) => {
+  elements.forEach((elt) => {
+    elt.addEventListener("click", () => {
+      isOpeningTheModalPhoto();
+      console.log(elt.parentElement.dataset.value);
+      const idMedia_TypeOfString = elt.parentElement.dataset.value;
+      const idMedia_TypeOfNumber = parseInt(idMedia_TypeOfString);
+      //________________________________
+      // on met à jour le searchParams de l'URL:
+      url = new URL(window.location);
+      url.searchParams.set("id_media", `${idMedia_TypeOfNumber}`);
+      window.history.pushState({}, "", url);
+      //________________________________
+      theRightMedia = MediasIsMatchingWithId.find((media) => {
+        return media.id === idMedia_TypeOfNumber;
+      });
+      isAddingVideoOrPhotoContentIntoTheModal();
+    });
+  });
+  const theCrossBtn = document.querySelector(
+    ".modalPhotographies__content__body__BlockIconeX__iconeX"
+  );
+  theCrossBtn.addEventListener("click", () => {
+    isClosingTheModalPhoto();
+    //On remet à jour le searchParams de l'URL;
+    //_______________
+    url = new URL(window.location);
+    url.searchParams.delete("id_media");
+    window.history.pushState({}, "", url);
+  });
 };
 //______________________________________________________
 //______________________________________________________
@@ -197,6 +289,10 @@ const isFlitering = () => {
       blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
       //On applique la fonction qui "onclick" ajoute ou retire les likes;
       onClickAddOrRemoveLikes(likesBtnPerBlocks);
+      blocksContentModalLink = document.querySelectorAll(
+        ".blockPhoto__content__linkImg"
+      );
+      isfocusingElementToOpeningAndClosingModalPhoto(blocksContentModalLink);
     }
     if (value === "titre") {
       newArray = MediasIsMatchingWithId.sort((data1, data2) => {
@@ -206,6 +302,10 @@ const isFlitering = () => {
       likesBtnPerBlocks = document.querySelectorAll(".heart");
       blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
       onClickAddOrRemoveLikes(likesBtnPerBlocks);
+      blocksContentModalLink = document.querySelectorAll(
+        ".blockPhoto__content__linkImg"
+      );
+      isfocusingElementToOpeningAndClosingModalPhoto(blocksContentModalLink);
     }
     if (value === "popularite") {
       newArray = MediasIsMatchingWithId.sort((data1, data2) => {
@@ -215,6 +315,10 @@ const isFlitering = () => {
       likesBtnPerBlocks = document.querySelectorAll(".heart");
       blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
       onClickAddOrRemoveLikes(likesBtnPerBlocks);
+      blocksContentModalLink = document.querySelectorAll(
+        ".blockPhoto__content__linkImg"
+      );
+      isfocusingElementToOpeningAndClosingModalPhoto(blocksContentModalLink);
     }
   });
 };
@@ -316,7 +420,12 @@ const showDatas = async () => {
   blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
   //on appel la fonction qui vient ajouter ou retirer un like pour le média;
   onClickAddOrRemoveLikes(likesBtnPerBlocks);
-  //Les médias peuvent être triés.
+  //On peut accéder à la modal photo's view;
+  blocksContentModalLink = document.querySelectorAll(
+    ".blockPhoto__content__linkImg"
+  );
+  isfocusingElementToOpeningAndClosingModalPhoto(blocksContentModalLink);
+  //Les médias peuvent être triés;
   isFlitering();
 };
 //_________________________________________________________________

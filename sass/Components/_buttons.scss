@@ -5,6 +5,7 @@
   @include btn-appearance;
   padding: 0 50px;
   transition: transform 200ms;
+  border: none;
   &:focus {
     transform: scale(1.05);
   }
@@ -106,4 +107,19 @@
   color: $colorTertiary;
   background-color: $colorPrimary;
   font-weight: inherit;
+}
+//______________________
+//LikesBtn
+//______________________
+.heart {
+  display: block;
+  &__nbs {
+    font-size: 1.5rem;
+    margin-right: 5px;
+  }
+  &__img {
+    height: 18.35px;
+    position: relative;
+    top: 0.5px;
+  }
 }
