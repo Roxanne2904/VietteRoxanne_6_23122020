@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @keyframes animModal {
   from {
     opacity: 0;
@@ -140,21 +139,23 @@ html {
 .block__content {
   position: relative;
   width: 170px;
-  height: 69px;
+  height: 75px;
   overflow: hidden;
   border-radius: 5px;
-  background-color: #901c1c;
+  background-color: transparent;
+  border: solid transparent 2px;
+  padding: 2px;
 }
 .block__content::after {
-  content: "";
+  content: attr(data-value);
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   position: absolute;
-  top: 35%;
+  top: 38%;
   right: 0;
   padding: 0 20px;
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   pointer-events: none;
 }
 .block__select {
@@ -170,9 +171,7 @@ html {
   padding-left: 15px;
   color: #ffffff;
   cursor: pointer;
-}
-.block__select:focus {
-  border: #000000 solid 2px;
+  border-radius: 5px;
 }
 
 .tagName {
@@ -372,8 +371,6 @@ html {
 }
 .modalPhotographies__content__body__photo {
   width: 100%;
-  height: 900px;
-  object-fit: cover;
   border-radius: 5px;
 }
 .modalPhotographies__content__body__legend {

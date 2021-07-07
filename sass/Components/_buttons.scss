@@ -44,20 +44,23 @@
   &__content {
     position: relative;
     width: 170px;
-    height: 69px;
+    height: 75px;
     overflow: hidden;
     border-radius: $radiusBlocks;
-    background-color: $colorPrimary;
+    background-color: transparent;
+    border: solid transparent 2px;
+    padding: 2px;
+    // transition: all 100ms ease-in-out;
     &::after {
-      content: "\f107"; // unicode de font awesome
+      content: attr(data-value); // unicode de font awesome
       font-family: "Font Awesome 5 Free"; // il faut changer la police
       font-weight: 900; // important !
       position: absolute;
-      top: 35%;
+      top: 38%;
       right: 0;
       padding: 0 20px;
       color: $colorTertiary;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       pointer-events: none; //on peut passer au travers de l'élément pour atteindre des contrôles qui serait en dessous...
     }
   }
@@ -74,9 +77,7 @@
     padding-left: 15px;
     color: $colorTertiary;
     cursor: pointer;
-    &:focus {
-      border: $black solid 2px;
-    }
+    border-radius: $radiusBlocks;
   }
 }
 //TAGS

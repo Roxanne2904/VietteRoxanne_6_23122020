@@ -34,6 +34,7 @@
           </div>
 
           <button
+            id="nextBtn"
             tabindex="0"
             aria-label="Next image"
             class="
@@ -57,6 +58,7 @@
             </figcaption>
           </figure>
           <button
+            id="previousBtn"
             tabindex="1"
             aria-label="Previous image"
             class="modalPhotographies__content__body__iconeToSwitch"
@@ -244,9 +246,17 @@
     <!--Select options//la liste déroulante-->
     <div class="block">
       <label class="block__label" for="sort-select">Trier par</label>
-      <div class="block__content">
-        <select class="block__select" name="sort" id="sort-select">
-          <option class="block__select1" value="popularite">Popularité</option>
+      <div class="block__content" data-value="&#xf078">
+        <select
+          class="block__select"
+          name="sort"
+          id="sort-select"
+          onfocus="getFocus()"
+          onblur="getBlur()"
+        >
+          <option class="block__select1" value="popularite" selected>
+            Popularité
+          </option>
           <option class="block__select2" value="date">Date</option>
           <option class="block__select3" value="titre">Titre</option>
         </select>
