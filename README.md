@@ -30,14 +30,10 @@
 - [x] Afficher la galerie de travail -les photos et vidéos injectées dynamiquement-;
 - [x] Les photographes peuvent montrer photos et vidéos;
 - [x] L'icone "like" est clicable, il doit incrémenter le nombre de "likes" au clic;
+  > petit souci à réglé avec les likes, il ne faut pas que les likes s'incrément si changement de valeur des filtres;
 - [x] Le nombre total de "likes" doit être mis à jour, pour chaque clic;
 - [x] Les médias peuvent être trié par popularité, date ou titres;
 - [x] Lorsque qu'un utilisateur clique sur un média, la modale photo s'ouvre.
-
-> **QUESTIONS:**
-
-1. Je pense que le code de mes filtres n'est pas bien construit;
-2. idem que pour la page des index; si nouvel ongel, les filtres ou le changement de médias n'est pas mémorisé;
 
 > **le block select:**
 
@@ -50,9 +46,8 @@
 
 - [x] La croix doit fermer la modal;
 - [x] Les btns permettent de passer d'un média à un autre;
+  > essayé de voir pour mieux ranger le code;
 - [x] Les touches fléchées du clavier, permettent aussi de faire défiller les médias;
-
-  > **IMPORTANT** : problème avec les filtres, si changement répéter des valeurs sans refresh de la page;
 
 ---
 
@@ -61,7 +56,9 @@
 - [x] Le formulaire de contact est une modale qui s'affiche par-dessus le reste:
 - [x] Il comprend des champs pour les noms, l'adresse éléctronique et le message;
 - [x] Plus tard, le btn de contact enverra un msg au photographe.
-  > Pour le moment, il faut afficher le contenu des trois champs dans les logs de la console;
+- [x] Pour le moment, il faut afficher le contenu des trois champs dans les logs de la console;
+
+> Petit souci lors de l'activation du btn submit; il faut deux clicks pour que ça se ferme;
 
 ---
 
@@ -76,7 +73,9 @@
 - Le code devra passer le test "AChecker" sans "knownIssues" -Conforme au WCAG-
 - La gestion des évènement doit se faire au clavier;
 - Utiliser un lecteur d'écran gratuit pour tester;
-- les modales doivent recevoir le focus lors de leur ouvertures;
+- [!]les modales doivent recevoir le focus lors de leur ouvertures;
+  > La modale photo, okay;
+  > Faire la même chose pour la modale form;
 
 ---
 

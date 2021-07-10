@@ -16,12 +16,14 @@
   <body class="body">
     <!-- ___________________________________________ -->
     <!--MODAL PHOTOGRAPHIES-->
-    <div class="modalPhotographies modalPhotographies--change">
+    <div class="modalPhotographies modalPhotographies--change"
+    role="dialog"
+    aria-label="image closeup view"
+    aria-modal="false"
+    >
       <div class="modalPhotographies__content">
         <div
-          role="dialog"
-          class="modalPhotographies__content__body"
-          aria-label="image closeup view"
+        class="modalPhotographies__content__body"
         >
           <div class="modalPhotographies__content__body__BlockIconeX">
             <button
@@ -32,8 +34,8 @@
               <img src="./img/cross icone.png" alt="" />
             </button>
           </div>
-
-          <button
+          <div>
+            <button
             id="nextBtn"
             tabindex="0"
             aria-label="Next image"
@@ -44,6 +46,8 @@
           >
             <img src="img/icone L.png" alt="" />
           </button>
+          </div>
+          
           <figure class="modalPhotographies__content__body__blockPhoto">
             <div id="imgContent">
               <img
@@ -141,7 +145,7 @@
                 class="modalContent__body__inputsTxt"
                 id="email"
                 name="email"
-                pattern="[A-Z][a-z'-]+"
+                pattern="[a-zA-Z0-9._\-]+@[a-zA-Z0-9._\-]+\.[a-zA-Z]{2,10}"
                 placeholder="E-mail"
                 required
               />
@@ -160,6 +164,8 @@
                   modalContent__body__inputsTxt
                   modalContent__body__inputsTxt--changeHeight
                 "
+                minlength="30"
+                maxlength="150"
                 name="textArea"
                 placeholder="Ecrivez-moi quelque chose ..."
                 required
@@ -171,7 +177,6 @@
               id="btnSubmit"
               name="btnSubmit"
               value="Envoyer"
-              required
             />
           </form>
         </div>

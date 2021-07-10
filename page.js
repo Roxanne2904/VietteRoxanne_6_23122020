@@ -10,7 +10,6 @@ let arrayIdMedia; //tableau généré pour récupérer les id des medias dans l'
 let photographe; //renferme les données DU photographe de la page;
 let idMedia_TypeOfNumber; // L'id DU media visualisé -type of number-;
 let blocksContentModalLink; // ELMTS DU DOM -- les blocks btn pour ouvrir la modale;
-let openModalPhoto; // Un booléen -true or false-;
 let likesBtnPerBlocks; //ELMTS DU DOM --les btns qui servent à liker les médias;
 let blockOfTotalLikes; //ELMTS DU DOM --Le block fixe qui indique le total de likes -en bas à droite-;
 let theRightMedia; // Le media et ses données correspondant à la modal lors de sa visualisation;
@@ -172,6 +171,7 @@ const isOpeningTheModal = async () => {
   bgdModal.style.display = "block";
   photographName.dataset.photographer = `${photographe.name}`;
 };
+//applée aussi dans validate pour le btnSubmit;
 const isClosingTheModal = () => {
   const bgdModal = document.querySelector(".modal");
   bgdModal.style.display = "none";
@@ -185,6 +185,58 @@ const isLaunchingTheOpenModalEvent = () => {
 const isLaunchingTheCloseModalEvent = () => {
   const btnCloseModal = document.querySelector(".iconeX");
   btnCloseModal.addEventListener("click", isClosingTheModal);
+};
+//FONCTION POUR VALIDER LE FORMULAIRE
+const validate = (event) => {
+  event.preventDefault();
+  const first = document.querySelector("#firstName");
+  const name = document.querySelector("#familyName");
+  const email = document.querySelector("#email");
+  const textArea = document.querySelector("#textArea");
+  const btnSubmit = document.querySelector("#btnSubmit");
+  const allArrayInputs = [first, name, email, textArea];
+
+  allArrayInputs.forEach((elt) => {
+    elt.addEventListener("change", () => {
+      const valid = elt.validity.valid;
+      if (valid === true) {
+        elt.parentElement.dataset.errorVisible = "false";
+      }
+    });
+  });
+
+  for (i = 0; i < allArrayInputs.length; i++) {
+    const isValid = allArrayInputs[i].validity.valid;
+
+    if (!isValid) {
+      allArrayInputs[i].parentElement.dataset.errorVisible = "true";
+      allArrayInputs[0].parentElement.dataset.error =
+        "[!] Commencez par une majuscule; des lettres uniquement";
+      allArrayInputs[1].parentElement.dataset.error =
+        "[!] Le nom doit être entièrement en majuscule";
+      allArrayInputs[2].parentElement.dataset.error =
+        "[!] Il faut rentrer une adresse e-mail valide";
+      allArrayInputs[3].parentElement.dataset.error =
+        "[!] maximum 150 caractères;";
+    }
+  }
+
+  btnSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const allIsValid = (currentValue) => {
+      return currentValue.validity.valid === true;
+    };
+    if (allArrayInputs.every(allIsValid) === true) {
+      console.log("Form Data");
+      console.log({
+        prenom: `${allArrayInputs[0].value}`,
+        nom: `${allArrayInputs[1].value}`,
+        email: `${allArrayInputs[2].value}`,
+        textArea: `${allArrayInputs[3].value}`,
+      });
+      isClosingTheModal();
+    }
+  });
 };
 //____________________________________
 //MODALE PHOTO
@@ -232,18 +284,14 @@ const isAddingVideoOrPhotoContentIntoTheModal = () => {
 const isfocusingElementToOpeningModalPhoto = (elements) => {
   elements.forEach((elt) => {
     elt.addEventListener("click", () => {
-      //Obtenir le focus sur la modale;
-      let closeModalBtn = document.querySelector(
-        ".modalPhotographies__content__body__BlockIconeX__iconeX"
-      );
-      //closeModalBtn.focus(); //btn;
-      //theModalPhoto.focus(); //div role="dialog";
-      //________________________________________
       theModalPhoto.style.display = "block";
       if ((theModalPhoto.style.display = "block" === "block")) {
-        openModalPhoto = true;
+        theModalPhoto.ariaModal = "true";
+        const closeBtn = document.querySelector(
+          ".modalPhotographies__content__body__BlockIconeX__iconeX"
+        );
+        closeBtn.focus();
       }
-      console.log(openModalPhoto);
       const idMedia_TypeOfString = elt.parentElement.dataset.value;
       idMedia_TypeOfNumber = parseInt(idMedia_TypeOfString);
       //________________________________
@@ -258,32 +306,7 @@ const isfocusingElementToOpeningModalPhoto = (elements) => {
         return media.id === idMedia_TypeOfNumber;
       });
       isAddingVideoOrPhotoContentIntoTheModal();
-      //_____________________________________________________
-      // if (openModalPhoto === true) {
-      //   window.addEventListener("keydown", (e) => {
-      //     const keyCode = e.keyCode;
-      //     if (keyCode === 39) {
-      //       if (arrayIdMedia === arrayIdIsNotFiltering) {
-      //         console.log("je ne suis pas filtré :" + " " + "> next");
-      //         isChangingMediaNext(arrayIdMedia);
-      //       }
-      //       if (arrayIdMedia === arrayIdIsFiltering) {
-      //         console.log("je suis filtré :" + " " + "> next");
-      //         isChangingMediaNext(arrayIdMedia);
-      //       }
-      //     }
-      //     if (keyCode === 37) {
-      //       if (arrayIdMedia === arrayIdIsNotFiltering) {
-      //         console.log("je ne suis pas filtré :" + " " + "< previous");
-      //         isChangingMediaPrevious(arrayIdMedia);
-      //       }
-      //       if (arrayIdMedia === arrayIdIsFiltering) {
-      //         console.log("je suis filtré :" + " " + "< previous");
-      //         isChangingMediaPrevious(arrayIdMedia);
-      //       }
-      //     }
-      //   });
-      // }
+      // _____________________________________________________
     });
   });
   //ON ferme la modale;
@@ -378,6 +401,32 @@ const isChangingMediaPrevious = (arrayIdElmts) => {
     }
   });
 };
+//FONCTION QUI UTILISE L'ACCESSIBILITE ONKYDOWN
+//appellée dans showDatas;
+const isOnKeyDown = (e, array) => {
+  array = arrayIdMedia;
+  const keyCode = e.keyCode;
+  if (keyCode === 39 && theModalPhoto.ariaModal === "true") {
+    if (array === arrayIdIsNotFiltering) {
+      console.log("je ne suis pas filtré :" + " " + "> next");
+      isChangingMediaNext(array);
+    }
+    if (array === arrayIdIsFiltering) {
+      console.log("je suis filtré :" + " " + "> next");
+      isChangingMediaNext(array);
+    }
+  }
+  if (keyCode === 37 && theModalPhoto.ariaModal === "true") {
+    if (array === arrayIdIsNotFiltering) {
+      console.log("je ne suis pas filtré :" + " " + "< previous");
+      isChangingMediaPrevious(array);
+    }
+    if (array === arrayIdIsFiltering) {
+      console.log("je suis filtré :" + " " + "< previous");
+      isChangingMediaPrevious(array);
+    }
+  }
+};
 //FONCTION QUI FERME LA MODALE PHOTO;
 //appellée dans ???;
 const isClosingModalPhoto = () => {
@@ -387,7 +436,7 @@ const isClosingModalPhoto = () => {
   theCrossBtn.addEventListener("click", () => {
     theModalPhoto.style.display = "none";
     if ((theModalPhoto.style.display = "none" === "none")) {
-      openModalPhoto = false;
+      theModalPhoto.ariaModal = "false";
     }
     //On remet à jour le searchParams de l'URL;
     //_______________
@@ -516,25 +565,48 @@ const showDatas = async () => {
   blocksContentModalLink = document.querySelectorAll(
     ".blockPhoto__content__linkImg"
   );
+  //-----
   isfocusingElementToOpeningModalPhoto(blocksContentModalLink);
+  //-----
   //BTN NEXT
   //Recupération des ids, des medias actuelle, dans un array;
   arrayIdIsNotFiltering = mediasIsMatchingWithId.map((media) => media.id);
   arrayIdMedia = arrayIdIsNotFiltering;
   console.log("arrayIdMedia NOT filtering");
   console.log(arrayIdMedia);
+
+  //1.event onclick
+  //---
+  let btnNextImg = document.querySelector("#nextBtn");
+  //---
+  btnNextImg.parentNode.replaceChild(btnNextImg.cloneNode(true), btnNextImg);
+  btnNextImg = document.querySelector("#nextBtn");
+  //---
   btnNextImg.addEventListener("click", () => {
     if (arrayIdMedia === arrayIdIsNotFiltering) {
       console.log("je ne suis pas filtré");
       isChangingMediaNext(arrayIdMedia);
     }
   });
+  //BTN PREVIOUS
+  //---
+  let btnPreviousImg = document.querySelector("#previousBtn");
+  //---
+  btnPreviousImg.parentNode.replaceChild(
+    btnPreviousImg.cloneNode(true),
+    btnPreviousImg
+  );
+  btnPreviousImg = document.querySelector("#previousBtn");
+  //---
   btnPreviousImg.addEventListener("click", () => {
     if (arrayIdMedia === arrayIdIsNotFiltering) {
       console.log("je ne suis pas filtré");
       isChangingMediaPrevious(arrayIdMedia);
     }
   });
+
+  //2.event onkeydown
+  window.addEventListener("keydown", isOnKeyDown);
 };
 // III).FONCTION QUI FILTRE
 // showDatasFiltering();
@@ -571,21 +643,22 @@ const showDatasFiltering = async () => {
     blockContentSelect.style.border = "solid transparent 2px";
     blockContentSelect.dataset.value = "";
   };
+  //_________________________________________________________________
   selectBtn.addEventListener("change", (e) => {
     const value = e.target.value;
     //___________
     if (value === "date") {
-      return (newArray = mediasIsMatchingWithId.sort((data1, data2) => {
+      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
         return data1.date.localeCompare(data2.date);
-      }));
+      });
     } else if (value === "titre") {
-      return (newArray = mediasIsMatchingWithId.sort((data1, data2) => {
+      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
         return data1.title.localeCompare(data2.title);
-      }));
+      });
     } else if (value === "popularite") {
-      return (newArray = mediasIsMatchingWithId.sort((data1, data2) => {
+      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
         return data2.likes - data1.likes;
-      }));
+      });
     }
 
     isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
@@ -597,17 +670,36 @@ const showDatasFiltering = async () => {
     blocksContentModalLink = document.querySelectorAll(
       ".blockPhoto__content__linkImg"
     );
+    //----
     isfocusingElementToOpeningModalPhoto(blocksContentModalLink);
+    //----
     arrayIdIsFiltering = newArray.map((media) => media.id);
     arrayIdMedia = arrayIdIsFiltering;
     console.log("arrayIdMedia IS filtering per :" + " " + `${value}`);
     console.log(arrayIdMedia);
+    //BTN NEXT
+    //---
+    let btnNextImg = document.querySelector("#nextBtn");
+    //---
+    btnNextImg.parentNode.replaceChild(btnNextImg.cloneNode(true), btnNextImg);
+    btnNextImg = document.querySelector("#nextBtn");
+    //---
     btnNextImg.addEventListener("click", () => {
       if (arrayIdMedia === arrayIdIsFiltering) {
         console.log("je suis filtré par" + " " + `${value}`);
         isChangingMediaNext(arrayIdMedia);
       }
     });
+    //BTN PREVIOUS
+    //---
+    let btnPreviousImg = document.querySelector("#previousBtn");
+    //---
+    btnPreviousImg.parentNode.replaceChild(
+      btnPreviousImg.cloneNode(true),
+      btnPreviousImg
+    );
+    btnPreviousImg = document.querySelector("#previousBtn");
+    //---
     btnPreviousImg.addEventListener("click", () => {
       if (arrayIdMedia === arrayIdIsFiltering) {
         console.log("je suis filtré par" + " " + `${value}`);

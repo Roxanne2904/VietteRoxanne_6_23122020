@@ -283,8 +283,8 @@ html {
   position: absolute;
   right: 5px;
   top: 20px;
-  font-size: 1rem;
-  font-weight: bolder;
+  font-size: 0.75rem;
+  font-weight: bold;
   opacity: 0;
   transition: 0.3s;
 }
@@ -307,6 +307,7 @@ html {
   height: 170px;
   padding-top: 0.5rem;
   resize: none;
+  font-size: 1.2rem;
 }
 
 .modalPhotographies {
