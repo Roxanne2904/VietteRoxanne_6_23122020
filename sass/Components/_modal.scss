@@ -44,12 +44,18 @@
         &[data-error-visible="true"]::before {
           opacity: 1;
         }
-        &[data-error-visible="true"] .modalBody__inputsTxt {
-          border: #bb1212 solid 3px;
+        &[data-error-visible="true"] .modalContent__body__inputsTxt {
+          border: #bb1212 solid 2px;
         }
       }
       &__inputsTxt {
         @include inputsTxt-appearance;
+        &:focus {
+          border: $black 2px solid;
+        }
+        &:valid {
+          border: rgb(28, 151, 84) 2px solid;
+        }
         &--changeHeight {
           height: 170px;
           padding-top: 0.5rem;

@@ -95,7 +95,7 @@ html {
 
 .btn {
   position: relative;
-  padding: 0 15px;
+  padding: 0 20px;
   background-color: #901c1c;
   color: #ffffff;
   height: 69px;
@@ -291,8 +291,8 @@ html {
 .modal .modalContent__body__block[data-error-visible=true]::before {
   opacity: 1;
 }
-.modal .modalContent__body__block[data-error-visible=true] .modalBody__inputsTxt {
-  border: #bb1212 solid 3px;
+.modal .modalContent__body__block[data-error-visible=true] .modalContent__body__inputsTxt {
+  border: #bb1212 solid 2px;
 }
 .modal .modalContent__body__inputsTxt {
   width: 100%;
@@ -302,6 +302,12 @@ html {
   font-size: 1.7rem;
   outline-style: none;
   border: #ffffff solid 2px;
+}
+.modal .modalContent__body__inputsTxt:focus {
+  border: #000000 2px solid;
+}
+.modal .modalContent__body__inputsTxt:valid {
+  border: #1c9754 2px solid;
 }
 .modal .modalContent__body__inputsTxt--changeHeight {
   height: 170px;

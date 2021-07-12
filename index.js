@@ -25,11 +25,12 @@ const onClickNavTags = () => {
   const arrayTags = []; //pour afficher dans l'url;
   const arrayTagsWithoutHastag = []; //pour ranger les données de l'url sans le #;
   let arrayBasedOnTagsClicked = []; //réorganiser le tableau "photographers" en fonction des tags séléctionnés;
-  let url = `http://127.0.0.1:5500/index.html/`;
+  let urlObject;
   tagsContent.forEach((tag) => {
     let tagValue = "#!" + tag.dataset.value;
     tag.addEventListener("click", (e) => {
       e.preventDefault();
+
       //--------------------------------------------------------
       //1/a.On créer des nouveaux tableaux de données, dynamiques et filtrés, en fonction des tags cliqués.
       //--------------------------------------------------------
@@ -165,8 +166,20 @@ const onClickNavTags = () => {
           )
           .join("");
       }
-      url = new URL(`..?tags=${arrayTags}`, url);
-      window.location.href = url;
+      urlObject = new URL(window.location);
+      console.log(urlObject);
+      const state = { tags: `${arrayTags}` };
+      const title = "";
+      urlObject.searchParams.set("tags", `${arrayTags}`);
+      window.history.pushState(state, title, urlObject);
+      if (arrayTags.length === 0) {
+        // On remet à jour l'url;
+        urlObject = new URL(window.location);
+        urlObject.searchParams.delete("tags");
+        window.history.pushState({}, "", urlObject);
+        //On reinject les données de tous les photographes;
+        //suite du boulot ....
+      }
     });
   });
 };
@@ -212,7 +225,7 @@ const showDataPhotographers = async () => {
         <span class="blockIntro__blocktxt2">
           ${data.tagline}
         </span>
-        <span class="blockIntro__blocktxt3">${data.price}/jour</span>
+        <span class="blockIntro__blocktxt3">${data.price}€/jour</span>
       </p><ul class="blockIntro__ul"> ${data.tags
         .map(
           (tag) => `<li class="blockIntro__ul__linksTags">

@@ -74,18 +74,24 @@
     </div>
     <!-- ___________________________________________ -->
     <!--MODAL FORMULAIRE-->
-    <div role="dialog" class="modal">
+    <div 
+    role="dialog" 
+    class="modal" 
+    aria-labelledby="contactez-moi"
+    aria-modal="false"
+    >
       <div class="modalContent">
         <div class="modalContent__body">
           <div class="modalContent__body__blockTitle">
             <h1
               class="modalContent__body__blockTitle__Title"
-              data-photographer="Roxanne Viette"
+              data-photographer="Undefined"
+              id="contactez-moi"
             >
               Contactez-moi
             </h1>
-            <button class="iconeX" aria-label="fermer la modale">
-              <!--X BUTTON-->
+            <!--X BUTTON-->
+            <button class="iconeX" aria-label="Close Contact form" tabindex="0">
             </button>
           </div>
           <form
@@ -105,6 +111,7 @@
             >
               <label for="firstName">Prénom</label>
               <input
+                tabindex="1"
                 type="text"
                 class="modalContent__body__inputsTxt"
                 id="firstName"
@@ -123,6 +130,7 @@
             >
               <label for="familyName">Nom</label>
               <input
+                tabindex="1"
                 type="text"
                 class="modalContent__body__inputsTxt"
                 id="familyName"
@@ -141,6 +149,7 @@
             >
               <label for="email">Email</label>
               <input
+                tabindex="1"
                 type="email"
                 class="modalContent__body__inputsTxt"
                 id="email"
@@ -159,12 +168,13 @@
             >
               <label for="textArea">Votre message</label>
               <textarea
+                tabindex="1"
                 id="textArea"
                 class="
                   modalContent__body__inputsTxt
                   modalContent__body__inputsTxt--changeHeight
                 "
-                minlength="30"
+                minlength="10"
                 maxlength="150"
                 name="textArea"
                 placeholder="Ecrivez-moi quelque chose ..."
@@ -173,6 +183,7 @@
             </div>
             <!--BtnSubmit-->
             <input
+              tabindex="1"
               type="submit"
               id="btnSubmit"
               name="btnSubmit"

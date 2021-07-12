@@ -28,41 +28,43 @@ const btnPreviousImg = document.querySelector("#previousBtn"); //Le btn pour act
 //appelée dans showDatas(); et showDatasFiltering();
 const onClickAddOrRemoveLikes = (elements) => {
   elements.forEach((elt) => {
-    let isAlreadyAdd = false;
-
     elt.addEventListener("click", () => {
       let arrayOfTotalLikes = [];
       let storeNumberOfLikes;
-      const idDataTypeOfString = elt.parentElement.dataset.value; //La valeur est une string;
+      const btnBgd = elt.parentElement;
+      //-------------------------------------
+      const idDataTypeOfString = elt.parentElement.parentElement.dataset.value; //La valeur est une string;
       const idDataTypeOfNumb = parseInt(idDataTypeOfString); //elle devient un type number;
       let idMediaDatas = mediasIsMatchingWithId.filter((item) => {
         return item.id === idDataTypeOfNumb;
       });
       storeNumberOfLikes = idMediaDatas[0].likes; //output le nbs de likes actuel
-      if (isAlreadyAdd === false) {
+      if (elt.children[0].dataset.add === "no") {
+        //on lui ajoute le like;
         storeNumberOfLikes++;
-
+        //On "sauvegarde" la nouvelle donnée du nbs de like + son status si liker ou non ;
+        idMediaDatas[0].moreLike = "yes";
         idMediaDatas[0].likes = storeNumberOfLikes;
         idMediaDatas = mediasIsMatchingWithId.filter((item) => {
           return item.id === idDataTypeOfNumb;
         });
-        elt.innerHTML = `<span aria-label="nombre de j'aime" class="heart__nbs">${idMediaDatas[0].likes}</span>
+        console.log(idMediaDatas);
+        elt.innerHTML = `<span data-add="${idMediaDatas[0].moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${idMediaDatas[0].likes}</span>
           <span class="heart__img"
           ><img src="./img/Vector.png" alt="J'aime"
           /></span>`;
-        isAlreadyAdd = true;
-      } else if (isAlreadyAdd === true) {
+      } else if (elt.children[0].dataset.add === "yes") {
         storeNumberOfLikes--;
 
+        idMediaDatas[0].moreLike = "no";
         idMediaDatas[0].likes = storeNumberOfLikes;
         idMediaDatas = mediasIsMatchingWithId.filter((item) => {
           return item.id === idDataTypeOfNumb;
         });
-        elt.innerHTML = `<span aria-label="nombre de j'aime" class="heart__nbs">${idMediaDatas[0].likes}</span>
+        elt.innerHTML = `<span data-add="${idMediaDatas[0].moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${idMediaDatas[0].likes}</span>
           <span class="heart__img"
           ><img src="./img/Vector.png" alt="J'aime"
           /></span>`;
-        isAlreadyAdd = false;
       }
       // ___________________________________________
       // ADDITIONNER LE TOTAL DE LIKES DYNAMIQUEMENT
@@ -112,12 +114,15 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
          </button>
           <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
            <span class="blockPhoto__content__legend__photoName">${media.title}</span>
-             <button class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
+            <div>
+            <button class="heart">
+              <span data-add="${media.moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
              <span class="heart__img"
                ><img src="./img/Vector.png" alt="J'aime"
              /></span>
            </button>
+           </div>
+             
          </figcaption>
        </figure>
        <!-- ___________________________________________ -->
@@ -138,12 +143,14 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
           </button>
           <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">${media.title}</span>
+            <div>
             <button class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
+              <span data-add="${media.moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
               <span class="heart__img"
                 ><img src="./img/Vector.png" alt="J'aime"
               /></span>
             </button>
+            </div>
           </figcaption>
         </figure>
         <!-- ___________________________________________ -->
@@ -151,41 +158,85 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
     })
     .join("");
 };
-//____________________________________
-//MODALE FORM
-//------------------------------------
-//FONCTIONS POUR FERMER ET OUVRIR LA MODAL AVEC LE FORMULAIRE;
-//toute deux appellées dans isLaunchingTheOpenModalEvent(); et isLaunchingTheCloseModalEvent();
-const isOpeningTheModal = async () => {
-  await fetchDatas();
-  const bgdModal = document.querySelector(".modal");
-  const photographName = document.querySelector(
-    ".modalContent__body__blockTitle__Title"
-  );
-  const url = window.location.href;
-  let url_idString = url.split("=")[1]; //par ex: 123; typeof ="string";
-  const url_IdNmb = parseInt(url_idString); // notre id devient un typeof = number;
-  const photographe = datas.photographers.find((item) => {
-    return item.id === url_IdNmb;
+//FONCTION QUI MONTRE LES MEDIAS SI LES FILTRES SONT UTILISES;
+// appelée dans ShowDatas;
+const showDatasFiltering = () => {
+  let newArray;
+  let icone;
+  const blockContentSelect = document.querySelector(".block__content");
+  selectBtn.addEventListener("click", () => {
+    icone = "";
+    if (icone === blockContentSelect.dataset.value) {
+      blockContentSelect.dataset.value = "";
+    } else {
+      blockContentSelect.dataset.value = icone;
+    }
   });
-  bgdModal.style.display = "block";
-  photographName.dataset.photographer = `${photographe.name}`;
+  selectBtn.onfocus = function getFocus() {
+    let cliked = false;
+    selectBtn.addEventListener("click", () => {
+      cliked = true;
+      if (cliked === true) {
+        blockContentSelect.style.border = "solid transparent 2px";
+      }
+    });
+    blockContentSelect.style.border = "solid black 2px";
+    selectBtn.addEventListener("keydown", (e) => {
+      const keyCode = e.keyCode;
+      if (keyCode === 13) {
+        blockContentSelect.dataset.value = "";
+      }
+    });
+  };
+  selectBtn.onblur = function getBlur() {
+    blockContentSelect.style.border = "solid transparent 2px";
+    blockContentSelect.dataset.value = "";
+  };
+  //_________________________________________________________________
+  selectBtn.addEventListener("change", (e) => {
+    const value = e.target.value;
+    //___________
+    if (value === "date") {
+      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
+        return data1.date.localeCompare(data2.date);
+      });
+    } else if (value === "titre") {
+      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
+        return data1.title.localeCompare(data2.title);
+      });
+    } else if (value === "popularite") {
+      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
+        return data2.likes - data1.likes;
+      });
+    }
+    //On récupère les media filtrés rangés dans un nouvel array, que l'on injecte dynamiquement;
+    isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
+
+    //On récupère les nouveau éléments du DOM:
+    likesBtnPerBlocks = document.querySelectorAll(".heart"); // les btn likes
+    blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes"); //les btn img pour ouvrir la modale;
+
+    //Lors des click sur les likes:
+    onClickAddOrRemoveLikes(likesBtnPerBlocks);
+
+    // OUVRIR LA MODALE PHOTO APRES AVOIR FILTRE;
+    // On peut accéder à la modal photo's view;
+    blocksContentModalLink = document.querySelectorAll(
+      ".blockPhoto__content__linkImg"
+    );
+    //----
+    isfocusingElementToOpeningModalPhoto(blocksContentModalLink);
+    //----
+    //On récupère les id dans l'ordre corespondant aux filtres;
+    arrayIdIsFiltering = newArray.map((media) => media.id);
+    arrayIdMedia = arrayIdIsFiltering;
+    console.log("arrayIdMedia IS filtering per :" + " " + `${value}`);
+    console.log(arrayIdMedia);
+  });
 };
-//applée aussi dans validate pour le btnSubmit;
-const isClosingTheModal = () => {
-  const bgdModal = document.querySelector(".modal");
-  bgdModal.style.display = "none";
-};
-//Lancement de l'ouverture et fermeture de la modal
-//Toute deux sont appelées dans ShowDatas();
-const isLaunchingTheOpenModalEvent = () => {
-  const btnOpenModal = document.querySelector("#openModal");
-  btnOpenModal.addEventListener("click", isOpeningTheModal);
-};
-const isLaunchingTheCloseModalEvent = () => {
-  const btnCloseModal = document.querySelector(".iconeX");
-  btnCloseModal.addEventListener("click", isClosingTheModal);
-};
+//------------
+//MODALE FORM
+//------------
 //FONCTION POUR VALIDER LE FORMULAIRE
 const validate = (event) => {
   event.preventDefault();
@@ -195,15 +246,6 @@ const validate = (event) => {
   const textArea = document.querySelector("#textArea");
   const btnSubmit = document.querySelector("#btnSubmit");
   const allArrayInputs = [first, name, email, textArea];
-
-  allArrayInputs.forEach((elt) => {
-    elt.addEventListener("change", () => {
-      const valid = elt.validity.valid;
-      if (valid === true) {
-        elt.parentElement.dataset.errorVisible = "false";
-      }
-    });
-  });
 
   for (i = 0; i < allArrayInputs.length; i++) {
     const isValid = allArrayInputs[i].validity.valid;
@@ -217,7 +259,7 @@ const validate = (event) => {
       allArrayInputs[2].parentElement.dataset.error =
         "[!] Il faut rentrer une adresse e-mail valide";
       allArrayInputs[3].parentElement.dataset.error =
-        "[!] maximum 150 caractères;";
+        "[!] min 10 et max 150 caractères";
     }
   }
 
@@ -238,9 +280,77 @@ const validate = (event) => {
     }
   });
 };
-//____________________________________
+//FONCTIONS POUR FERMER ET OUVRIR LA MODAL AVEC LE FORMULAIRE;
+//toute deux appellées dans isLaunchingTheOpenModalEvent(); et isLaunchingTheCloseModalEvent();
+const isOpeningTheModal = async () => {
+  await fetchDatas();
+
+  const formulaire = document.querySelector(".modalContent__body__form");
+  const bgdModal = document.querySelector(".modal");
+  const photographName = document.querySelector(
+    ".modalContent__body__blockTitle__Title"
+  );
+  //-----------------
+  formulaire.reset();
+  //-----------------
+  const url = window.location.href;
+  let url_idString = url.split("=")[1]; //par ex: 123; typeof ="string";
+  const url_IdNmb = parseInt(url_idString); // notre id devient un typeof = number;
+  const photographe = datas.photographers.find((item) => {
+    return item.id === url_IdNmb;
+  });
+  //----------------------------------------------------
+  bgdModal.style.display = "block";
+  if (bgdModal.style.display === "block") {
+    const modalFormBgd = document.querySelector(".modal");
+    modalFormBgd.ariaModal = "true";
+    if (modalFormBgd.ariaModal === "true") {
+      const firstNameInput = document.getElementById("firstName");
+      firstNameInput.focus();
+    }
+  }
+  photographName.dataset.photographer = `${photographe.name}`;
+};
+//applée aussi dans validate pour le btnSubmit;
+const isClosingTheModal = () => {
+  const bgdModal = document.querySelector(".modal");
+  bgdModal.style.display = "none";
+  if (bgdModal.style.display === "none") {
+    const modalFormBgd = document.querySelector(".modal");
+    modalFormBgd.ariaModal = "false";
+  }
+};
+//Lancement de l'ouverture et fermeture de la modal
+//Toute deux sont appelées dans ShowDatas();
+const isLaunchingTheOpenModalEvent = () => {
+  const btnOpenModal = document.querySelector("#openModal");
+  btnOpenModal.addEventListener("click", isOpeningTheModal);
+};
+const isLaunchingTheCloseModalEvent = () => {
+  const btnCloseModal = document.querySelector(".iconeX");
+  btnCloseModal.addEventListener("click", isClosingTheModal);
+};
+//FONCTION QUI INDIQUE SI LA VALEUR INPUT EST VALID OU NON LORS DU ONCHANGE;
+//appelée dans showDatas;
+const isChangingValueInsideFormModal = () => {
+  const first = document.querySelector("#firstName");
+  const name = document.querySelector("#familyName");
+  const email = document.querySelector("#email");
+  const textArea = document.querySelector("#textArea");
+  const allArrayInputs = [first, name, email, textArea];
+
+  allArrayInputs.forEach((elt) => {
+    elt.addEventListener("change", () => {
+      const valid = elt.validity.valid;
+      if (valid === true) {
+        elt.parentElement.dataset.errorVisible = "false";
+      }
+    });
+  });
+};
+//------------
 //MODALE PHOTO
-//------------------------------------
+//------------
 //FONCTION QUI AJOUTE LE CONTENU VIDEOS OU PHOTOS DANS LA MODALE;
 //appellée dans isfocusingElementToOpeningAndClosingModalPhoto;
 const isAddingVideoOrPhotoContentIntoTheModal = () => {
@@ -313,7 +423,7 @@ const isfocusingElementToOpeningModalPhoto = (elements) => {
   isClosingModalPhoto();
 };
 //FONCTION QUI CHANGE LES MEDIAS SI BTN NEXT OU PREVIOUS;
-//appellée dans showDatas et dans showDatasFiltering();
+//appelé dans isOnClickToPassNextImg();
 const isChangingMediaNext = (arrayIdElmts) => {
   const currentId = (elt) => {
     return elt === idMedia_TypeOfNumber; //ne pas oublier de return un resultat !!!
@@ -357,6 +467,7 @@ const isChangingMediaNext = (arrayIdElmts) => {
     }
   });
 };
+//appelé dans isOnClickToPassPreviousImg();
 const isChangingMediaPrevious = (arrayIdElmts) => {
   const currentId = (elt) => {
     return elt === idMedia_TypeOfNumber; //ne pas oublier de return un resultat !!!
@@ -401,7 +512,32 @@ const isChangingMediaPrevious = (arrayIdElmts) => {
     }
   });
 };
-//FONCTION QUI UTILISE L'ACCESSIBILITE ONKYDOWN
+//FONCTION POUR PASSER LES IMAGES DE LA MODALE -EVENT ONCLICK-.
+//toute deux appelées dans showdatas;
+const isOnClickToPassPreviousImg = (array) => {
+  array = arrayIdMedia;
+
+  if (array === arrayIdIsNotFiltering) {
+    console.log("je ne suis pas filtré : < previous");
+    isChangingMediaPrevious(array);
+  }
+  if (array === arrayIdIsFiltering) {
+    console.log("je suis filtré : < previous");
+    isChangingMediaPrevious(array);
+  }
+};
+const isOnClickToPassNextImg = (array) => {
+  array = arrayIdMedia;
+  if (array === arrayIdIsNotFiltering) {
+    console.log("je ne suis pas filtré : > next ");
+    isChangingMediaNext(array);
+  }
+  if (array === arrayIdIsFiltering) {
+    console.log("je suis filtré : > next");
+    isChangingMediaNext(array);
+  }
+};
+//FONCTION POUR PASSER LES IMAGES DE LA MODALE -EVENT ONKYDOWN-.
 //appellée dans showDatas;
 const isOnKeyDown = (e, array) => {
   array = arrayIdMedia;
@@ -512,12 +648,15 @@ const showDatas = async () => {
       .join("")}
   </ul>`;
   //_________________________________
-  //HEADER-Le block btn et photo;
+  //HEADER-Le block btn="contactez-moi" et la photo;
   btnAndPhotoContent.innerHTML = `<span
   class="blockIntro__link__blockImg"
 >
   <img class="blockIntro__link__blockImg__img" src="./img/Photographers ID Photos/${photographe.portrait}" alt="${photographe.alt}" />
 </span>`;
+  //-------------------------------
+  isChangingValueInsideFormModal();
+  //-------------------------------
   //_________________________________
   //Le block en bas de page, qui contient le prix;
   priceData.innerHTML = `<span class="blockPrice__thePrice__data">${photographe.price}€/jour</span>`;
@@ -527,6 +666,11 @@ const showDatas = async () => {
     const photosMatchWithId = item.photographerId === url_IdNmb;
     return photosMatchWithId === true;
   });
+  //On ajoute une nouvelle paire de clef/valeur pour savoir si le média à déjà été liké;
+  mediasIsMatchingWithId.forEach((media) => {
+    Object.assign(media, { moreLike: "no" });
+  });
+
   //ON TRIE LES DONNEES RECUPEREES PAR POPULARITE
   let theMostPopular = mediasIsMatchingWithId.sort((data1, data2) => {
     return data2.likes - data1.likes;
@@ -559,6 +703,9 @@ const showDatas = async () => {
   //on appel la fonction qui vient ajouter ou retirer un like pour le média;
   onClickAddOrRemoveLikes(likesBtnPerBlocks);
   //_____________________________________________________________
+  //IF IS FILTERING
+  showDatasFiltering();
+  //_____________________________________________________________
   //LA MODALE PHOTO
   //----------------
   //On peut accéder à la modal photo's view;
@@ -568,7 +715,6 @@ const showDatas = async () => {
   //-----
   isfocusingElementToOpeningModalPhoto(blocksContentModalLink);
   //-----
-  //BTN NEXT
   //Recupération des ids, des medias actuelle, dans un array;
   arrayIdIsNotFiltering = mediasIsMatchingWithId.map((media) => media.id);
   arrayIdMedia = arrayIdIsNotFiltering;
@@ -576,20 +722,19 @@ const showDatas = async () => {
   console.log(arrayIdMedia);
 
   //1.event onclick
-  //---
+  //--------
+  //BTN NEXT
+  //--------
   let btnNextImg = document.querySelector("#nextBtn");
   //---
   btnNextImg.parentNode.replaceChild(btnNextImg.cloneNode(true), btnNextImg);
   btnNextImg = document.querySelector("#nextBtn");
   //---
-  btnNextImg.addEventListener("click", () => {
-    if (arrayIdMedia === arrayIdIsNotFiltering) {
-      console.log("je ne suis pas filtré");
-      isChangingMediaNext(arrayIdMedia);
-    }
-  });
+  btnNextImg.addEventListener("click", isOnClickToPassNextImg);
+
+  //-------------
   //BTN PREVIOUS
-  //---
+  //-------------
   let btnPreviousImg = document.querySelector("#previousBtn");
   //---
   btnPreviousImg.parentNode.replaceChild(
@@ -597,123 +742,15 @@ const showDatas = async () => {
     btnPreviousImg
   );
   btnPreviousImg = document.querySelector("#previousBtn");
-  //---
-  btnPreviousImg.addEventListener("click", () => {
-    if (arrayIdMedia === arrayIdIsNotFiltering) {
-      console.log("je ne suis pas filtré");
-      isChangingMediaPrevious(arrayIdMedia);
-    }
-  });
+  btnPreviousImg.addEventListener("click", isOnClickToPassPreviousImg);
+  // ________________________________________________________________
 
   //2.event onkeydown
   window.addEventListener("keydown", isOnKeyDown);
 };
-// III).FONCTION QUI FILTRE
-// showDatasFiltering();
-const showDatasFiltering = async () => {
-  await fetchDatas();
-  let newArray;
-  let icone;
-  const blockContentSelect = document.querySelector(".block__content");
-  selectBtn.addEventListener("click", () => {
-    icone = "";
-    if (icone === blockContentSelect.dataset.value) {
-      blockContentSelect.dataset.value = "";
-    } else {
-      blockContentSelect.dataset.value = icone;
-    }
-  });
-  selectBtn.onfocus = function getFocus() {
-    let cliked = false;
-    selectBtn.addEventListener("click", () => {
-      cliked = true;
-      if (cliked === true) {
-        blockContentSelect.style.border = "solid transparent 2px";
-      }
-    });
-    blockContentSelect.style.border = "solid black 2px";
-    selectBtn.addEventListener("keydown", (e) => {
-      const keyCode = e.keyCode;
-      if (keyCode === 13) {
-        blockContentSelect.dataset.value = "";
-      }
-    });
-  };
-  selectBtn.onblur = function getBlur() {
-    blockContentSelect.style.border = "solid transparent 2px";
-    blockContentSelect.dataset.value = "";
-  };
-  //_________________________________________________________________
-  selectBtn.addEventListener("change", (e) => {
-    const value = e.target.value;
-    //___________
-    if (value === "date") {
-      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
-        return data1.date.localeCompare(data2.date);
-      });
-    } else if (value === "titre") {
-      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
-        return data1.title.localeCompare(data2.title);
-      });
-    } else if (value === "popularite") {
-      newArray = mediasIsMatchingWithId.sort((data1, data2) => {
-        return data2.likes - data1.likes;
-      });
-    }
-
-    isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
-    likesBtnPerBlocks = document.querySelectorAll(".heart");
-    blockOfTotalLikes = document.querySelector(".blockPrice__nbsOfLikes");
-    onClickAddOrRemoveLikes(likesBtnPerBlocks);
-    // OUVRIR LA MODALE PHOTO
-    // On peut accéder à la modal photo's view;
-    blocksContentModalLink = document.querySelectorAll(
-      ".blockPhoto__content__linkImg"
-    );
-    //----
-    isfocusingElementToOpeningModalPhoto(blocksContentModalLink);
-    //----
-    arrayIdIsFiltering = newArray.map((media) => media.id);
-    arrayIdMedia = arrayIdIsFiltering;
-    console.log("arrayIdMedia IS filtering per :" + " " + `${value}`);
-    console.log(arrayIdMedia);
-    //BTN NEXT
-    //---
-    let btnNextImg = document.querySelector("#nextBtn");
-    //---
-    btnNextImg.parentNode.replaceChild(btnNextImg.cloneNode(true), btnNextImg);
-    btnNextImg = document.querySelector("#nextBtn");
-    //---
-    btnNextImg.addEventListener("click", () => {
-      if (arrayIdMedia === arrayIdIsFiltering) {
-        console.log("je suis filtré par" + " " + `${value}`);
-        isChangingMediaNext(arrayIdMedia);
-      }
-    });
-    //BTN PREVIOUS
-    //---
-    let btnPreviousImg = document.querySelector("#previousBtn");
-    //---
-    btnPreviousImg.parentNode.replaceChild(
-      btnPreviousImg.cloneNode(true),
-      btnPreviousImg
-    );
-    btnPreviousImg = document.querySelector("#previousBtn");
-    //---
-    btnPreviousImg.addEventListener("click", () => {
-      if (arrayIdMedia === arrayIdIsFiltering) {
-        console.log("je suis filtré par" + " " + `${value}`);
-        isChangingMediaPrevious(arrayIdMedia);
-      }
-    });
-    //ON ferme la modale;
-    isClosingModalPhoto();
-  });
-};
 //_________________________________________________________________
-// IV).Dès le chargement du contenu HTML ont appel "La dernière fonction qui appelerai toute les autres".
+// III).Dès le chargement du contenu HTML ont appel "La dernière fonction qui appelerai toute les autres".
 //______________________________
 window.addEventListener("load", () => {
   showDatas(); //await fetchDatas();
-  showDatasFiltering(); //await fetchDatas();
 });

@@ -21,7 +21,9 @@
 - [x] Le btn pour remonter en haut de la page apparait lors du onscroll;
 
 > A FAIRE:
-> L'url ne fonctionne pas si je fais un copier collé sur un nouvel onglet, le filtre des tags n'est pas pris en compte;
+> **[!]NOTE**: L'url ne fonctionne pas si je fais un copier collé sur un nouvel onglet, le filtre des tags n'est pas pris en compte;
+> Il faut revoir les filtres des tags!
+> il faut faire attention le indexhtml a disparut;
 
 ---
 
@@ -30,7 +32,6 @@
 - [x] Afficher la galerie de travail -les photos et vidéos injectées dynamiquement-;
 - [x] Les photographes peuvent montrer photos et vidéos;
 - [x] L'icone "like" est clicable, il doit incrémenter le nombre de "likes" au clic;
-  > petit souci à réglé avec les likes, il ne faut pas que les likes s'incrément si changement de valeur des filtres;
 - [x] Le nombre total de "likes" doit être mis à jour, pour chaque clic;
 - [x] Les médias peuvent être trié par popularité, date ou titres;
 - [x] Lorsque qu'un utilisateur clique sur un média, la modale photo s'ouvre.
@@ -38,7 +39,8 @@
 > **le block select:**
 
 - [x] Essayé de modifier la flèche avec js lors du clic;
-  > Petit souci de transition avec le border si onclikc ou non;
+
+  > **[!]NOTE**: Petit souci de transition avec le border si onclikc ou non;
 
 ---
 
@@ -46,7 +48,6 @@
 
 - [x] La croix doit fermer la modal;
 - [x] Les btns permettent de passer d'un média à un autre;
-  > essayé de voir pour mieux ranger le code;
 - [x] Les touches fléchées du clavier, permettent aussi de faire défiller les médias;
 
 ---
@@ -58,7 +59,7 @@
 - [x] Plus tard, le btn de contact enverra un msg au photographe.
 - [x] Pour le moment, il faut afficher le contenu des trois champs dans les logs de la console;
 
-> Petit souci lors de l'activation du btn submit; il faut deux clicks pour que ça se ferme;
+> **[!]NOTE**: Petit souci lors de l'activation du btn submit; il faut deux clicks pour que ça se ferme;
 
 ---
 
@@ -73,9 +74,9 @@
 - Le code devra passer le test "AChecker" sans "knownIssues" -Conforme au WCAG-
 - La gestion des évènement doit se faire au clavier;
 - Utiliser un lecteur d'écran gratuit pour tester;
-- [!]les modales doivent recevoir le focus lors de leur ouvertures;
-  > La modale photo, okay;
-  > Faire la même chose pour la modale form;
+- [x] les modales doivent recevoir le focus lors de leur ouvertures;
+
+> **[!]NOTE**: si je submit et que je veux renvoyer le form; ça ne fonctionne plus; je peux submit qu"une fois.
 
 ---
 

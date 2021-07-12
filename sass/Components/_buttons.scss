@@ -14,7 +14,7 @@
 //btns
 .btn {
   position: relative;
-  padding: 0 15px;
+  padding: 0 20px;
   @include btn-appearance;
   z-index: 1;
   &:focus {
