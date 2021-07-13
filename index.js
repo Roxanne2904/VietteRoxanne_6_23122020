@@ -4,7 +4,7 @@ const onScrollDisplayOn = () => {
 
   window.addEventListener("scroll", (e) => {
     scrollYPosition = e.path[1].scrollY;
-    console.log(scrollYPosition);
+    // console.log(scrollYPosition);
     if (scrollYPosition >= 40) {
       btnToGoUp.style.display = "block";
     } else if (scrollYPosition === 0) {
@@ -23,42 +23,45 @@ const onClickNavTags = () => {
   const contentPhotographer = document.getElementById("photographerIndex"); //le bloc <ul></ul> principal;
   const tagsContent = document.querySelectorAll("nav .tagName"); // On récupère les tags de la navigation;
   const arrayTags = []; //pour afficher dans l'url;
-  const arrayTagsWithoutHastag = []; //pour ranger les données de l'url sans le #;
+  let isMatching; //-OBJECT-récupération des données des photographes concernépar les filtres;
+  // const arrayTagsWithoutHastag = []; //pour ranger les données de l'url sans le #;
   let arrayBasedOnTagsClicked = []; //réorganiser le tableau "photographers" en fonction des tags séléctionnés;
   let urlObject;
   tagsContent.forEach((tag) => {
-    let tagValue = "#!" + tag.dataset.value;
+    let tagValue = tag.dataset.value;
     tag.addEventListener("click", (e) => {
       e.preventDefault();
-
-      //--------------------------------------------------------
-      //1/a.On créer des nouveaux tableaux de données, dynamiques et filtrés, en fonction des tags cliqués.
-      //--------------------------------------------------------
-      const isMatching = datas.photographers.filter((data) => {
-        return data.tags.includes(`${tag.dataset.value}`);
-      });
-      //1/b.Ici on ajoute dans un tableau vide, l'index de chaque tableaux isMatching;
-      arrayBasedOnTagsClicked.push(...isMatching);
-      //1/c.Il faut transformer ce Set en array;
-      const uniqueSetFromTagsBasedOnClick = new Set(arrayBasedOnTagsClicked);
-      //1/d.On vient de transformer le set en array;
-      const backToArrayFromTagsBasedOnClick = [
-        ...uniqueSetFromTagsBasedOnClick,
-      ];
+      // //--------------------------------------------------------
+      // //1/a.On créer des nouveaux tableaux de données, dynamiques et filtrés, en fonction des tags cliqués.
+      // //--------------------------------------------------------
+      // const isMatching = datas.photographers.filter((data) => {
+      //   return data.tags.includes(`${tag.dataset.value}`);
+      // });
+      // //1/b.Ici on ajoute dans un tableau vide, l'index de chaque tableaux isMatching;
+      // arrayBasedOnTagsClicked.push(...isMatching);
+      // //1/c.Il faut transformer ce Set en array;
+      // const uniqueSetFromTagsBasedOnClick = new Set(arrayBasedOnTagsClicked);
+      // //1/d.On vient de transformer le set en array;
+      // const backToArrayFromTagsBasedOnClick = [
+      //   ...uniqueSetFromTagsBasedOnClick,
+      // ];
       //--------------------------------------------
       //On met en place notre condition;
       //--------------------------------------------
       if (arrayTags.includes(tagValue) === false) {
         //1/. On ajoute une classList pour changer l'apparence des tags lors du click;
         tag.classList.add("tagName__onclick");
-
         //2/.ARRAY DATA TAGS_ON_CLICK //--> On range toutes les données dans un array;
         arrayTags.push(tagValue); //-->On ajoute les valeur dans le tableau lors du clic;
-        arrayTagsWithoutHastag.push(tag.dataset.value); //-->même données, sans le #;
-
-        //3/e.On utilise le tableau qui contient le nouvelles données filtrées,
-        //pour les injecter avec un innerHTML, tjrs en fonction des tags cliqués;
-        contentPhotographer.innerHTML = backToArrayFromTagsBasedOnClick
+        //1/a.isMatching est un object qui récupère les données des photographes correspondant aux filtres cliqués;
+        //--------------------------------------------------------
+        isMatching = datas.photographers.filter((data) => {
+          return arrayTags.every((e) => {
+            return data.tags.includes(e);
+          });
+        });
+        //3/e.On utilise isMatching pour injecter uniquement les photographes filtrés;
+        contentPhotographer.innerHTML = isMatching
           .map(
             (data) => `<!-- ___________________________________________ -->
         <!--BlockIntroduceIndex 01<li>-->
@@ -107,21 +110,15 @@ const onClickNavTags = () => {
         for (i = 0; i < arrayTags.length; i++) {
           if (arrayTags[i] === tagValue) {
             arrayTags.splice(i, 1);
-            arrayTagsWithoutHastag.splice(i, 1);
           }
         }
-        arrayBasedOnTagsClicked = arrayBasedOnTagsClicked.filter((item) => {
-          return item.tags.some((tag) => {
-            return arrayTagsWithoutHastag.includes(tag);
+
+        isMatching = datas.photographers.filter((data) => {
+          return arrayTags.every((e) => {
+            return data.tags.includes(e);
           });
         });
-        const uniqueSetFromTagsBasedOnClickAfterRemovingTag = new Set(
-          arrayBasedOnTagsClicked
-        );
-        const backToArrayAfterRemovingTag = [
-          ...uniqueSetFromTagsBasedOnClickAfterRemovingTag,
-        ];
-        contentPhotographer.innerHTML = backToArrayAfterRemovingTag
+        contentPhotographer.innerHTML = isMatching
           .map(
             (data) => `<!-- ___________________________________________ -->
         <!--BlockIntroduceIndex 01<li>-->
@@ -167,7 +164,7 @@ const onClickNavTags = () => {
           .join("");
       }
       urlObject = new URL(window.location);
-      console.log(urlObject);
+
       const state = { tags: `${arrayTags}` };
       const title = "";
       urlObject.searchParams.set("tags", `${arrayTags}`);
@@ -177,8 +174,6 @@ const onClickNavTags = () => {
         urlObject = new URL(window.location);
         urlObject.searchParams.delete("tags");
         window.history.pushState({}, "", urlObject);
-        //On reinject les données de tous les photographes;
-        //suite du boulot ....
       }
     });
   });

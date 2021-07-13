@@ -262,23 +262,19 @@ const validate = (event) => {
         "[!] min 10 et max 150 caractères";
     }
   }
-
-  btnSubmit.addEventListener("click", (e) => {
-    e.preventDefault();
-    const allIsValid = (currentValue) => {
-      return currentValue.validity.valid === true;
-    };
-    if (allArrayInputs.every(allIsValid) === true) {
-      console.log("Form Data");
-      console.log({
-        prenom: `${allArrayInputs[0].value}`,
-        nom: `${allArrayInputs[1].value}`,
-        email: `${allArrayInputs[2].value}`,
-        textArea: `${allArrayInputs[3].value}`,
-      });
-      isClosingTheModal();
-    }
-  });
+  const allIsValid = (currentValue) => {
+    return currentValue.validity.valid === true;
+  };
+  if (allArrayInputs.every(allIsValid) === true) {
+    console.log("Form Data");
+    console.log({
+      prenom: `${allArrayInputs[0].value}`,
+      nom: `${allArrayInputs[1].value}`,
+      email: `${allArrayInputs[2].value}`,
+      textArea: `${allArrayInputs[3].value}`,
+    });
+    isClosingTheModal();
+  }
 };
 //FONCTIONS POUR FERMER ET OUVRIR LA MODAL AVEC LE FORMULAIRE;
 //toute deux appellées dans isLaunchingTheOpenModalEvent(); et isLaunchingTheCloseModalEvent();

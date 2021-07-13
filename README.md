@@ -21,9 +21,7 @@
 - [x] Le btn pour remonter en haut de la page apparait lors du onscroll;
 
 > A FAIRE:
-> **[!]NOTE**: L'url ne fonctionne pas si je fais un copier collé sur un nouvel onglet, le filtre des tags n'est pas pris en compte;
-> Il faut revoir les filtres des tags!
-> il faut faire attention le indexhtml a disparut;
+> **[!]NOTE**: L'url fonctionne nulle part;
 
 ---
 
@@ -59,8 +57,6 @@
 - [x] Plus tard, le btn de contact enverra un msg au photographe.
 - [x] Pour le moment, il faut afficher le contenu des trois champs dans les logs de la console;
 
-> **[!]NOTE**: Petit souci lors de l'activation du btn submit; il faut deux clicks pour que ça se ferme;
-
 ---
 
 5. Les Finitions
@@ -75,8 +71,6 @@
 - La gestion des évènement doit se faire au clavier;
 - Utiliser un lecteur d'écran gratuit pour tester;
 - [x] les modales doivent recevoir le focus lors de leur ouvertures;
-
-> **[!]NOTE**: si je submit et que je veux renvoyer le form; ça ne fonctionne plus; je peux submit qu"une fois.
 
 ---
 
