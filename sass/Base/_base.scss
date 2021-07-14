@@ -44,7 +44,6 @@
   src: local("DM Sans Bold Italic"),
     url(".././font/DMSans-BoldItalic.woff") format("woff");
 }
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -53,6 +52,9 @@
   font-family: "DM Sans Regular";
   font-weight: 100;
 }
+// a:focus {
+//   border: $colorPrimary solid 2px;
+// }
 button {
   border: none;
   background-color: transparent;
@@ -61,6 +63,15 @@ button {
 html {
   scroll-behavior: smooth;
   transition: 1s ease;
+  @include media-between(phone, tablet) {
+    margin: 30px 20px;
+  }
+  @include media-between(tablet, desktop) {
+    margin: 30px 30px;
+  }
+  @include media-between(desktop, desktopLarge) {
+    margin: 60px 30px;
+  }
 }
 .body {
   padding: 43px 100px;
@@ -68,5 +79,12 @@ html {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    @include media-between(phone, desktop) {
+      flex-direction: column;
+    }
+    @include media-min(wideScreen) {
+      margin: 0 auto;
+      width: 1450px;
+    }
   }
 }

@@ -87,6 +87,12 @@
   position: relative;
   @include tags-appearance;
   z-index: 1; //visuel de base en z-index 1
+  @include media-between(tablet, desktop) {
+    font-size: 0.95rem;
+  }
+  @include media-between(desktop, desktopLarge) {
+    font-size: 1rem;
+  }
   &--change {
     font-size: 1.125rem;
     padding: 0 8px;

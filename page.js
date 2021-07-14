@@ -100,7 +100,7 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
        <!--BlockVideo-valide- 03-->
         <figure class="blockPhoto__content" data-value="${media.id}">
          <button class="blockPhoto__content__linkImg">
-           <div
+           <span
              class="
                blockPhoto__content__linkImg__blockImg
              "
@@ -110,16 +110,15 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
                src="./img/${photographe.name}/${media.video}"
                class="blockPhoto__content__linkImg__blockImg__video"
              ></video>
-           </div>
+           </span>
          </button>
           <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
            <span class="blockPhoto__content__legend__photoName">${media.title}</span>
             <div>
             <button class="heart">
-              <span data-add="${media.moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
+              <span data-add="${media.moreLike}" class="heart__nbs">${media.likes}</span>
              <span class="heart__img"
-               ><img src="./img/Vector.png" alt="J'aime"
-             /></span>
+               ><img src="./img/Vector.png" alt="J'aime"/></span>
            </button>
            </div>
              
@@ -133,19 +132,18 @@ const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
         <!--BlockPhotos 01-->
         <figure class="blockPhoto__content" data-value="${media.id}">
           <button class="blockPhoto__content__linkImg">
-            <div class="blockPhoto__content__linkImg__blockImg">
+            <span class="blockPhoto__content__linkImg__blockImg">
               <img
                 class="blockPhoto__content__linkImg__blockImg__img"
                 src="./img/${photographe.name}/${media.image}"
-                alt="${media.title} by ${photographe.name}"
-              />
-            </div>
+                alt="${media.title} by ${photographe.name}"/>
+            </span>
           </button>
           <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
             <span class="blockPhoto__content__legend__photoName">${media.title}</span>
             <div>
             <button class="heart">
-              <span data-add="${media.moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${media.likes}</span>
+              <span data-add="${media.moreLike}" class="heart__nbs">${media.likes}</span>
               <span class="heart__img"
                 ><img src="./img/Vector.png" alt="J'aime"
               /></span>
@@ -172,21 +170,19 @@ const showDatasFiltering = () => {
       blockContentSelect.dataset.value = icone;
     }
   });
-  selectBtn.onfocus = function getFocus() {
-    let cliked = false;
-    selectBtn.addEventListener("click", () => {
-      cliked = true;
-      if (cliked === true) {
-        blockContentSelect.style.border = "solid transparent 2px";
-      }
-    });
-    blockContentSelect.style.border = "solid black 2px";
-    selectBtn.addEventListener("keydown", (e) => {
-      const keyCode = e.keyCode;
-      if (keyCode === 13) {
+  selectBtn.addEventListener("keydown", (e) => {
+    const keyCode = e.keyCode;
+    if (keyCode === 13) {
+      icone = "";
+      if (icone === blockContentSelect.dataset.value) {
         blockContentSelect.dataset.value = "";
+      } else {
+        blockContentSelect.dataset.value = icone;
       }
-    });
+    }
+  });
+  selectBtn.onfocus = function getFocus() {
+    blockContentSelect.style.border = "solid black 2px";
   };
   selectBtn.onblur = function getBlur() {
     blockContentSelect.style.border = "solid transparent 2px";
@@ -375,8 +371,7 @@ const isAddingVideoOrPhotoContentIntoTheModal = () => {
         <img
            class="modalPhotographies__content__body__photo"
            src="./img/${photographe.name}/${theRightMedia.image}"
-           alt="${theRightMedia.image} by ${photographe.name}"
-         />
+           alt="${theRightMedia.image} by ${photographe.name}"/>
         </div>
 
         <figcaption class="modalPhotographies__content__body__legend">

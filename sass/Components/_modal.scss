@@ -29,6 +29,7 @@
       &__block {
         font-size: 2.25rem;
         position: relative;
+        display: grid;
         &[data-error]::before {
           content: attr(data-error);
           color: #bb1212;
@@ -61,6 +62,7 @@
           padding-top: 0.5rem;
           resize: none; // pour empécher l'utilisation de changer la taille du block
           font-size: 1.2rem;
+          margin-bottom: 15px;
         }
       }
     }

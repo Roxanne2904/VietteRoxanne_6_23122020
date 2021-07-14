@@ -16,38 +16,37 @@
   <body class="body">
     <!-- ___________________________________________ -->
     <!--MODAL PHOTOGRAPHIES-->
-    <div class="modalPhotographies modalPhotographies--change"
-    role="dialog"
-    aria-label="image closeup view"
-    aria-modal="false"
+    <div
+      class="modalPhotographies modalPhotographies--change"
+      role="dialog"
+      aria-label="image closeup view"
+      aria-modal="false"
     >
       <div class="modalPhotographies__content">
-        <div
-        class="modalPhotographies__content__body"
-        >
+        <div class="modalPhotographies__content__body">
           <div class="modalPhotographies__content__body__BlockIconeX">
             <button
               class="modalPhotographies__content__body__BlockIconeX__iconeX"
               aria-label="Close dialog"
               tabindex="1"
             >
-              <img src="./img/cross icone.png" alt="" />
+              <img src="./img/crossIcone.png" alt="" />
             </button>
           </div>
           <div>
             <button
-            id="nextBtn"
-            tabindex="0"
-            aria-label="Next image"
-            class="
-              modalPhotographies__content__body__iconeToSwitch
-              modalPhotographies__content__body__iconeToSwitch--change
-            "
-          >
-            <img src="img/icone L.png" alt="" />
-          </button>
+              id="nextBtn"
+              tabindex="1"
+              aria-label="Next image"
+              class="
+                modalPhotographies__content__body__iconeToSwitch
+                modalPhotographies__content__body__iconeToSwitch--change
+              "
+            >
+              <img src="img/iconeL.png" alt="" />
+            </button>
           </div>
-          
+
           <figure class="modalPhotographies__content__body__blockPhoto">
             <div id="imgContent">
               <img
@@ -67,18 +66,18 @@
             aria-label="Previous image"
             class="modalPhotographies__content__body__iconeToSwitch"
           >
-            <img src="img/icone L.png" alt="" />
+            <img src="img/iconeL.png" alt="" />
           </button>
         </div>
       </div>
     </div>
     <!-- ___________________________________________ -->
     <!--MODAL FORMULAIRE-->
-    <div 
-    role="dialog" 
-    class="modal" 
-    aria-labelledby="contactez-moi"
-    aria-modal="false"
+    <div
+      role="dialog"
+      class="modal"
+      aria-labelledby="contactez-moi"
+      aria-modal="false"
     >
       <div class="modalContent">
         <div class="modalContent__body">
@@ -90,16 +89,13 @@
             >
               Contactez-moi
             </h1>
-            <!--X BUTTON-->
-            <button class="iconeX" aria-label="Close Contact form" tabindex="0">
-            </button>
           </div>
           <form
             name="modalContent__body__contact"
             class="modalContent__body__form"
             id="myForm"
-            methode="post"
-            action="index.html"
+            action="page.html"
+            method="GET"
             onsubmit="return validate(event)"
             novalidate
           >
@@ -189,6 +185,12 @@
               name="btnSubmit"
               value="Envoyer"
             />
+            <!--X BUTTON-->
+            <button
+              class="iconeX"
+              aria-label="Close Contact form"
+              tabindex="0"
+            ></button>
           </form>
         </div>
       </div>
@@ -208,38 +210,36 @@
         <h1 class="blockIntro__titlePages">Undefined</h1>
         <p class="blockIntro__blocktxt">
           <strong class="blockIntro__blocktxt1p">Ville, Pays</strong>
-          <span class="blockIntro__blocktxt2p"
-            >Voir le beau dans le quotidien</span
-          >
+          <span class="blockIntro__blocktxt2p">???</span>
         </p>
         <ul class="blockIntro__ul blockIntro__ul--page">
           <li class="blockIntro__ul__linksTags">
             <a aria-label="tags" href="#" class="tagName tagName--change">
-              #tag-name
+              #tag
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
             <a aria-label="tags" href="#" class="tagName tagName--change">
-              #tag-name
+              #tag
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
             <a aria-label="tags" href="#" class="tagName tagName--change">
-              #tag-name
+              #tag
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
             <a aria-label="tags" href="#" class="tagName tagName--change">
-              #tag-name
+              #tag
               <span class="tagName__bgd"></span>
             </a>
           </li>
           <li class="blockIntro__ul__linksTags">
             <a aria-label="tags" href="#" class="tagName tagName--change">
-              #tag-name
+              #tag
               <span class="tagName__bgd"></span>
             </a>
           </li>
@@ -252,9 +252,7 @@
         </button>
 
         <div class="blockIntro__link blockIntro__link--page">
-          <span class="blockIntro__link__blockImg">
-            <img class="blockIntro__link__blockImg__img" src="" alt="" />
-          </span>
+          <span class="blockIntro__link__blockImg"> </span>
         </div>
       </div>
     </header>
@@ -262,7 +260,7 @@
     <!--Select options//la liste déroulante-->
     <div class="block">
       <label class="block__label" for="sort-select">Trier par</label>
-      <div class="block__content" data-value="&#xf078">
+      <div class="block__content" data-value="&#xf078;">
         <select
           class="block__select"
           name="sort"
@@ -282,25 +280,54 @@
     <ul id="photosBody" class="block__bodyPhotos">
       <li class="block__bodyPhotos__li">
         <!-- ___________________________________________ -->
-        <!--BlockPhotos 01-->
-        <figure class="blockPhoto__content">
+        <!--BlockVideo-01-->
+        <figure class="blockPhoto__content" data-value>
           <button class="blockPhoto__content__linkImg">
-            <div class="blockPhoto__content__linkImg__blockImg">
-              <img
-                class="blockPhoto__content__linkImg__blockImg__img"
-                src=""
-                alt=""
-              />
-            </div>
-          </button>
-          <figcaption class="blockPhoto__content__legend">
-            <span class="blockPhoto__content__legend__photoName">Photo</span>
-            <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
-              <span class="heart__img"
-                ><img src="./img/Vector.png" alt="J'aime"
-              /></span>
+            <span class="blockPhoto__content__linkImg__blockImg">
+              <span
+                class="blockPhoto__content__linkImg__blockImg__empty"
+              ></span>
             </span>
+          </button>
+          <figcaption data-value class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName"
+              >Undefined</span
+            >
+            <div>
+              <button class="heart">
+                <span data-add class="heart__nbs">0</span>
+                <span class="heart__img"
+                  ><img src="./img/Vector.png" alt="J'aime"
+                /></span>
+              </button>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- ___________________________________________ -->
+      </li>
+      <li class="block__bodyPhotos__li">
+        <!-- ___________________________________________ -->
+        <!--BlockPhotos 01-->
+        <figure class="blockPhoto__content" data-value>
+          <button class="blockPhoto__content__linkImg">
+            <span class="blockPhoto__content__linkImg__blockImg">
+              <span
+                class="blockPhoto__content__linkImg__blockImg__empty"
+              ></span>
+            </span>
+          </button>
+          <figcaption data-value class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName"
+              >Undefined</span
+            >
+            <div>
+              <button class="heart">
+                <span data-add class="heart__nbs">0</span>
+                <span class="heart__img"
+                  ><img src="./img/Vector.png" alt="J'aime"
+                /></span>
+              </button>
+            </div>
           </figcaption>
         </figure>
         <!-- ___________________________________________ -->
@@ -308,68 +335,43 @@
       <li class="block__bodyPhotos__li">
         <!-- ___________________________________________ -->
         <!--BlockPhotos 02-->
-        <figure class="blockPhoto__content">
+        <figure class="blockPhoto__content" data-value>
           <button class="blockPhoto__content__linkImg">
-            <div class="blockPhoto__content__linkImg__blockImg">
-              <img
-                class="blockPhoto__content__linkImg__blockImg__img"
-                src=""
-                alt=""
-              />
-            </div>
-          </button>
-          <figcaption class="blockPhoto__content__legend">
-            <span class="blockPhoto__content__legend__photoName">Photo</span>
-            <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
-              <span class="heart__img"
-                ><img src="./img/Vector.png" alt="J'aime"
-              /></span>
+            <span class="blockPhoto__content__linkImg__blockImg">
+              <span
+                class="blockPhoto__content__linkImg__blockImg__empty"
+              ></span>
             </span>
+          </button>
+          <figcaption data-value class="blockPhoto__content__legend">
+            <span class="blockPhoto__content__legend__photoName"
+              >Undefined</span
+            >
+            <div>
+              <button class="heart">
+                <span data-add class="heart__nbs">0</span>
+                <span class="heart__img"
+                  ><img src="./img/Vector.png" alt="J'aime"
+                /></span>
+              </button>
+            </div>
           </figcaption>
         </figure>
         <!-- ___________________________________________ -->
-      </li>
-      <!-- ___________________________________________ -->
-      <!--BlockVideo-valide- 01-->
-      <li class="block__bodyPhotos__li">
-        <figure class="blockPhoto__content">
-          <button class="blockPhoto__content__linkImg">
-            <div class="blockPhoto__content__linkImg__blockImg">
-              <video
-                controls
-                src="./img/Mimi Keel/Animals_Wild_Horses_in_the_mountains.mp4"
-                class="blockPhoto__content__linkImg__blockImg__video"
-              >
-                Votre navigateur ne vous permet pas de télécharger la vidéo.<br />
-                Mais vous pouvez toujours la télécharger
-              </video>
-            </div>
-          </button>
-          <figcaption class="blockPhoto__content__legend">
-            <span class="blockPhoto__content__legend__photoName">Photo</span>
-            <span class="heart">
-              <span aria-label="nombre de j'aime" class="heart__nbs">0</span>
-              <span class="heart__img"
-                ><img src="./img/Vector.png" alt="J'aime"
-              /></span>
-            </span>
-          </figcaption>
-        </figure>
       </li>
     </ul>
     <!-- Block en bas avec prix et nbs de likes -->
     <!-- ___________________________________________ -->
     <div class="blockPrice">
       <span class="blockPrice__nbsOfLikes"
-        >297 081
+        >0
         <img
           class="blockPrice____nbsOfLikes__heartIcone"
           src="./img/heart__black.png"
           alt=""
       /></span>
       <span class="blockPrice__thePrice"
-        ><span class="blockPrice__thePrice__data">300€/jour</span></span
+        ><span class="blockPrice__thePrice__data">0€/jour</span></span
       >
     </div>
     <!-- ___________________________________________ -->
@@ -392,6 +394,6 @@
       <span class="btn__bgd"></span>
     </button> -->
 
-    <script type="text/javascript" src="./page.js"></script>
+    <script src="./page.js"></script>
   </body>
 </html>

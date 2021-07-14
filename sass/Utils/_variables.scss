@@ -22,7 +22,7 @@ $sizelogoWidth: 200px;
 $fontPhotographerName: 2.5rem;
 
 //MARGIN
-$marginTagsBlock: 1px 2px;
+$marginTagsBlock: 1px 2.5px;
 $marginBlockTxtIntro: 4px;
 $marginBlockTxtIntro--2p: 0px 0px 10px 3px;
 $marginBlockTxtIntro--1p: 0px 0px 19px 3px;
@@ -40,14 +40,16 @@ $blockTxtIntroduction: (
     fontWeight: bold,
     sizefont: 0.813rem,
     marg: $marginBlockTxtIntro,
+    fontFamily: "DM Sans Regular",
   ),
   2: (
     type: block,
     textAlign: center,
     color: $black,
-    fontWeight: bold,
+    fontWeight: 100,
     sizefont: 0.625rem,
     marg: $marginBlockTxtIntro,
+    fontFamily: "DM Sans Bold",
   ),
   3: (
     type: block,
@@ -56,6 +58,7 @@ $blockTxtIntroduction: (
     fontWeight: 100,
     sizefont: 0.625rem,
     marg: $marginBlockTxtIntro,
+    fontFamily: "DM Sans Regular",
   ),
   1p: (
     type: block,
@@ -73,4 +76,12 @@ $blockTxtIntroduction: (
     sizefont: 1.125rem,
     marg: $marginBlockTxtIntro--2p,
   ),
+);
+//MAP POUR RESPONSIVE, LES BREAKPOINTS;
+$breakpoints: (
+  "phone": 300px,
+  "tablet": 768px,
+  "desktop": 1024px,
+  "desktopLarge": 1345px,
+  "wideScreen": 1450px,
 );

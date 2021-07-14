@@ -10,6 +10,20 @@
 
 > Mettre en place la methode pattern Factory;
 > -ESLINT-
+> Le test "AChecker" sans "knownIssues" |Conforme au WCAG|
+> Utiliser un lecteur d'écran gratuit pour tester;
+
+- [x] W3C HTML de "page.html";
+
+  > warning à montrer au mentor;
+
+- [x] W3C HTML de "index.html";
+  > W3C CSS;
+  > Fonctionne sur Google chrome et Firefox;
+  > **[!]NOTE**: FIREFOX ISSUES:
+  - la modale form, pb avec le btn close qui passe de 5 à 7 pour l'accessibilité;
+  - problème de lisibilité de l'accessibilité des lien -ex avec fisheyes-
+  - problème avec le btn select.
 
 ---
 
@@ -37,8 +51,7 @@
 > **le block select:**
 
 - [x] Essayé de modifier la flèche avec js lors du clic;
-
-  > **[!]NOTE**: Petit souci de transition avec le border si onclikc ou non;
+  > **[!]NOTE**: on garde le border visible si focus onclick;
 
 ---
 
@@ -60,17 +73,18 @@
 ---
 
 5. Les Finitions
-   > Il faire quelque chose de responsive -mobile et desktop uniquement-;
+   > Il faut faire quelque chose de responsive -mobile et desktop uniquement-;
    > L'Accessibilité :
 
-- Toutes les photos doivent comporter des descriptions textuelles;
-- L'utilisateur doit pouvoir utiliser les commandes du clavier + les touches fléchées pour la modal photo;
-- Utliser un max d'éléments sémantique;
-- Ajouter les attributs ARIA si nécessaire.
-- Le code devra passer le test "AChecker" sans "knownIssues" -Conforme au WCAG-
-- La gestion des évènement doit se faire au clavier;
-- Utiliser un lecteur d'écran gratuit pour tester;
+- [x] Toutes les photos doivent comporter des descriptions textuelles;
+  > **[!]NOTE**: sauf vidéo, à voir comment cela peut se faire...;
+- [x] L'utilisateur doit pouvoir utiliser les commandes du clavier + les touches fléchées pour la modal photo;
+- [x] Utliser un max d'éléments sémantique;
+- [x] Ajouter les attributs ARIA si nécessaire.
+- [x] La gestion des évènement doit se faire au clavier;
 - [x] les modales doivent recevoir le focus lors de leur ouvertures;
+- Utiliser un lecteur d'écran gratuit pour tester;
+- Le code devra passer le test "AChecker" sans "knownIssues" -Conforme au WCAG-
 
 ---
 

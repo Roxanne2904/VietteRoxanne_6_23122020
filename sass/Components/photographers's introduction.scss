@@ -2,6 +2,7 @@
 .blockPhoto__content {
   width: 89.21%;
   &__linkImg {
+    width: -moz-available;
     &__blockImg {
       border-radius: 5px;
       overflow: hidden;
@@ -12,12 +13,21 @@
         width: 100%;
         display: block;
         object-fit: cover;
+        border-radius: $radiusBlocks;
       }
       &__img {
         object-fit: cover;
         height: 300px;
         width: 100%;
         display: block;
+        border-radius: $radiusBlocks;
+      }
+      &__empty {
+        height: 300px;
+        width: 350px;
+        display: block;
+        background: $colorGrey;
+        border-radius: $radiusBlocks;
       }
     }
   }
@@ -44,6 +54,12 @@
 .body__blockIntro {
   width: 33%;
   padding: 0 0 60px 0;
+  @include media-between(phone, desktop) {
+    width: 100%;
+  }
+  @include media-between(desktop, desktopLarge) {
+    width: 50%;
+  }
   &--page {
     width: auto;
     display: flex;

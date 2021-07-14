@@ -116,6 +116,7 @@
       font-weight: map-get($values, fontWeight);
       font-size: map-get($values, sizefont);
       margin: map-get($values, marg);
+      font-family: map-get($values, fontFamily);
     }
   }
 }
@@ -131,5 +132,21 @@
   to {
     opacity: 1;
     transform: translateY(0vh);
+  }
+}
+//MIXIN DES MEDIAS QUERIES;
+@mixin media-between($_keymin, $_keymax) {
+  @media screen and (min-width: map-get($breakpoints, $_keymin)) and (max-width: map-get($breakpoints, $_keymax)) {
+    & {
+      @content;
+    }
+  }
+}
+
+@mixin media-min($_keymin) {
+  @media screen and (min-width: map-get($breakpoints, $_keymin)) {
+    & {
+      @content;
+    }
   }
 }
