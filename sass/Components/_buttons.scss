@@ -34,6 +34,9 @@
 .block {
   display: flex;
   margin: 0 0 60px;
+  @include media-between(phone, tablet) {
+    display: none;
+  }
   &__label {
     margin: 0 20px 0 0;
     font-size: 1.25rem;
@@ -93,20 +96,47 @@
   @include media-between(desktop, desktopLarge) {
     font-size: 1rem;
   }
-  &--change {
-    font-size: 1.125rem;
-    padding: 0 8px;
-    border-radius: 12px;
-  }
   &:hover {
-    color: $colorTertiary;
-    font-weight: inherit;
-    & .tagName__bgd {
-      opacity: 1;
+    @include media-min(wideScreen) {
+      color: $colorTertiary;
+      font-weight: inherit;
+      & .tagName__bgd {
+        opacity: 1;
+      }
     }
   }
   &__bgd {
     @include tags-focus;
+  }
+}
+//.tagName--change est pour les tags de "page.html"
+.tagName--change {
+  cursor: default;
+  font-size: 1.125rem;
+  padding: 0 8px;
+  border-radius: 12px;
+  @include media-between(phone, tablet) {
+    font-size: 0.75rem;
+    padding: 1px 5px;
+    margin: 7px 3px 3px 0;
+  }
+  &:hover {
+    color: $colorPrimary;
+    font-weight: bold;
+    & .tagName__bgd {
+      opacity: 0;
+    }
+  }
+}
+//.tagName--changeForIndexBlock est pour les tags des block présentations dans "index.html"
+.tagName--changeForIndexBlock {
+  cursor: default;
+  &:hover {
+    color: $colorPrimary;
+    font-weight: bold;
+    & .tagName__bgd {
+      opacity: 0;
+    }
   }
 }
 
@@ -123,10 +153,16 @@
   &__nbs {
     font-size: 1.5rem;
     margin-right: 5px;
+    @include media-between(phone, tablet) {
+      font-size: 0.875rem;
+    }
   }
   &__img {
     height: 18.35px;
     position: relative;
     top: 0.5px;
+    & img {
+      width: 12px;
+    }
   }
 }

@@ -66,7 +66,9 @@ $blockTxtIntroduction: (
     color: $colorPrimary,
     fontWeight: 100,
     sizefont: 1.5rem,
+    sizefontPhone: 1.1rem,
     marg: $marginBlockTxtIntro--1p,
+    margPhone: inherit,
   ),
   2p: (
     type: block,
@@ -74,7 +76,8 @@ $blockTxtIntroduction: (
     color: $colorGreyB,
     fontWeight: 100,
     sizefont: 1.125rem,
-    marg: $marginBlockTxtIntro--2p,
+    sizefontPhone: 0.85rem,
+    marg: 6px 0 0 0,
   ),
 );
 //MAP POUR RESPONSIVE, LES BREAKPOINTS;

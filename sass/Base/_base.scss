@@ -63,6 +63,7 @@ button {
 html {
   scroll-behavior: smooth;
   transition: 1s ease;
+  cursor: default;
   @include media-between(phone, tablet) {
     margin: 30px 20px;
   }
@@ -75,6 +76,11 @@ html {
 }
 .body {
   padding: 43px 100px;
+  max-height: 100%;
+  position: relative;
+  @include media-between(phone, tablet) {
+    padding: inherit;
+  }
   &--index {
     padding: 0;
     display: flex;

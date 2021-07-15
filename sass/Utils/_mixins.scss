@@ -117,6 +117,10 @@
       font-size: map-get($values, sizefont);
       margin: map-get($values, marg);
       font-family: map-get($values, fontFamily);
+      @include media-between(phone, tablet) {
+        font-size: map-get($values, sizefontPhone);
+        margin: map-get($values, margPhone);
+      }
     }
   }
 }

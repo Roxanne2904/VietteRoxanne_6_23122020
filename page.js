@@ -315,8 +315,11 @@ const isClosingTheModal = () => {
 //Lancement de l'ouverture et fermeture de la modal
 //Toute deux sont appelées dans ShowDatas();
 const isLaunchingTheOpenModalEvent = () => {
-  const btnOpenModal = document.querySelector("#openModal");
-  btnOpenModal.addEventListener("click", isOpeningTheModal);
+  const btnOpenModal = document.querySelectorAll(".openModalForm");
+  console.log(btnOpenModal);
+  btnOpenModal.forEach((btn) => {
+    btn.addEventListener("click", isOpeningTheModal);
+  });
 };
 const isLaunchingTheCloseModalEvent = () => {
   const btnCloseModal = document.querySelector(".iconeX");
@@ -626,14 +629,14 @@ const showDatas = async () => {
     ${photographe.tags
       .map(
         (tag) => `<li class="blockIntro__ul__linksTags">
-      <a 
+      <span 
        href="#" 
        class="tagName tagName--change" 
        data-value="${tag}"
       >
         #${tag}
         <span class="tagName__bgd"></span>
-      </a>
+      </span>
     </li>`
       )
       .join("")}
@@ -641,7 +644,7 @@ const showDatas = async () => {
   //_________________________________
   //HEADER-Le block btn="contactez-moi" et la photo;
   btnAndPhotoContent.innerHTML = `<span
-  class="blockIntro__link__blockImg"
+  class="blockIntro__link__blockImg blockIntro__link__blockImg--change"
 >
   <img class="blockIntro__link__blockImg__img" src="./img/Photographers ID Photos/${photographe.portrait}" alt="${photographe.alt}" />
 </span>`;

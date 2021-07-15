@@ -61,15 +61,15 @@
       right: 0;
       top: 0;
       font-size: 0.85rem;
-      padding: 45px 20px;
+      padding: 18px 0px;
     }
     @include media-between(tablet, desktop) {
       font-size: 1.5rem;
-      padding: 45px 30px;
+      padding: 20px 0px;
     }
     @include media-between(desktop, desktopLarge) {
       font-size: 1.8rem;
-      padding: 60px 30px;
+      padding: 12px 0px;
     }
   }
 }
