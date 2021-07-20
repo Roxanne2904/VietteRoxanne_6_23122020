@@ -8,22 +8,16 @@
 
 ---
 
-> Mettre en place la methode pattern Factory;
-> -ESLINT-
-> Le test "AChecker" sans "knownIssues" |Conforme au WCAG|
-> Utiliser un lecteur d'écran gratuit pour tester;
+- [x] Mettre en place la methode Factory pattern;
+
+  > -ESLINT-
+  > Le test "AChecker" sans "knownIssues" |Conforme au WCAG|
+  > Utiliser un lecteur d'écran gratuit pour tester;
 
 - [x] W3C HTML de "page.html";
-
-  > warning à montrer au mentor;
-
 - [x] W3C HTML de "index.html";
   > W3C CSS;
-  > Fonctionne sur Google chrome et Firefox;
-  > **[!]NOTE**: FIREFOX ISSUES:
-  - la modale form, pb avec le btn close qui passe de 5 à 7 pour l'accessibilité;
-  - problème de lisibilité de l'accessibilité des lien -ex avec fisheyes-
-  - problème avec le btn select.
+- [x] Fonctionne sur Google chrome et Firefox;
 
 ---
 
@@ -51,7 +45,6 @@
 > **le block select:**
 
 - [x] Essayé de modifier la flèche avec js lors du clic;
-  > **[!]NOTE**: on garde le border visible si focus onclick;
 
 ---
 

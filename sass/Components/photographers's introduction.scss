@@ -103,6 +103,7 @@
       padding: 60px 0px 40px 40px;
       @include media-between(phone, tablet) {
         padding: inherit;
+        width: 60%;
       }
     }
     &__titlePages {
@@ -112,14 +113,13 @@
       }
     }
     &__link {
-      //Sur la page photographe, l'icone img n'est plus un lien; remplacé par une div;
       &--page {
         //concerne l'icone img de la page des photographes;
         display: flex;
         align-items: center;
         padding: 0 50px 0;
         @include media-between(phone, tablet) {
-          padding: 0 0 0 30px;
+          padding: 0 0 0 10px;
           align-items: baseline;
         }
       }
@@ -131,10 +131,11 @@
         height: 199px;
         border-radius: 50%;
         background-color: $colorGrey;
+        color: $colorGrey;
         &--change {
           @include media-between(phone, tablet) {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
           }
         }
         &__img {
@@ -177,7 +178,7 @@
       margin: 0 0 0 30px;
       @include media-between(phone, tablet) {
         margin: 0;
-        width: 60%;
+        width: 40%;
       }
       &__btn {
         margin: 60px 0;

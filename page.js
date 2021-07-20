@@ -20,9 +20,6 @@ const selectBtn = document.querySelector("#sort-select"); //btn select
 const figureContent = document.querySelector(
   ".modalPhotographies__content__body__blockPhoto"
 );
-const btnNextImg = document.querySelector("#nextBtn"); //Le btn pour activer le onClick du next media;
-const btnPreviousImg = document.querySelector("#previousBtn"); //Le btn pour activer le onclick du previous media;
-
 //_________________________________________________________________________
 //FONCTION QUI RECUPERE LES BONS ELEMENTS DU DOM POUR LES LIKER LORS DU CLICK;
 //appelée dans showDatas(); et showDatasFiltering();
@@ -31,7 +28,6 @@ const onClickAddOrRemoveLikes = (elements) => {
     elt.addEventListener("click", () => {
       let arrayOfTotalLikes = [];
       let storeNumberOfLikes;
-      const btnBgd = elt.parentElement;
       //-------------------------------------
       const idDataTypeOfString = elt.parentElement.parentElement.dataset.value; //La valeur est une string;
       const idDataTypeOfNumb = parseInt(idDataTypeOfString); //elle devient un type number;
@@ -89,70 +85,105 @@ const onClickAddOrRemoveLikes = (elements) => {
 };
 //FONCTION QUI VIENT TRIER SI BLOCK VIDEO OU PHOTO;
 //appelée dans showDatas(); et showDatasFiltering();
-const isChoosingBlocksVideosOrPhotosToInjectMedias = (array) => {
-  ulContentForPhotos.innerHTML = array
-    .map((media) => {
-      const mediaInArray = Object.values(media);
-      const isVideo = mediaInArray[3].endsWith(".mp4");
-      if (isVideo === true) {
-        return `<li class="block__bodyPhotos__li ">
+//[!]Factory Pattern;
+//Utilisé dans isChoosingBlocksVideosOrPhotosToInjectMedias();
+class FactoryMedias {
+  static init(media, photographe) {
+    const mediaInArray = Object.values(media);
+    const isVideo = mediaInArray[3].endsWith(".mp4");
+    if (isVideo) {
+      return new Video(media, photographe);
+    } else {
+      return new Img(media, photographe);
+    }
+  }
+}
+class Video {
+  constructor(media, photographe) {
+    this.media = media; //media de la map mis en place;
+    this.photographe = photographe; //photographe de la variable photographe initialisé plus haut;
+  }
+  html() {
+    return `<li class="block__bodyPhotos__li ">
        <!-- ___________________________________________ -->
        <!--BlockVideo-valide- 03-->
-        <figure class="blockPhoto__content" data-value="${media.id}">
-         <button class="blockPhoto__content__linkImg">
+        <figure class="blockPhoto__content" data-value="${this.media.id}">
+         <div
+         tabindex="0"
+         class="blockPhoto__content__linkImg"
+         >
            <span
              class="
                blockPhoto__content__linkImg__blockImg
              "
            >
              <video
-               controls
-               src="./img/${photographe.name}/${media.video}"
+               aria-label="${this.media.title} by ${this.photographe.name}"
+               src="./img/${this.photographe.nameFile}/${this.media.video}"
                class="blockPhoto__content__linkImg__blockImg__video"
+               controls
              ></video>
            </span>
-         </button>
-          <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
-           <span class="blockPhoto__content__legend__photoName">${media.title}</span>
+         </div>
+          <figcaption data-value="${this.media.id}" class="blockPhoto__content__legend">
+           <span class="blockPhoto__content__legend__photoName">${this.media.title}</span>
             <div>
             <button class="heart">
-              <span data-add="${media.moreLike}" class="heart__nbs">${media.likes}</span>
+              <span data-add="${this.media.moreLike}" class="heart__nbs">${this.media.likes}</span>
              <span class="heart__img"
                ><img src="./img/Vector.png" alt="J'aime"/></span>
            </button>
            </div>
-             
+
          </figcaption>
        </figure>
        <!-- ___________________________________________ -->
      </li>`;
-      }
-      return `<li class="block__bodyPhotos__li">
-        <!-- ___________________________________________ -->
-        <!--BlockPhotos 01-->
-        <figure class="blockPhoto__content" data-value="${media.id}">
-          <button class="blockPhoto__content__linkImg">
-            <span class="blockPhoto__content__linkImg__blockImg">
-              <img
-                class="blockPhoto__content__linkImg__blockImg__img"
-                src="./img/${photographe.name}/${media.image}"
-                alt="${media.title} by ${photographe.name}"/>
-            </span>
-          </button>
-          <figcaption data-value="${media.id}" class="blockPhoto__content__legend">
-            <span class="blockPhoto__content__legend__photoName">${media.title}</span>
-            <div>
-            <button class="heart">
-              <span data-add="${media.moreLike}" class="heart__nbs">${media.likes}</span>
-              <span class="heart__img"
-                ><img src="./img/Vector.png" alt="J'aime"
-              /></span>
-            </button>
-            </div>
-          </figcaption>
-        </figure>
-        <!-- ___________________________________________ -->
-      </li>`;
+  }
+}
+class Img {
+  constructor(media, photographe) {
+    this.media = media;
+    this.photographe = photographe;
+  }
+  html() {
+    return `<li class="block__bodyPhotos__li">
+    <!-- ___________________________________________ -->
+    <!--BlockPhotos 01-->
+    <figure class="blockPhoto__content" data-value="${this.media.id}">
+      <div 
+      tabindex="0"
+      class="blockPhoto__content__linkImg"
+      >
+        <span class="blockPhoto__content__linkImg__blockImg">
+          <img
+            class="blockPhoto__content__linkImg__blockImg__img"
+            src="./img/${this.photographe.nameFile}/${this.media.image}"
+            alt="${this.media.title} by ${this.photographe.name}"/>
+        </span>
+      </div>
+      <figcaption data-value="${this.media.id}" class="blockPhoto__content__legend">
+        <span class="blockPhoto__content__legend__photoName">${this.media.title}</span>
+        <div>
+        <button class="heart">
+          <span data-add="${this.media.moreLike}" class="heart__nbs">${this.media.likes}</span>
+          <span class="heart__img"
+            ><img src="./img/Vector.png" alt="J'aime"
+          /></span>
+        </button>
+        </div>
+      </figcaption>
+    </figure>
+    <!-- ___________________________________________ -->
+  </li>`;
+  }
+}
+//------------------------------------------------------------------------------
+const isChoosingBlocksVideosOrPhotosToInjectMedias = (array, photographe) => {
+  ulContentForPhotos.innerHTML = array
+    .map((media) => {
+      const isItVideo = FactoryMedias.init(media, photographe);
+      return isItVideo.html();
     })
     .join("");
 };
@@ -206,7 +237,7 @@ const showDatasFiltering = () => {
       });
     }
     //On récupère les media filtrés rangés dans un nouvel array, que l'on injecte dynamiquement;
-    isChoosingBlocksVideosOrPhotosToInjectMedias(newArray);
+    isChoosingBlocksVideosOrPhotosToInjectMedias(newArray, photographe);
 
     //On récupère les nouveau éléments du DOM:
     likesBtnPerBlocks = document.querySelectorAll(".heart"); // les btn likes
@@ -234,28 +265,23 @@ const showDatasFiltering = () => {
 //MODALE FORM
 //------------
 //FONCTION POUR VALIDER LE FORMULAIRE
-const validate = (event) => {
+const form = document.querySelector("#myForm");
+form.onsubmit = function validate(event) {
   event.preventDefault();
   const first = document.querySelector("#firstName");
   const name = document.querySelector("#familyName");
   const email = document.querySelector("#email");
   const textArea = document.querySelector("#textArea");
-  const btnSubmit = document.querySelector("#btnSubmit");
   const allArrayInputs = [first, name, email, textArea];
 
-  for (i = 0; i < allArrayInputs.length; i++) {
+  for (let i = 0; i < allArrayInputs.length; i++) {
     const isValid = allArrayInputs[i].validity.valid;
 
     if (!isValid) {
       allArrayInputs[i].parentElement.dataset.errorVisible = "true";
-      allArrayInputs[0].parentElement.dataset.error =
-        "[!] Commencez par une majuscule; des lettres uniquement";
-      allArrayInputs[1].parentElement.dataset.error =
-        "[!] Le nom doit être entièrement en majuscule";
-      allArrayInputs[2].parentElement.dataset.error =
-        "[!] Il faut rentrer une adresse e-mail valide";
-      allArrayInputs[3].parentElement.dataset.error =
-        "[!] min 10 et max 150 caractères";
+    }
+    if (isValid === true) {
+      allArrayInputs[i].parentElement.dataset.errorVisible = "false";
     }
   }
   const allIsValid = (currentValue) => {
@@ -272,6 +298,36 @@ const validate = (event) => {
     isClosingTheModal();
   }
 };
+//FONCTION QUI INDIQUE SI LA VALEUR INPUT EST VALID OU NON LORS DU ONCHANGE;
+//appelée dans showDatas;
+const isChangingValueInsideFormModal = () => {
+  const first = document.querySelector("#firstName");
+  const name = document.querySelector("#familyName");
+  const email = document.querySelector("#email");
+  const textArea = document.querySelector("#textArea");
+  const allArrayInputs = [first, name, email, textArea];
+
+  for (let i = 0; i < allArrayInputs.length; i++) {
+    allArrayInputs[i].addEventListener("change", () => {
+      const valid = allArrayInputs[i].validity.valid;
+      if (!valid) {
+        allArrayInputs[i].parentElement.dataset.errorVisible = "true";
+        allArrayInputs[i].setAttribute(
+          "aria-label",
+          `Erreur pour le champ ${allArrayInputs[i].id}, ${allArrayInputs[i].parentElement.dataset.error}`
+        );
+      }
+      if (valid === true) {
+        allArrayInputs[i].parentElement.dataset.errorVisible = "false";
+        allArrayInputs[i].removeAttribute("aria-label");
+        allArrayInputs[i].setAttribute(
+          "aria-label",
+          `Le champ ${allArrayInputs[i].id} est valide`
+        );
+      }
+    });
+  }
+};
 //FONCTIONS POUR FERMER ET OUVRIR LA MODAL AVEC LE FORMULAIRE;
 //toute deux appellées dans isLaunchingTheOpenModalEvent(); et isLaunchingTheCloseModalEvent();
 const isOpeningTheModal = async () => {
@@ -284,6 +340,17 @@ const isOpeningTheModal = async () => {
   );
   //-----------------
   formulaire.reset();
+  const first = document.querySelector("#firstName");
+  const name = document.querySelector("#familyName");
+  const email = document.querySelector("#email");
+  const textArea = document.querySelector("#textArea");
+
+  const allArrayInputs = [first, name, email, textArea];
+  for (let i = 0; i < allArrayInputs.length; i++) {
+    if (allArrayInputs[i].value === "") {
+      allArrayInputs[i].removeAttribute("aria-label");
+    }
+  }
   //-----------------
   const url = window.location.href;
   let url_idString = url.split("=")[1]; //par ex: 123; typeof ="string";
@@ -305,6 +372,7 @@ const isOpeningTheModal = async () => {
 };
 //applée aussi dans validate pour le btnSubmit;
 const isClosingTheModal = () => {
+  //------------------------------------------------
   const bgdModal = document.querySelector(".modal");
   bgdModal.style.display = "none";
   if (bgdModal.style.display === "none") {
@@ -325,24 +393,6 @@ const isLaunchingTheCloseModalEvent = () => {
   const btnCloseModal = document.querySelector(".iconeX");
   btnCloseModal.addEventListener("click", isClosingTheModal);
 };
-//FONCTION QUI INDIQUE SI LA VALEUR INPUT EST VALID OU NON LORS DU ONCHANGE;
-//appelée dans showDatas;
-const isChangingValueInsideFormModal = () => {
-  const first = document.querySelector("#firstName");
-  const name = document.querySelector("#familyName");
-  const email = document.querySelector("#email");
-  const textArea = document.querySelector("#textArea");
-  const allArrayInputs = [first, name, email, textArea];
-
-  allArrayInputs.forEach((elt) => {
-    elt.addEventListener("change", () => {
-      const valid = elt.validity.valid;
-      if (valid === true) {
-        elt.parentElement.dataset.errorVisible = "false";
-      }
-    });
-  });
-};
 //------------
 //MODALE PHOTO
 //------------
@@ -357,7 +407,7 @@ const isAddingVideoOrPhotoContentIntoTheModal = () => {
           <div id="imgContent">
           <video
           controls
-          src="./img/${photographe.name}/${theRightMedia.video}"
+          src="./img/${photographe.nameFile}/${theRightMedia.video}"
           class="modalPhotographies__content__body__photo"
           >
           </video>
@@ -373,7 +423,7 @@ const isAddingVideoOrPhotoContentIntoTheModal = () => {
         <div id="imgContent">
         <img
            class="modalPhotographies__content__body__photo"
-           src="./img/${photographe.name}/${theRightMedia.image}"
+           src="./img/${photographe.nameFile}/${theRightMedia.image}"
            alt="${theRightMedia.image} by ${photographe.name}"/>
         </div>
 
@@ -389,7 +439,7 @@ const isfocusingElementToOpeningModalPhoto = (elements) => {
   elements.forEach((elt) => {
     elt.addEventListener("click", () => {
       theModalPhoto.style.display = "block";
-      if ((theModalPhoto.style.display = "block" === "block")) {
+      if (theModalPhoto.style.display === "block") {
         theModalPhoto.ariaModal = "true";
         const closeBtn = document.querySelector(
           ".modalPhotographies__content__body__BlockIconeX__iconeX"
@@ -410,7 +460,13 @@ const isfocusingElementToOpeningModalPhoto = (elements) => {
         return media.id === idMedia_TypeOfNumber;
       });
       isAddingVideoOrPhotoContentIntoTheModal();
-      // _____________________________________________________
+    });
+    elt.addEventListener("keydown", (e) => {
+      const keyCode = e.code;
+      if (keyCode === "Enter") {
+        e.preventDefault();
+        elt.click();
+      }
     });
   });
   //ON ferme la modale;
@@ -565,7 +621,7 @@ const isClosingModalPhoto = () => {
   );
   theCrossBtn.addEventListener("click", () => {
     theModalPhoto.style.display = "none";
-    if ((theModalPhoto.style.display = "none" === "none")) {
+    if (theModalPhoto.style.display === "none") {
       theModalPhoto.ariaModal = "false";
     }
     //On remet à jour le searchParams de l'URL;
@@ -630,7 +686,6 @@ const showDatas = async () => {
       .map(
         (tag) => `<li class="blockIntro__ul__linksTags">
       <span 
-       href="#" 
        class="tagName tagName--change" 
        data-value="${tag}"
       >
@@ -646,7 +701,7 @@ const showDatas = async () => {
   btnAndPhotoContent.innerHTML = `<span
   class="blockIntro__link__blockImg blockIntro__link__blockImg--change"
 >
-  <img class="blockIntro__link__blockImg__img" src="./img/Photographers ID Photos/${photographe.portrait}" alt="${photographe.alt}" />
+  <img class="blockIntro__link__blockImg__img" src="./img/Photographers_ID_Photos/${photographe.portrait}" alt="${photographe.alt}" />
 </span>`;
   //-------------------------------
   isChangingValueInsideFormModal();
@@ -671,7 +726,7 @@ const showDatas = async () => {
   });
   //_____________________________________________________________
   // INJECTER LES IMAGES + VIDEOS DANS LA PAGE DYNAMIQUEMENT;
-  isChoosingBlocksVideosOrPhotosToInjectMedias(theMostPopular);
+  isChoosingBlocksVideosOrPhotosToInjectMedias(theMostPopular, photographe);
   // ___________________________________________
   // ADDITIONNER LE TOTAL DE LIKES et INJECTER LA DONNEE;
   mediasIsMatchingWithId.forEach((media) => {
@@ -688,7 +743,7 @@ const showDatas = async () => {
       <img
         class="blockPrice____nbsOfLikes__heartIcone"
         src="./img/heart__black.png"
-        alt=""
+        alt="j'aime"
     />`;
   //On appel les éléments du DOM qui viennent d'être injectés dynamiquement;
   likesBtnPerBlocks = document.querySelectorAll(".heart");

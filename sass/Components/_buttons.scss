@@ -162,7 +162,9 @@
     position: relative;
     top: 0.5px;
     & img {
-      width: 12px;
+      @include media-between(phone, tablet) {
+        width: 12px;
+      }
     }
   }
 }

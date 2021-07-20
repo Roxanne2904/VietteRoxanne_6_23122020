@@ -78,8 +78,12 @@ html {
   padding: 43px 100px;
   max-height: 100%;
   position: relative;
-  @include media-between(phone, tablet) {
+  @include media-between(phone, desktopLarge) {
     padding: inherit;
+  }
+  @include media-min(wideScreen) {
+    margin: 0 auto;
+    width: 1450px;
   }
   &--index {
     padding: 0;

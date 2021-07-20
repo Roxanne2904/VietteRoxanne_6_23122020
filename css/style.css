@@ -85,9 +85,15 @@ html {
   max-height: 100%;
   position: relative;
 }
-@media screen and (min-width: 300px) and (max-width: 768px) {
+@media screen and (min-width: 300px) and (max-width: 1345px) {
   .body {
     padding: inherit;
+  }
+}
+@media screen and (min-width: 1450px) {
+  .body {
+    margin: 0 auto;
+    width: 1450px;
   }
 }
 .body--index {
@@ -325,8 +331,10 @@ html {
   position: relative;
   top: 0.5px;
 }
-.heart__img img {
-  width: 12px;
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .heart__img img {
+    width: 12px;
+  }
 }
 
 .modal {
@@ -373,21 +381,23 @@ html {
 }
 .modal .modalContent__body__block[data-error]::before {
   content: attr(data-error);
-  color: #bb1212;
+  color: #ffffff;
   display: block;
   position: absolute;
-  right: 5px;
+  right: 0px;
   top: 20px;
-  font-size: 0.75rem;
-  font-weight: bold;
+  font-size: 0.8rem;
   opacity: 0;
   transition: 0.3s;
+  border: #f01717 solid 2px;
+  padding: 1px 7px;
+  border-radius: 5px;
 }
 .modal .modalContent__body__block[data-error-visible=true]::before {
   opacity: 1;
 }
 .modal .modalContent__body__block[data-error-visible=true] .modalContent__body__inputsTxt {
-  border: #bb1212 solid 2px;
+  border: #f01717 solid 2px;
 }
 .modal .modalContent__body__inputsTxt {
   width: 100%;
@@ -433,53 +443,134 @@ html {
   animation: animModal 0.9s ease-in-out;
   animation-fill-mode: both;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modalPhotographies__content {
+    margin: 200px auto;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .modalPhotographies__content {
+    max-width: 1600px;
+  }
+}
 .modalPhotographies__content__body {
   border-radius: 5px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body {
+    height: 100%;
+  }
+}
+.modalPhotographies__content__body__bgd {
+  display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  position: relative;
 }
 .modalPhotographies__content__body__BlockIconeX {
-  display: contents;
+  position: absolute;
+  right: 30px;
+  top: 0;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__BlockIconeX {
+    right: 18px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modalPhotographies__content__body__BlockIconeX {
+    right: 23px;
+  }
 }
 .modalPhotographies__content__body__BlockIconeX__iconeX {
   align-self: flex-start;
   margin: 37px 0 0 0;
-  position: relative;
-  right: 31px;
   cursor: pointer;
   border: none;
   background: transparent;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__BlockIconeX__iconeX {
+    margin: 30px 0 0 0;
+  }
+}
 .modalPhotographies__content__body__BlockIconeX__iconeX img {
   display: block;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__BlockIconeX__iconeX img {
+    width: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modalPhotographies__content__body__BlockIconeX__iconeX img {
+    width: 25px;
+  }
 }
 .modalPhotographies__content__body__iconeToSwitch {
   margin: 0 32px 0 32px;
   cursor: pointer;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__iconeToSwitch {
+    margin: 0 16px 0 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modalPhotographies__content__body__iconeToSwitch {
+    margin: 0 20px 0 20px;
+  }
+}
 .modalPhotographies__content__body__iconeToSwitch--change {
   transform: rotate(180deg);
-  margin: 0 0 0 32px;
 }
 .modalPhotographies__content__body__iconeToSwitch--change img {
   display: block;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__iconeToSwitch--change img {
+    width: 11px;
+  }
+}
 .modalPhotographies__content__body__iconeToSwitch img {
   display: block;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__iconeToSwitch img {
+    width: 11px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modalPhotographies__content__body__iconeToSwitch img {
+    width: 20px;
+  }
+}
 .modalPhotographies__content__body__blockPhoto {
   width: 100%;
-  margin: 22px 0 0 0;
+  margin: 22px 0 22px 0;
 }
 .modalPhotographies__content__body__photo {
-  width: 100%;
   border-radius: 5px;
+  width: 100%;
 }
 .modalPhotographies__content__body__legend {
   font-size: 1.5rem;
   color: #901c1c;
   margin: 19px 0 0 0;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modalPhotographies__content__body__legend {
+    font-size: 1rem;
+    margin: 0;
+  }
 }
 
 .iconeX {
@@ -637,6 +728,7 @@ html {
 @media screen and (min-width: 300px) and (max-width: 768px) {
   .body__blockIntro .blockIntro--pages {
     padding: inherit;
+    width: 60%;
   }
 }
 .body__blockIntro .blockIntro__titlePages {
@@ -654,7 +746,7 @@ html {
 }
 @media screen and (min-width: 300px) and (max-width: 768px) {
   .body__blockIntro .blockIntro__link--page {
-    padding: 0 0 0 30px;
+    padding: 0 0 0 10px;
     align-items: baseline;
   }
 }
@@ -666,11 +758,12 @@ html {
   height: 199px;
   border-radius: 50%;
   background-color: #c4c4c4;
+  color: #c4c4c4;
 }
 @media screen and (min-width: 300px) and (max-width: 768px) {
   .body__blockIntro .blockIntro__link__blockImg--change {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
 }
 .body__blockIntro .blockIntro__link__blockImg__img {
@@ -761,7 +854,7 @@ html {
 @media screen and (min-width: 300px) and (max-width: 768px) {
   .body__blockIntro .blockIntro__contentForAttach {
     margin: 0;
-    width: 60%;
+    width: 40%;
   }
 }
 .body__blockIntro .blockIntro__contentForAttach__btn {

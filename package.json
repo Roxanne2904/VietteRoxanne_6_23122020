@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Roxanne2904/VietteRoxanne_6_23122020/issues"
   },
-  "homepage": "https://github.com/Roxanne2904/VietteRoxanne_6_23122020#readme"
+  "homepage": "https://github.com/Roxanne2904/VietteRoxanne_6_23122020#readme",
+  "devDependencies": {
+    "eslint": "^7.30.0"
+  }
 }

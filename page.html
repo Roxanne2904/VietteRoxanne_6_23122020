@@ -2,7 +2,6 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -24,50 +23,54 @@
     >
       <div class="modalPhotographies__content">
         <div class="modalPhotographies__content__body">
-          <div class="modalPhotographies__content__body__BlockIconeX">
-            <button
-              class="modalPhotographies__content__body__BlockIconeX__iconeX"
-              aria-label="Close dialog"
-              tabindex="1"
-            >
-              <img src="./img/crossIcone.png" alt="" />
-            </button>
-          </div>
-          <div>
-            <button
-              id="nextBtn"
-              tabindex="1"
-              aria-label="Next image"
-              class="
-                modalPhotographies__content__body__iconeToSwitch
-                modalPhotographies__content__body__iconeToSwitch--change
-              "
-            >
-              <img src="img/iconeL.png" alt="" />
-            </button>
-          </div>
-
-          <figure class="modalPhotographies__content__body__blockPhoto">
-            <div id="imgContent">
-              <img
-                class="modalPhotographies__content__body__photo"
-                src="./img/thumb-img.png"
-                alt=""
-              />
+          <div class="modalPhotographies__content__body__bgd">
+            <div class="modalPhotographies__content__body__BlockIconeX">
+              <button
+                class="modalPhotographies__content__body__BlockIconeX__iconeX"
+                aria-label="Close dialog"
+                tabindex="1"
+              >
+                <img src="./img/crossIcone.png" alt="" />
+              </button>
+            </div>
+            <div>
+              <button
+                id="nextBtn"
+                tabindex="1"
+                aria-label="Next image"
+                class="
+                  modalPhotographies__content__body__iconeToSwitch
+                  modalPhotographies__content__body__iconeToSwitch--change
+                "
+              >
+                <img src="img/iconeL.png" alt="" />
+              </button>
             </div>
 
-            <figcaption class="modalPhotographies__content__body__legend">
-              <span id="modalLegend">Legende de la photo</span>
-            </figcaption>
-          </figure>
-          <button
-            id="previousBtn"
-            tabindex="1"
-            aria-label="Previous image"
-            class="modalPhotographies__content__body__iconeToSwitch"
-          >
-            <img src="img/iconeL.png" alt="" />
-          </button>
+            <figure class="modalPhotographies__content__body__blockPhoto">
+              <div id="imgContent">
+                <img
+                  class="modalPhotographies__content__body__photo"
+                  src="./img/thumb-img.png"
+                  alt=""
+                />
+              </div>
+
+              <figcaption class="modalPhotographies__content__body__legend">
+                <span id="modalLegend">Legende de la photo</span>
+              </figcaption>
+            </figure>
+            <div>
+              <button
+                id="previousBtn"
+                tabindex="1"
+                aria-label="Previous image"
+                class="modalPhotographies__content__body__iconeToSwitch"
+              >
+                <img src="img/iconeL.png" alt="" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -96,13 +99,12 @@
             id="myForm"
             action="page.html"
             method="GET"
-            onsubmit="return validate(event)"
             novalidate
           >
             <!--Prenom-->
             <div
               class="modalContent__body__block"
-              data-error="il y a une erreur"
+              data-error="Commencez par une majuscule; des lettres uniquement !"
               data-error-visible="false"
             >
               <label for="firstName">Prénom</label>
@@ -121,7 +123,7 @@
             <!--Nom-->
             <div
               class="modalContent__body__block"
-              data-error="il y a une erreur"
+              data-error="Le nom doit être entièrement en majuscule !"
               data-error-visible="false"
             >
               <label for="familyName">Nom</label>
@@ -140,7 +142,7 @@
             <!--E-mail-->
             <div
               class="modalContent__body__block"
-              data-error="il y a une erreur brouuuu"
+              data-error="Il faut rentrer une adresse e-mail valide !"
               data-error-visible="false"
             >
               <label for="email">Email</label>
@@ -159,7 +161,7 @@
             <!--textArea-->
             <div
               class="modalContent__body__block"
-              data-error="brou!"
+              data-error="min 10 et max 150 caractères !"
               data-error-visible="false"
             >
               <label for="textArea">Votre message</label>
@@ -214,31 +216,31 @@
         </p>
         <ul class="blockIntro__ul blockIntro__ul--page">
           <li class="blockIntro__ul__linksTags">
-            <span aria-label="tags" class="tagName tagName--change">
+            <span class="tagName tagName--change">
               #tag
               <span class="tagName__bgd"></span>
             </span>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <span aria-label="tags" class="tagName tagName--change">
+            <span class="tagName tagName--change">
               #tag
               <span class="tagName__bgd"></span>
             </span>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <span aria-label="tags" class="tagName tagName--change">
+            <span class="tagName tagName--change">
               #tag
               <span class="tagName__bgd"></span>
             </span>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <span aria-label="tags" class="tagName tagName--change">
+            <span class="tagName tagName--change">
               #tag
               <span class="tagName__bgd"></span>
             </span>
           </li>
           <li class="blockIntro__ul__linksTags">
-            <span aria-label="tags" class="tagName tagName--change">
+            <span class="tagName tagName--change">
               #tag
               <span class="tagName__bgd"></span>
             </span>
@@ -251,14 +253,14 @@
           <span class="btn__bgd"></span>
         </button>
 
-        <div class="blockIntro__link blockIntro__link--page">
+        <span class="blockIntro__link blockIntro__link--page">
           <span
             class="
               blockIntro__link__blockImg blockIntro__link__blockImg--change
             "
           >
           </span>
-        </div>
+        </span>
       </div>
     </header>
     <!-- __________________________________________ -->
@@ -378,7 +380,7 @@
         <img
           class="blockPrice____nbsOfLikes__heartIcone"
           src="./img/heart__black.png"
-          alt=""
+          alt="j'aime"
       /></span>
       <span class="blockPrice__thePrice"
         ><span class="blockPrice__thePrice__data">0€/jour</span></span

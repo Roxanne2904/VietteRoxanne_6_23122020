@@ -24,8 +24,6 @@ const onClickNavTags = () => {
   const tagsContent = document.querySelectorAll("nav .tagName"); // On récupère les tags de la navigation;
   const arrayTags = []; //pour afficher dans l'url;
   let isMatching; //-OBJECT-récupération des données des photographes concernépar les filtres;
-  // const arrayTagsWithoutHastag = []; //pour ranger les données de l'url sans le #;
-  let arrayBasedOnTagsClicked = []; //réorganiser le tableau "photographers" en fonction des tags séléctionnés;
   let urlObject;
   tagsContent.forEach((tag) => {
     let tagValue = tag.dataset.value;
@@ -71,7 +69,7 @@ const onClickNavTags = () => {
               <span class="blockIntro__link__blockImg">
                 <img
                   class="blockIntro__link__blockImg__img"
-                  src="./img/Photographers ID Photos/${data.portrait}"
+                  src="./img/Photographers_ID_Photos/${data.portrait}"
                   alt="${data.alt}"
                 />
               </span>
@@ -107,7 +105,7 @@ const onClickNavTags = () => {
           .join("");
       } else if (arrayTags.includes(tagValue) === true) {
         tag.classList.remove("tagName__onclick");
-        for (i = 0; i < arrayTags.length; i++) {
+        for (let i = 0; i < arrayTags.length; i++) {
           if (arrayTags[i] === tagValue) {
             arrayTags.splice(i, 1);
           }
@@ -128,7 +126,7 @@ const onClickNavTags = () => {
               <span class="blockIntro__link__blockImg">
                 <img
                   class="blockIntro__link__blockImg__img"
-                  src="./img/Photographers ID Photos/${data.portrait}"
+                  src="./img/Photographers_ID_Photos/${data.portrait}"
                   alt="${data.alt}"
                 />
               </span>
@@ -202,15 +200,16 @@ const showDataPhotographers = async () => {
     <!--BlockIntroduceIndex 01<li>-->
     <li class="body__blockIntro">
       <h2 class="blockIntro">
-        <a class="blockIntro__link" href="./page.html?id=${data.id}">
-          <span class="blockIntro__link__blockImg">
-            <img
-              class="blockIntro__link__blockImg__img"
-              src="./img/Photographers ID Photos/${data.portrait}"
-              alt="${data.alt}"
-            />
-          </span>
-        </a>
+      <span class="blockIntro__link">
+      <a class="blockIntro__link__blockImg" href="./page.html?id=${data.id}">
+        <img
+          class="blockIntro__link__blockImg__img"
+          src="./img/Photographers_ID_Photos/${data.portrait}"
+          alt="${data.alt}"
+        />
+      </a>
+      </span>
+        
         <span class="blockIntro__title">${data.name}</span>
       </h2>
       <p class="blockIntro__blocktxt">

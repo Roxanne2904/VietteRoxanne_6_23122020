@@ -32,21 +32,23 @@
         display: grid;
         &[data-error]::before {
           content: attr(data-error);
-          color: #bb1212;
+          color: #ffffff;
           display: block;
           position: absolute;
-          right: 5px;
+          right: 0px;
           top: 20px;
-          font-size: 0.75rem;
-          font-weight: bold;
+          font-size: 0.8rem;
           opacity: 0;
           transition: 0.3s;
+          border: #f01717 solid 2px;
+          padding: 1px 7px;
+          border-radius: 5px;
         }
         &[data-error-visible="true"]::before {
           opacity: 1;
         }
         &[data-error-visible="true"] .modalContent__body__inputsTxt {
-          border: #bb1212 solid 2px;
+          border: #f01717 solid 2px;
         }
       }
       &__inputsTxt {
@@ -83,52 +85,103 @@
     max-width: 1253px;
     animation: animModal 0.9s ease-in-out;
     animation-fill-mode: both;
+    @include media-between(phone, tablet) {
+      height: 100%;
+    }
+    @include media-between(tablet, desktop) {
+      margin: 200px auto;
+    }
+    @include media-min(wideScreenXL) {
+      max-width: 1600px;
+    }
     &__body {
       border-radius: $radiusBlocks;
       display: flex;
-      flex-direction: row-reverse;
       align-items: center;
+      justify-content: center;
+      @include media-between(phone, tablet) {
+        height: 100%;
+      }
+      &__bgd {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        position: relative;
+      }
       &__BlockIconeX {
-        display: contents;
+        position: absolute;
+        right: 30px;
+        top: 0;
+        @include media-between(phone, tablet) {
+          right: 18px;
+        }
+        @include media-between(tablet, desktop) {
+          right: 23px;
+        }
         &__iconeX {
           align-self: flex-start;
           margin: 37px 0 0 0;
-          position: relative;
-          right: 31px;
           cursor: pointer;
           border: none;
           background: transparent;
+          @include media-between(phone, tablet) {
+            margin: 30px 0 0 0;
+          }
         }
         &__iconeX img {
           display: block;
+          @include media-between(phone, tablet) {
+            width: 12px;
+          }
+          @include media-between(tablet, desktop) {
+            width: 25px;
+          }
         }
       }
       &__iconeToSwitch {
         margin: 0 32px 0 32px;
         cursor: pointer;
+        @include media-between(phone, tablet) {
+          margin: 0 16px 0 12px;
+        }
+        @include media-between(tablet, desktop) {
+          margin: 0 20px 0 20px;
+        }
         &--change {
           transform: rotate(180deg);
-          margin: 0 0 0 32px;
         }
         &--change img {
           display: block;
+          @include media-between(phone, tablet) {
+            width: 11px;
+          }
         }
       }
       &__iconeToSwitch img {
         display: block;
+        @include media-between(phone, tablet) {
+          width: 11px;
+        }
+        @include media-between(tablet, desktop) {
+          width: 20px;
+        }
       }
       &__blockPhoto {
         width: 100%;
-        margin: 22px 0 0 0;
+        margin: 22px 0 22px 0;
       }
       &__photo {
-        width: 100%;
         border-radius: 5px;
+        width: 100%;
       }
       &__legend {
         font-size: 1.5rem;
         color: $colorPrimary;
         margin: 19px 0 0 0;
+        @include media-between(phone, tablet) {
+          font-size: 1rem;
+          margin: 0;
+        }
       }
     }
   }
