@@ -137,6 +137,11 @@ html {
   transition: transform 200ms;
   border: none;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  #btnSubmit {
+    height: 35px;
+  }
+}
 #btnSubmit:focus {
   transform: scale(1.05);
 }
@@ -355,17 +360,40 @@ html {
   animation: animModal 0.9s ease-in-out;
   animation-fill-mode: both;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent {
+    margin: inherit;
+    height: 100%;
+    max-width: inherit;
+  }
+}
 .modal .modalContent__body {
   background-color: #db8876;
   border-radius: 5px;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body {
+    height: 100%;
+    border-radius: inherit;
+  }
 }
 .modal .modalContent__body__blockTitle {
   display: flex;
   justify-content: space-between;
   padding: 15px 35px;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__blockTitle {
+    padding: 20px 15px;
+  }
+}
 .modal .modalContent__body__blockTitle__Title {
   font-size: 3.6rem;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__blockTitle__Title {
+    font-size: 2.25rem;
+  }
 }
 .modal .modalContent__body__blockTitle__Title::after {
   content: attr(data-photographer);
@@ -374,10 +402,21 @@ html {
 .modal .modalContent__body__form {
   padding: 0 35px 35px 35px;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__form {
+    padding: 0 15px 0 15px;
+  }
+}
 .modal .modalContent__body__block {
   font-size: 2.25rem;
   position: relative;
   display: grid;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__block {
+    font-size: 1.5rem;
+    margin: 25px 0 25px 0;
+  }
 }
 .modal .modalContent__body__block[data-error]::before {
   content: attr(data-error);
@@ -392,6 +431,15 @@ html {
   border: #f01717 solid 2px;
   padding: 1px 7px;
   border-radius: 5px;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__block[data-error]::before {
+    top: 9px;
+    text-align: end;
+    font-size: 0.53rem;
+    padding: 2px 3px 0 3px;
+    border: 1px solid #f01717;
+  }
 }
 .modal .modalContent__body__block[data-error-visible=true]::before {
   opacity: 1;
@@ -408,6 +456,12 @@ html {
   outline-style: none;
   border: #ffffff solid 2px;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__inputsTxt {
+    height: 52px;
+    font-size: 1rem;
+  }
+}
 .modal .modalContent__body__inputsTxt:focus {
   border: #000000 2px solid;
 }
@@ -420,6 +474,15 @@ html {
   resize: none;
   font-size: 1.2rem;
   margin-bottom: 15px;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .modal .modalContent__body__inputsTxt--changeHeight {
+    font-size: 1rem;
+  }
+}
+.modal .modalContent__body__BlockBTnSub {
+  display: flex;
+  justify-content: center;
 }
 
 .modalPhotographies {
@@ -584,6 +647,14 @@ html {
   background: transparent;
   transition: 0.3s;
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .iconeX {
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: 20px;
+  }
+}
 .iconeX::after {
   content: "";
   display: block;
@@ -595,6 +666,14 @@ html {
   background-color: #ffffff;
   transform: rotateZ(45deg);
 }
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .iconeX::after {
+    width: 30px;
+    height: 3px;
+    top: 46%;
+    left: 1%;
+  }
+}
 .iconeX::before {
   content: "";
   display: block;
@@ -605,6 +684,14 @@ html {
   left: 3%;
   background-color: #ffffff;
   transform: rotateZ(-45deg);
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .iconeX::before {
+    width: 30px;
+    height: 3px;
+    top: 46%;
+    left: 1%;
+  }
 }
 
 .blockPhoto__content {

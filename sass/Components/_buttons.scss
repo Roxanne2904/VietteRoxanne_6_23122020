@@ -6,6 +6,9 @@
   padding: 0 50px;
   transition: transform 200ms;
   border: none;
+  @include media-between(phone, tablet) {
+    height: 35px;
+  }
   &:focus {
     transform: scale(1.05);
   }

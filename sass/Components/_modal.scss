@@ -8,15 +8,30 @@
     max-width: 669px;
     animation: animModal 0.9s ease-in-out;
     animation-fill-mode: both;
+    @include media-between(phone, tablet) {
+      margin: inherit;
+      height: 100%;
+      max-width: inherit;
+    }
     &__body {
       background-color: $colorSecondary;
       border-radius: $radiusBlocks;
+      @include media-between(phone, tablet) {
+        height: 100%;
+        border-radius: inherit;
+      }
       &__blockTitle {
         display: flex;
         justify-content: space-between;
         padding: 15px 35px;
+        @include media-between(phone, tablet) {
+          padding: 20px 15px;
+        }
         &__Title {
           font-size: 3.6rem;
+          @include media-between(phone, tablet) {
+            font-size: 2.25rem;
+          }
           &::after {
             content: attr(data-photographer);
             display: block;
@@ -25,11 +40,18 @@
       }
       &__form {
         padding: 0 35px 35px 35px;
+        @include media-between(phone, tablet) {
+          padding: 0 15px 0 15px;
+        }
       }
       &__block {
         font-size: 2.25rem;
         position: relative;
         display: grid;
+        @include media-between(phone, tablet) {
+          font-size: 1.5rem;
+          margin: 25px 0 25px 0;
+        }
         &[data-error]::before {
           content: attr(data-error);
           color: #ffffff;
@@ -43,6 +65,13 @@
           border: #f01717 solid 2px;
           padding: 1px 7px;
           border-radius: 5px;
+          @include media-between(phone, tablet) {
+            top: 9px;
+            text-align: end;
+            font-size: 0.53rem;
+            padding: 2px 3px 0 3px;
+            border: 1px solid #f01717;
+          }
         }
         &[data-error-visible="true"]::before {
           opacity: 1;
@@ -53,6 +82,10 @@
       }
       &__inputsTxt {
         @include inputsTxt-appearance;
+        @include media-between(phone, tablet) {
+          height: 52px;
+          font-size: 1rem;
+        }
         &:focus {
           border: $black 2px solid;
         }
@@ -65,7 +98,14 @@
           resize: none; // pour empécher l'utilisation de changer la taille du block
           font-size: 1.2rem;
           margin-bottom: 15px;
+          @include media-between(phone, tablet) {
+            font-size: 1rem;
+          }
         }
+      }
+      &__BlockBTnSub {
+        display: flex;
+        justify-content: center;
       }
     }
   }
