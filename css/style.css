@@ -819,6 +819,12 @@ html {
     font-size: 2.5rem;
   }
 }
+.body__blockIntro .blockIntro__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
 .body__blockIntro .blockIntro__link--page {
   display: flex;
   align-items: center;

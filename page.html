@@ -21,6 +21,7 @@
       role="dialog"
       aria-label="image closeup view"
       aria-modal="false"
+      tabindex="2"
     >
       <div class="modalPhotographies__content">
         <div class="modalPhotographies__content__body">
@@ -28,7 +29,7 @@
             <div class="modalPhotographies__content__body__BlockIconeX">
               <button
                 class="modalPhotographies__content__body__BlockIconeX__iconeX"
-                tabindex="1"
+                tabindex="4"
               >
                 <img src="./img/crossIcone.png" alt="Close dialog" />
               </button>
@@ -36,7 +37,7 @@
             <div>
               <button
                 id="nextBtn"
-                tabindex="1"
+                tabindex="3"
                 class="
                   modalPhotographies__content__body__iconeToSwitch
                   modalPhotographies__content__body__iconeToSwitch--change
@@ -62,7 +63,7 @@
             <div>
               <button
                 id="previousBtn"
-                tabindex="1"
+                tabindex="2"
                 class="modalPhotographies__content__body__iconeToSwitch"
               >
                 <img src="img/iconeL.png" alt="Previous image" />
@@ -76,9 +77,11 @@
     <!--MODAL FORMULAIRE-->
     <div
       role="dialog"
+      id="modal-form"
       class="modal"
       aria-labelledby="contactez-moi"
       aria-modal="false"
+      tabindex="0"
     >
       <div class="modalContent">
         <div class="modalContent__body">
@@ -107,7 +110,7 @@
             >
               <label for="firstName">Prénom</label>
               <input
-                tabindex="1"
+                tabindex="0"
                 type="text"
                 class="modalContent__body__inputsTxt"
                 id="firstName"
@@ -126,7 +129,7 @@
             >
               <label for="familyName">Nom</label>
               <input
-                tabindex="1"
+                tabindex="0"
                 type="text"
                 class="modalContent__body__inputsTxt"
                 id="familyName"
@@ -145,7 +148,7 @@
             >
               <label for="email">Email</label>
               <input
-                tabindex="1"
+                tabindex="0"
                 type="email"
                 class="modalContent__body__inputsTxt"
                 id="email"
@@ -164,7 +167,7 @@
             >
               <label for="textArea">Votre message</label>
               <textarea
-                tabindex="1"
+                tabindex="0"
                 id="textArea"
                 class="
                   modalContent__body__inputsTxt
@@ -180,7 +183,7 @@
             <!--BtnSubmit-->
             <div class="modalContent__body__BlockBTnSub">
               <input
-                tabindex="1"
+                tabindex="0"
                 type="submit"
                 id="btnSubmit"
                 name="btnSubmit"

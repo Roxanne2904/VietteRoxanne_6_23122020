@@ -199,19 +199,19 @@ const showDataPhotographers = async () => {
         `<!-- ___________________________________________ -->
     <!--BlockIntroduceIndex 01<li>-->
     <li class="body__blockIntro">
-      <h2 class="blockIntro">
-      <span class="blockIntro__link">
-      <a class="blockIntro__link__blockImg" href="./page.html?id=${data.id}">
+     <a class="blockIntro__link" href="./page.html?id=${data.id}">
+     <h2 class="blockIntro">
+      <span class="blockIntro__title">${data.name}</span>
+      </h2>
+      <span class="blockIntro__link__blockImg">
         <img
           class="blockIntro__link__blockImg__img"
           src="./img/Photographers_ID_Photos/${data.portrait}"
-          alt="${data.alt}"
+          alt="image of ${data.alt}"
         />
-      </a>
       </span>
-        
-        <span class="blockIntro__title">${data.name}</span>
-      </h2>
+    </a>
+      
       <p class="blockIntro__blocktxt">
         <strong class="blockIntro__blocktxt1">${data.city}, ${
           data.country
@@ -226,6 +226,7 @@ const showDataPhotographers = async () => {
         <span
           class="tagName tagName--changeForIndexBlock blockIntro__links__theLink"
           data-value="${tag}"
+          tabindex="0"
         >
           #${tag}
           <span class="tagName__bgd"></span>
