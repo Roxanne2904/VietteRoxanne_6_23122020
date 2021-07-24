@@ -7,6 +7,11 @@
   right: 1.8%;
   @include media-between(phone, tablet) {
     flex-direction: column;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+    position: inherit;
+    right: inherit;
   }
   &__li {
     width: 33.3%;
@@ -18,21 +23,23 @@
     }
   }
 }
+
 #btnResponsive {
   @include media-between(phone, tablet) {
-    display: block;
     position: fixed;
-    bottom: 5%;
-    left: 50%;
+    bottom: 50px;
     transform-origin: center;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%);
+    display: block;
     height: inherit;
     padding: 10px 25px;
   }
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 851px) {
     display: none;
   }
 }
+
 .blockPrice {
   display: flex;
   justify-content: space-around;

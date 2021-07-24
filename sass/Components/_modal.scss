@@ -17,7 +17,6 @@
       background-color: $colorSecondary;
       border-radius: $radiusBlocks;
       @include media-between(phone, tablet) {
-        height: 100%;
         border-radius: inherit;
       }
       &__blockTitle {
@@ -25,12 +24,12 @@
         justify-content: space-between;
         padding: 15px 35px;
         @include media-between(phone, tablet) {
-          padding: 20px 15px;
+          padding: 25px 15px;
         }
         &__Title {
           font-size: 3.6rem;
           @include media-between(phone, tablet) {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
           }
           &::after {
             content: attr(data-photographer);
@@ -100,12 +99,16 @@
           margin-bottom: 15px;
           @include media-between(phone, tablet) {
             font-size: 1rem;
+            height: 184px;
           }
         }
       }
       &__BlockBTnSub {
-        display: flex;
-        justify-content: center;
+        @include media-between(phone, tablet) {
+          display: flex;
+          justify-content: center;
+          padding-bottom: 30px;
+        }
       }
     }
   }
@@ -125,9 +128,6 @@
     max-width: 1253px;
     animation: animModal 0.9s ease-in-out;
     animation-fill-mode: both;
-    @include media-between(phone, tablet) {
-      height: 100%;
-    }
     @include media-between(tablet, desktop) {
       margin: 200px auto;
     }
@@ -139,9 +139,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include media-between(phone, tablet) {
-        height: 100%;
-      }
       &__bgd {
         display: flex;
         flex-direction: row-reverse;

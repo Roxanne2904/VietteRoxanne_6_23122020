@@ -9,15 +9,13 @@
 ---
 
 - [x] Mettre en place la methode Factory pattern;
-
-  > -ESLINT-
-  > Le test "AChecker" sans "knownIssues" |Conforme au WCAG|
-  > Utiliser un lecteur d'écran gratuit pour tester;
-
+- [x] -ESLINT-
+- [x] Le test "AChecker" sans "knownIssues" |Conforme au WCAG|
+- [x] Utiliser un lecteur d'écran gratuit pour tester;
 - [x] W3C HTML de "page.html";
 - [x] W3C HTML de "index.html";
-  > W3C CSS;
 - [x] Fonctionne sur Google chrome et Firefox;
+  > W3C CSS;
 
 ---
 
@@ -27,9 +25,6 @@
 - [x] En cliquant sur une étiquette tag, la liste des photographes est filtrée;
 - [x] Lorsque qu'un utilisateur clique sur la vignette d'un photographe, il va vers sa page;
 - [x] Le btn pour remonter en haut de la page apparait lors du onscroll;
-
-> A FAIRE:
-> **[!]NOTE**: L'url fonctionne nulle part;
 
 ---
 
@@ -66,11 +61,12 @@
 ---
 
 5. Les Finitions
-   > Il faut faire quelque chose de responsive -mobile et desktop uniquement-;
-   > L'Accessibilité :
+
+- [x] Il faut faire quelque chose de responsive -mobile et desktop uniquement-;
+
+  > L'Accessibilité :
 
 - [x] Toutes les photos doivent comporter des descriptions textuelles;
-  > **[!]NOTE**: sauf vidéo, à voir comment cela peut se faire...;
 - [x] L'utilisateur doit pouvoir utiliser les commandes du clavier + les touches fléchées pour la modal photo;
 - [x] Utliser un max d'éléments sémantique;
 - [x] Ajouter les attributs ARIA si nécessaire.

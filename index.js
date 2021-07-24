@@ -4,7 +4,7 @@ const onScrollDisplayOn = () => {
 
   window.addEventListener("scroll", () => {
     scrollYPosition = window.scrollY;
-    // console.log(scrollYPosition);
+    console.log(scrollYPosition);
     if (scrollYPosition >= 10) {
       btnToGoUp.style.display = "block";
     } else if (scrollYPosition === 0) {

@@ -204,16 +204,11 @@ const showDatasFiltering = () => {
   selectBtn.addEventListener("keydown", (e) => {
     const keyCode = e.keyCode;
     if (keyCode === 13) {
-      icone = "";
-      if (icone === blockContentSelect.dataset.value) {
-        blockContentSelect.dataset.value = "";
-      } else {
-        blockContentSelect.dataset.value = icone;
-      }
+      selectBtn.click();
     }
   });
   selectBtn.onfocus = function getFocus() {
-    blockContentSelect.style.border = "solid black 2px";
+    blockContentSelect.style.border = "solid black 1px";
   };
   selectBtn.onblur = function getBlur() {
     blockContentSelect.style.border = "solid transparent 2px";
@@ -349,6 +344,7 @@ const isOpeningTheModal = async () => {
   for (let i = 0; i < allArrayInputs.length; i++) {
     if (allArrayInputs[i].value === "") {
       allArrayInputs[i].removeAttribute("aria-label");
+      allArrayInputs[i].parentElement.dataset.errorVisible = "false";
     }
   }
   //-----------------
@@ -374,6 +370,7 @@ const isOpeningTheModal = async () => {
 const isClosingTheModal = () => {
   //------------------------------------------------
   const bgdModal = document.querySelector(".modal");
+  //---------------------------------------------------
   bgdModal.style.display = "none";
   if (bgdModal.style.display === "none") {
     const modalFormBgd = document.querySelector(".modal");

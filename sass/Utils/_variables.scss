@@ -22,7 +22,7 @@ $sizelogoWidth: 200px;
 $fontPhotographerName: 2.5rem;
 
 //MARGIN
-$marginTagsBlock: 1px 2.5px;
+$marginTagsBlock: 2.5px 2.5px;
 $marginBlockTxtIntro: 4px;
 $marginBlockTxtIntro--2p: 0px 0px 10px 3px;
 $marginBlockTxtIntro--1p: 0px 0px 19px 3px;
@@ -83,7 +83,7 @@ $blockTxtIntroduction: (
 //MAP POUR RESPONSIVE, LES BREAKPOINTS;
 $breakpoints: (
   "phone": 300px,
-  "tablet": 768px,
+  "tablet": 850px,
   "desktop": 1024px,
   "desktopLarge": 1345px,
   "wideScreen": 1450px,
