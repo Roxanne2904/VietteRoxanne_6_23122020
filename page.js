@@ -119,7 +119,7 @@ class Video {
            >
              <video
              src="./img/${this.photographe.nameFile}/${this.media.video}"
-             aria-label="Video, ${this.media.title} by ${this.photographe.name}"
+             aria-label="${this.media.title} by ${this.photographe.name}, video closeup view"
              class="blockPhoto__content__linkImg__blockImg__video"
              controls
              >
@@ -160,7 +160,7 @@ class Img {
           <img
             class="blockPhoto__content__linkImg__blockImg__img"
             src="./img/${this.photographe.nameFile}/${this.media.image}"
-            alt="${this.media.title} by ${this.photographe.name}"/>
+            alt="${this.media.title} by ${this.photographe.name}, image closeup view"/>
         </span>
       </div>
       <figcaption data-value="${this.media.id}" class="blockPhoto__content__legend">
@@ -358,11 +358,10 @@ const isOpeningTheModal = async () => {
   //----------------------------------------------------
   bgdModal.style.display = "block";
   if (bgdModal.style.display === "block") {
-    const modalFormBgd = document.querySelector(".modal");
+    const modalFormBgd = document.querySelector("#modal-form");
     modalFormBgd.ariaModal = "true";
     if (modalFormBgd.ariaModal === "true") {
-      const firstNameInput = document.getElementById("firstName");
-      firstNameInput.focus();
+      modalFormBgd.focus();
     }
   }
   photographName.dataset.photographer = `${photographe.name}`;
@@ -440,10 +439,7 @@ const isfocusingElementToOpeningModalPhoto = (elements) => {
       theModalPhoto.style.display = "block";
       if (theModalPhoto.style.display === "block") {
         theModalPhoto.ariaModal = "true";
-        const closeBtn = document.querySelector(
-          ".modalPhotographies__content__body__BlockIconeX__iconeX"
-        );
-        closeBtn.focus();
+        theModalPhoto.focus();
       }
       const idMedia_TypeOfString = elt.parentElement.dataset.value;
       idMedia_TypeOfNumber = parseInt(idMedia_TypeOfString);
@@ -687,6 +683,7 @@ const showDatas = async () => {
       <span 
        class="tagName tagName--change" 
        data-value="${tag}"
+       tabindex="0"
       >
         #${tag}
         <span class="tagName__bgd"></span>

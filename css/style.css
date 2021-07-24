@@ -819,9 +819,16 @@ html {
     font-size: 2.5rem;
   }
 }
+.body__blockIntro .blockIntro__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
 .body__blockIntro .blockIntro__link--page {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 50px 0;
 }
 @media screen and (min-width: 300px) and (max-width: 850px) {
