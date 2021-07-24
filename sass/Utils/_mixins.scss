@@ -1,0 +1,123 @@
+//______________________
+//INPUTS-TXT
+//______________________
+@mixin inputsTxt-appearance {
+  width: 100%;
+  height: 68px;
+  border-radius: 5px;
+  padding-left: 12px;
+  font-size: 1.7rem;
+  outline-style: none;
+  border: $colorTertiary solid 2px;
+}
+//______________________
+//ICONE CLOSE
+//______________________
+@mixin iconeClose-block {
+  display: block;
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+}
+@mixin iconeClose-line {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 4px;
+  background-color: $colorTertiary;
+  position: absolute;
+  top: 45%;
+}
+//______________________
+//BTN
+//______________________
+@mixin btn-appearance {
+  background-color: $colorPrimary;
+  color: $colorTertiary;
+  width: 170px;
+  height: 69px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  margin-top: 13px;
+}
+//______________________
+//BTN__bgd
+//______________________
+@mixin btn-focus {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $colorSecondary;
+  opacity: 0;
+  border-radius: 5px;
+  z-index: -1;
+  transition: opacity $duration;
+}
+//______________________
+//TAGSNAME
+//______________________
+@mixin tags-appearance {
+  font-size: 0.75rem;
+  color: $colorPrimary;
+  border-radius: 11px;
+  border: $colorGrey solid 0.5px;
+  background-color: $colorTertiary;
+  font-weight: bold;
+  padding: 3px 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+//______________________
+//TAGSNAME
+//______________________
+@mixin tags-focus {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $colorPrimary;
+  z-index: -1; // le fond secondaire en z-index -1
+  transition: opacity $duration;
+  border-radius: 11px;
+  opacity: 0;
+  transition: opacity $duration;
+}
+//______________________
+//BOUCLES//
+//1).INDEX-BlockTxt des blocks introductions des photographes.
+//______________________
+@mixin blockTxtIntroIndex($map) {
+  @each $key, $values in $map {
+    &#{$key} {
+      display: map-get($values, type);
+      text-align: map-get($values, textAlign);
+      color: map-get($values, color);
+      font-weight: map-get($values, fontWeight);
+      font-size: map-get($values, sizefont);
+    }
+  }
+}
+//______________________
+//KEYFRAMES
+//______________________
+//1). keyframe des modales
+@keyframes animModal {
+  from {
+    opacity: 0;
+    transform: translateY(-25vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
