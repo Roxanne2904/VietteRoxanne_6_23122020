@@ -586,8 +586,8 @@ const isOnClickToPassNextImg = (array) => {
 //appellée dans showDatas;
 const isOnKeyDown = (e, array) => {
   array = arrayIdMedia;
-  const keyCode = e.keyCode;
-  if (keyCode === 39 && theModalPhoto.ariaModal === "true") {
+  const keyCode = e.code;
+  if (keyCode === "ArrowRight" && theModalPhoto.ariaModal === "true") {
     if (array === arrayIdIsNotFiltering) {
       console.log("je ne suis pas filtré :" + " " + "> next");
       isChangingMediaNext(array);
@@ -597,7 +597,7 @@ const isOnKeyDown = (e, array) => {
       isChangingMediaNext(array);
     }
   }
-  if (keyCode === 37 && theModalPhoto.ariaModal === "true") {
+  if (keyCode === "ArrowLeft" && theModalPhoto.ariaModal === "true") {
     if (array === arrayIdIsNotFiltering) {
       console.log("je ne suis pas filtré :" + " " + "< previous");
       isChangingMediaPrevious(array);
@@ -616,6 +616,7 @@ const isClosingModalPhoto = () => {
   );
   theCrossBtn.addEventListener("click", () => {
     theModalPhoto.style.display = "none";
+    selectBtn.focus();
     if (theModalPhoto.style.display === "none") {
       theModalPhoto.ariaModal = "false";
     }
