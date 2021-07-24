@@ -10,12 +10,12 @@
 
 - [x] Mettre en place la methode Factory pattern;
 - [x] -ESLINT-
-- [x] Le test "AChecker" sans "knownIssues" |Conforme au WCAG|
+- [x] Le test "AChecker" sans "knownIssues" sur les deux fichiers HTML |Conforme au WCAG|
 - [x] Utiliser un lecteur d'écran gratuit pour tester;
+- [x] Fonctionne sur Google chrome et Firefox;
 - [x] W3C HTML de "page.html";
 - [x] W3C HTML de "index.html";
-- [x] Fonctionne sur Google chrome et Firefox;
-  > W3C CSS;
+- [x] W3C CSS;
 
 ---
 
@@ -79,4 +79,7 @@
 
 ### **Data**
 
-[.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)
+1. Data initial:
+   [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)
+2. Data Final:
+   [.JSON](./data/photographes.json)

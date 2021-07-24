@@ -10,7 +10,7 @@
       "tagline": "Voir le beau dans le quotidien",
       "price": 400,
       "portrait": "MimiKeel.jpg",
-      "alt": "Mimi Keel profil"
+      "alt": "Mimi Keel's profil"
     },
     {
       "name": "Ellie-Rose Wilkens",
@@ -22,7 +22,7 @@
       "tagline": "Capturer des compositions complexes",
       "price": 250,
       "portrait": "EllieRoseWilkens.jpg",
-      "alt": "Ellie Rose Wilkens profil"
+      "alt": "Ellie-Rose Wilkens's profil"
     },
     {
       "name": "Tracy Galindo",
@@ -34,7 +34,7 @@
       "tagline": "Photographe freelance",
       "price": 500,
       "portrait": "TracyGalindo.jpg",
-      "alt": "Tracy Galindo profil"
+      "alt": "Tracy Galindo's profil"
     },
     {
       "name": "Nabeel Bradford",
@@ -46,7 +46,7 @@
       "tagline": "Toujours aller de l'avant",
       "price": 350,
       "portrait": "NabeelBradford.jpg",
-      "alt": "Nabeel Bradford profil"
+      "alt": "Nabeel Bradford's profil"
     },
     {
       "name": "Rhode Dubois",
@@ -58,7 +58,7 @@
       "tagline": "Je crée des souvenirs",
       "price": 275,
       "portrait": "RhodeDubois.jpg",
-      "alt": "Rhode Dubois profil"
+      "alt": "Rhode Dubois's profil"
     },
     {
       "name": "Marcel Nikolic",
@@ -70,7 +70,7 @@
       "tagline": "Toujours à la recherche de LA photo",
       "price": 300,
       "portrait": "MarcelNikolic.jpg",
-      "alt": "Marcel Nikolic profil"
+      "alt": "Marcel Nikolic's profil"
     }
   ],
   "media": [

@@ -118,11 +118,12 @@ class Video {
              "
            >
              <video
-               aria-label="${this.media.title} by ${this.photographe.name}"
-               src="./img/${this.photographe.nameFile}/${this.media.video}"
-               class="blockPhoto__content__linkImg__blockImg__video"
-               controls
-             ></video>
+             src="./img/${this.photographe.nameFile}/${this.media.video}"
+             aria-label="Video, ${this.media.title} by ${this.photographe.name}"
+             class="blockPhoto__content__linkImg__blockImg__video"
+             controls
+             >
+             </video>
            </span>
          </div>
           <figcaption data-value="${this.media.id}" class="blockPhoto__content__legend">
@@ -404,6 +405,7 @@ const isAddingVideoOrPhotoContentIntoTheModal = () => {
           <div id="imgContent">
           <video
           controls
+          aria-label="Video, ${theRightMedia.title} by ${photographe.name}"
           src="./img/${photographe.nameFile}/${theRightMedia.video}"
           class="modalPhotographies__content__body__photo"
           >
@@ -421,7 +423,7 @@ const isAddingVideoOrPhotoContentIntoTheModal = () => {
         <img
            class="modalPhotographies__content__body__photo"
            src="./img/${photographe.nameFile}/${theRightMedia.image}"
-           alt="${theRightMedia.image} by ${photographe.name}"/>
+           alt="${theRightMedia.title} by ${photographe.name}"/>
         </div>
 
         <figcaption class="modalPhotographies__content__body__legend">
