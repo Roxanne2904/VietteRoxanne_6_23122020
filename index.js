@@ -48,6 +48,7 @@ const onClickNavTags = () => {
       if (arrayTags.includes(tagValue) === false) {
         //1/. On ajoute une classList pour changer l'apparence des tags lors du click;
         tag.classList.add("tagName__onclick");
+        tag.setAttribute("aria-label", `#${tag.dataset.value} is active`);
         //2/.ARRAY DATA TAGS_ON_CLICK //--> On range toutes les données dans un array;
         arrayTags.push(tagValue); //-->On ajoute les valeur dans le tableau lors du clic;
         //1/a.isMatching est un object qui récupère les données des photographes correspondant aux filtres cliqués;
@@ -104,6 +105,7 @@ const onClickNavTags = () => {
           .join("");
       } else if (arrayTags.includes(tagValue) === true) {
         tag.classList.remove("tagName__onclick");
+        tag.removeAttribute("aria-label");
         for (let i = 0; i < arrayTags.length; i++) {
           if (arrayTags[i] === tagValue) {
             arrayTags.splice(i, 1);
