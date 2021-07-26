@@ -354,6 +354,11 @@ html {
   z-index: 2;
   display: none;
 }
+@media screen and (min-width: 300px) and (max-width: 850px) {
+  .modal {
+    background-color: #db8876;
+  }
+}
 .modal .modalContent {
   margin: 77px auto;
   max-width: 669px;
@@ -485,6 +490,7 @@ html {
   .modal .modalContent__body__BlockBTnSub {
     display: flex;
     justify-content: center;
+    padding-bottom: 20px;
   }
 }
 
