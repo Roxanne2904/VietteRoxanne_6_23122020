@@ -4,7 +4,6 @@ const onScrollDisplayOn = () => {
 
   window.addEventListener("scroll", () => {
     scrollYPosition = window.scrollY;
-    console.log(scrollYPosition);
     if (scrollYPosition >= 10) {
       btnToGoUp.style.display = "block";
     } else if (scrollYPosition === 0) {
@@ -181,10 +180,10 @@ const onClickNavTags = () => {
 const fetchDataPhotographers = async () => {
   datas = await fetch("./data/photographes.json")
     .then((response) => {
-      return response.json(); //response.json = response.body.json;
+      return response.json(); //retourne une promise;
     })
     .then((body) => {
-      return body;
+      return body; //retourne le résultat;
     });
   //console.log(datas); //la variable qui renferme les données;ici il y a deux array(photographers et media)
 };

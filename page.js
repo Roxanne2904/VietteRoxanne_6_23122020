@@ -44,7 +44,6 @@ const onClickAddOrRemoveLikes = (elements) => {
         idMediaDatas = mediasIsMatchingWithId.filter((item) => {
           return item.id === idDataTypeOfNumb;
         });
-        console.log(idMediaDatas);
         elt.innerHTML = `<span data-add="${idMediaDatas[0].moreLike}" aria-label="nombre de j'aime" class="heart__nbs">${idMediaDatas[0].likes}</span>
           <span class="heart__img"
           ><img src="./img/Vector.png" alt="J'aime"
@@ -122,6 +121,7 @@ class Video {
              aria-label="${this.media.title} by ${this.photographe.name}, video closeup view"
              class="blockPhoto__content__linkImg__blockImg__video"
              controls
+             poster="./img/${this.photographe.nameFile}/${this.photographe.nameFile}_poster_video.png"
              >
              </video>
            </span>
@@ -253,8 +253,8 @@ const showDatasFiltering = () => {
     //On récupère les id dans l'ordre corespondant aux filtres;
     arrayIdIsFiltering = newArray.map((media) => media.id);
     arrayIdMedia = arrayIdIsFiltering;
-    console.log("arrayIdMedia IS filtering per :" + " " + `${value}`);
-    console.log(arrayIdMedia);
+    // console.log("arrayIdMedia IS filtering per :" + " " + `${value}`);
+    // console.log(arrayIdMedia);
   });
 };
 //------------
@@ -381,7 +381,7 @@ const isClosingTheModal = () => {
 //Toute deux sont appelées dans ShowDatas();
 const isLaunchingTheOpenModalEvent = () => {
   const btnOpenModal = document.querySelectorAll(".openModalForm");
-  console.log(btnOpenModal);
+  // console.log(btnOpenModal);
   btnOpenModal.forEach((btn) => {
     btn.addEventListener("click", isOpeningTheModal);
   });
@@ -485,7 +485,7 @@ const isChangingMediaNext = (arrayIdElmts) => {
   window.history.pushState(state, title, urlObject);
   //_______________________________________
   if (idMedia_TypeOfNumber === undefined) {
-    console.log("On retourne à l'index 0");
+    // console.log("On retourne à l'index 0");
     let arrayLength = arrayIdElmts.length;
     let returnToIndex0 = 0 % arrayLength; // output 0;
     idMedia_TypeOfNumber = arrayIdElmts[returnToIndex0];
@@ -529,7 +529,7 @@ const isChangingMediaPrevious = (arrayIdElmts) => {
   window.history.pushState(state, title, urlObject);
   //_______________________________________
   if (idMedia_TypeOfNumber === undefined) {
-    console.log("On retourne à l'index 0");
+    // console.log("On retourne à l'index 0");
     let arrayLength = arrayIdElmts.length;
     let returnToIndex0 = (arrayLength - 1) % arrayLength; // output ?;
 
@@ -563,22 +563,22 @@ const isOnClickToPassPreviousImg = (array) => {
   array = arrayIdMedia;
 
   if (array === arrayIdIsNotFiltering) {
-    console.log("je ne suis pas filtré : < previous");
+    // console.log("je ne suis pas filtré : < previous");
     isChangingMediaPrevious(array);
   }
   if (array === arrayIdIsFiltering) {
-    console.log("je suis filtré : < previous");
+    // console.log("je suis filtré : < previous");
     isChangingMediaPrevious(array);
   }
 };
 const isOnClickToPassNextImg = (array) => {
   array = arrayIdMedia;
   if (array === arrayIdIsNotFiltering) {
-    console.log("je ne suis pas filtré : > next ");
+    // console.log("je ne suis pas filtré : > next ");
     isChangingMediaNext(array);
   }
   if (array === arrayIdIsFiltering) {
-    console.log("je suis filtré : > next");
+    // console.log("je suis filtré : > next");
     isChangingMediaNext(array);
   }
 };
@@ -589,21 +589,21 @@ const isOnKeyDown = (e, array) => {
   const keyCode = e.code;
   if (keyCode === "ArrowRight" && theModalPhoto.ariaModal === "true") {
     if (array === arrayIdIsNotFiltering) {
-      console.log("je ne suis pas filtré :" + " " + "> next");
+      // console.log("je ne suis pas filtré :" + " " + "> next");
       isChangingMediaNext(array);
     }
     if (array === arrayIdIsFiltering) {
-      console.log("je suis filtré :" + " " + "> next");
+      // console.log("je suis filtré :" + " " + "> next");
       isChangingMediaNext(array);
     }
   }
   if (keyCode === "ArrowLeft" && theModalPhoto.ariaModal === "true") {
     if (array === arrayIdIsNotFiltering) {
-      console.log("je ne suis pas filtré :" + " " + "< previous");
+      // console.log("je ne suis pas filtré :" + " " + "< previous");
       isChangingMediaPrevious(array);
     }
     if (array === arrayIdIsFiltering) {
-      console.log("je suis filtré :" + " " + "< previous");
+      // console.log("je suis filtré :" + " " + "< previous");
       isChangingMediaPrevious(array);
     }
   }
@@ -707,6 +707,8 @@ const showDatas = async () => {
   //Le block en bas de page, qui contient le prix;
   priceData.innerHTML = `<span class="blockPrice__thePrice__data">${photographe.price}€/jour</span>`;
   //____________________________________
+  //____________________________________
+  //____________________________________
   //RECUPERER LES MEDIAS DU PHOTOGRAPHE;
   mediasIsMatchingWithId = datas.media.filter((item) => {
     const photosMatchWithId = item.photographerId === url_IdNmb;
@@ -764,8 +766,8 @@ const showDatas = async () => {
   //Recupération des ids, des medias actuelle, dans un array;
   arrayIdIsNotFiltering = mediasIsMatchingWithId.map((media) => media.id);
   arrayIdMedia = arrayIdIsNotFiltering;
-  console.log("arrayIdMedia NOT filtering");
-  console.log(arrayIdMedia);
+  // console.log("arrayIdMedia NOT filtering");
+  // console.log(arrayIdMedia);
 
   //1.event onclick
   //--------

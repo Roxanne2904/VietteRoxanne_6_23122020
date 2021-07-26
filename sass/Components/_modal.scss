@@ -209,7 +209,9 @@
       }
       &__photo {
         border-radius: 5px;
-        width: 100%;
+        max-width: 100%;
+        max-height: 900px;
+        object-fit: scale-down;
       }
       &__legend {
         font-size: 1.5rem;
