@@ -374,6 +374,7 @@ html {
 @media screen and (min-width: 300px) and (max-width: 850px) {
   .modal .modalContent__body {
     border-radius: inherit;
+    height: 100%;
   }
 }
 .modal .modalContent__body__blockTitle {
@@ -391,7 +392,7 @@ html {
 }
 @media screen and (min-width: 300px) and (max-width: 850px) {
   .modal .modalContent__body__blockTitle__Title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 }
 .modal .modalContent__body__blockTitle__Title::after {
@@ -484,7 +485,6 @@ html {
   .modal .modalContent__body__BlockBTnSub {
     display: flex;
     justify-content: center;
-    padding-bottom: 30px;
   }
 }
 
