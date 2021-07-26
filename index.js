@@ -87,14 +87,14 @@ const onClickNavTags = () => {
           </p><ul class="blockIntro__ul"> ${data.tags
             .map(
               (tag) => `<li class="blockIntro__ul__linksTags">
-            <a
-              href="#"
-              class="tagName blockIntro__links__theLink"
+              <span
+              class="tagName tagName--changeForIndexBlock blockIntro__links__theLink"
               data-value="${tag}"
+              tabindex="0"
             >
               #${tag}
               <span class="tagName__bgd"></span>
-            </a>
+            </span>
           </li>`
             )
             .join("")}
@@ -145,14 +145,14 @@ const onClickNavTags = () => {
           </p><ul class="blockIntro__ul"> ${data.tags
             .map(
               (tag) => `<li class="blockIntro__ul__linksTags">
-            <a
-              href="#"
-              class="tagName blockIntro__links__theLink"
+              <span
+              class="tagName tagName--changeForIndexBlock blockIntro__links__theLink"
               data-value="${tag}"
+              tabindex="0"
             >
               #${tag}
               <span class="tagName__bgd"></span>
-            </a>
+            </span>
           </li>`
             )
             .join("")}
