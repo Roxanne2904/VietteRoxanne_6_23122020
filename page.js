@@ -121,7 +121,7 @@ class Video {
              aria-label="${this.media.title} by ${this.photographe.name}, video closeup view"
              class="blockPhoto__content__linkImg__blockImg__video"
              controls
-             poster="./img/${this.photographe.nameFile}/${this.photographe.nameFile}_poster_video.png"
+             poster="./img/${this.photographe.nameFile}/${this.photographe.nameFile}_poster_video.jpeg"
              >
              </video>
            </span>
