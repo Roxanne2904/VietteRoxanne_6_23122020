@@ -2,14 +2,30 @@
 $colorPrimary: #901c1c;
 $colorSecondary: #db8876;
 $colorTertiary: #ffffff;
+//colorOrange
+$colorOrange: #d3573c;
+$colorOrangePaler: #db8876;
+$colorOrangeLighter: #fafafa;
+// colorGrey___________
 $colorGrey: #c4c4c4;
+$colorGreyA: #757575;
+$colorGreyB: #525252;
+//_____________________
 $black: #000000;
 
+//RADIUS
+$radiusBlocks: 5px;
 //SIZE
 $sizelogoWidth: 200px;
 
+//FONT
+$fontPhotographerName: 2.5rem;
+
 //MARGIN
-$marginBlock: 12px;
+$marginTagsBlock: 2.5px 2.5px;
+$marginBlockTxtIntro: 4px;
+$marginBlockTxtIntro--2p: 0px 0px 10px 3px;
+$marginBlockTxtIntro--1p: 0px 0px 19px 3px;
 
 //TRANSITION DURATION
 $duration: 250ms;
@@ -23,6 +39,8 @@ $blockTxtIntroduction: (
     color: $colorPrimary,
     fontWeight: bold,
     sizefont: 0.813rem,
+    marg: $marginBlockTxtIntro,
+    fontFamily: "DM Sans Regular",
   ),
   2: (
     type: block,
@@ -30,12 +48,44 @@ $blockTxtIntroduction: (
     color: $black,
     fontWeight: 100,
     sizefont: 0.625rem,
+    marg: $marginBlockTxtIntro,
+    fontFamily: "DM Sans Bold",
   ),
   3: (
     type: block,
     textAlign: center,
-    color: $black,
+    color: $colorGreyA,
     fontWeight: 100,
     sizefont: 0.625rem,
+    marg: $marginBlockTxtIntro,
+    fontFamily: "DM Sans Regular",
   ),
+  1p: (
+    type: block,
+    textAlign: inherit,
+    color: $colorPrimary,
+    fontWeight: 100,
+    sizefont: 1.5rem,
+    sizefontPhone: 1.1rem,
+    marg: $marginBlockTxtIntro--1p,
+    margPhone: inherit,
+  ),
+  2p: (
+    type: block,
+    textAlign: inherit,
+    color: $colorGreyB,
+    fontWeight: 100,
+    sizefont: 1.125rem,
+    sizefontPhone: 0.85rem,
+    marg: 6px 0 0 0,
+  ),
+);
+//MAP POUR RESPONSIVE, LES BREAKPOINTS;
+$breakpoints: (
+  "phone": 300px,
+  "tablet": 850px,
+  "desktop": 1024px,
+  "desktopLarge": 1345px,
+  "wideScreen": 1450px,
+  "wideScreenXL": 2000px,
 );

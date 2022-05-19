@@ -1,0 +1,63 @@
+.block__bodyPhotos {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  width: 103.8%;
+  position: relative;
+  right: 1.8%;
+  @include media-between(phone, tablet) {
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+    position: inherit;
+    right: inherit;
+  }
+  &__li {
+    width: 33.3%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    @include media-between(phone, tablet) {
+      width: 100%;
+    }
+  }
+}
+
+#btnResponsive {
+  @include media-between(phone, tablet) {
+    position: fixed;
+    bottom: 50px;
+    transform-origin: center;
+    right: 50%;
+    transform: translateX(50%);
+    display: block;
+    height: inherit;
+    padding: 10px 25px;
+  }
+  @media screen and (min-width: 851px) {
+    display: none;
+  }
+}
+
+.blockPrice {
+  display: flex;
+  justify-content: space-around;
+  width: 376px;
+  font-size: 1.5rem;
+  background-color: $colorOrangePaler;
+  padding: 21px 0 37px 0;
+  position: fixed;
+  bottom: -21px;
+  right: 36px;
+  border-radius: $radiusBlocks;
+  @include media-between(phone, tablet) {
+    display: none;
+  }
+  &__nbsOfLikes {
+    display: block;
+  }
+  &__thePrice {
+    display: block;
+  }
+}

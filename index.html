@@ -2,7 +2,6 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -12,200 +11,141 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <title>FishEyes</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
   </head>
-  <body>
-    <!--Le logo-->
-    <div class="logo">
-      <img
-        class="logo__img"
-        src="img/logo.png"
-        alt="FishEyes logo de la page"
-      />
-    </div>
-
-    <!--Btns-->
-    <button class="btn">
-      Engagez-moi
-      <span class="btn__bgd"></span>
-    </button>
-
-    <button class="btn" id="openModal">
-      Contactez-moi
-      <span class="btn__bgd"></span>
-    </button>
-
-    <!--tags-->
-    <a href="#" class="tagName">
-      #tag-name
-      <span class="tagName__bgd"></span>
+  <body class="body body--index">
+    <!--Le lien pour remonter en haut de la page-->
+    <a href="#mainTitleIndex" id="linkToGoUp" tabindex="0"
+      >Passer au contenu
     </a>
-    <!--heart-->
-    <span class="heart">
-      <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
-      <span class="heart__img"
-        ><img src="./img/Vector.png" alt="J'aime"
-      /></span>
-    </span>
-    <!--BlockPhotos-->
-    <figure class="blockPhoto__content">
-      <a class="blockPhoto__content__linkImg" href="#">
-        <div class="blockPhoto__content__linkImg__blockImg">
-          <img
-            class="blockPhoto__content__linkImg__blockImg__img"
-            src="img/thumb-img.png"
-            alt="oiseau"
-          />
-        </div>
-      </a>
-      <figcaption class="blockPhoto__content__legend">
-        <span>Photo</span>
-        <span class="heart">
-          <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
-          <span class="heart__img"
-            ><img src="./img/Vector.png" alt="J'aime"
-          /></span>
-        </span>
-      </figcaption>
-    </figure>
-    <!--BlockIntroduceIndex-->
-    <h2 class="BlockIntroIndex" data-photographer="Roxanne Viette">
-      <a class="BlockIntroIndex__link" href="#">
-        <div class="BlockIntroIndex__link__blockImg">
-          <img
-            class="BlockIntroIndex__link__blockImg__img"
-            src="img/thumb-img.png"
-            alt=""
-          />
-        </div>
-      </a>
-    </h2>
-    <p class="BlockIntroIndex__blocktxt">
-      <span class="BlockIntroIndex__blocktxt1">London,UK</span>
-      <span class="BlockIntroIndex__blocktxt2">
-        Voir le beau dans le quotidien
-      </span>
-      <span class="BlockIntroIndex__blocktxt3">400€/jour</span>
-    </p>
-    <!--Select options//la liste déroulante-->
-    <div class="block">
-      <div class="block__content">
-        <select class="block__select">
-          <option class="block__select1" value="1">Popularité</option>
-          <option class="block__select2" value="2">Date</option>
-          <option class="block__select3" value="3">Titre</option>
-        </select>
-      </div>
-    </div>
-
-    <!--FORMULAIRE-->
-    <div role="dialog" class="modal">
-      <div class="modalContent">
-        <div class="modalContent__body">
-          <div class="modalContent__body__blockTitle">
-            <h1
-              class="modalContent__body__blockTitle__Title"
-              data-photographer="Roxanne Viette"
-            >
-              Contactez-moi
-            </h1>
-            <span role="button" aria-label="Fermer la modal" class="iconeX"
-              ><!--the cross btn--></span
-            >
-          </div>
-          <form
-            name="modalContent__body__contact"
-            class="modalContent__body__form"
-            id="myForm"
-            methode="post"
-            action="index.html"
-            onsubmit="return validate(event)"
-            novalidate
+    <header class="headerIndex" aria-label="main page header">
+      <div class="headerIndex__banner">
+        <!--Le logo-->
+        <a
+          href="./index.html"
+          class="logo headerIndex__banner__linkLogo"
+          tabindex="0"
+        >
+          <img class="logo__img" src="img/logo.png" alt="FishEyes Home page" />
+        </a>
+        <!-- ___________________________________________ -->
+        <nav
+          class="headerIndex__banner__nav"
+          aria-label="photographer categories"
+        >
+          <!--tags-portrait-->
+          <span
+            role="button"
+            tabindex="0"
+            data-value="portrait"
+            class="tagName"
           >
-            <!--Prenom-->
-            <div
-              class="modalContent__body__block"
-              data-error="il y a une erreur"
-              data-error-visible="false"
-            >
-              <label for="firstName">Prénom</label>
-              <input
-                type="text"
-                class="modalContent__body__inputsTxt"
-                id="firstName"
-                name="firstName"
-                pattern="[A-Z][a-z'-]+"
-                placeholder="Prénom"
-                required
-              />
-            </div>
+            #Portrait
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-art-->
+          <span role="button" tabindex="0" data-value="art" class="tagName">
+            #Art
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-fashion-->
+          <span role="button" tabindex="0" data-value="fashion" class="tagName">
+            #Fashion
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-architecture-->
+          <span
+            role="button"
+            tabindex="0"
+            data-value="architecture"
+            class="tagName"
+          >
+            #Architecture
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-travel-->
+          <span role="button" tabindex="0" data-value="travel" class="tagName">
+            #Travel
+            <span class="tagName__bgd"></span>
+          </span>
 
-            <!--Nom-->
-            <div
-              class="modalContent__body__block"
-              data-error="il y a une erreur"
-              data-error-visible="false"
-            >
-              <label for="familyName">Nom</label>
-              <input
-                type="text"
-                class="modalContent__body__inputsTxt"
-                id="familyName"
-                name="familyName"
-                pattern="[A-Z]+"
-                placeholder="Nom"
-                required
-              />
-            </div>
-
-            <!--E-mail-->
-            <div
-              class="modalContent__body__block"
-              data-error="il y a une erreur brouuuu"
-              data-error-visible="false"
-            >
-              <label for="email">Email</label>
-              <input
-                type="email"
-                class="modalContent__body__inputsTxt"
-                id="email"
-                name="email"
-                pattern="[A-Z][a-z'-]+"
-                placeholder="E-mail"
-                required
-              />
-            </div>
-
-            <!--textArea-->
-            <div
-              class="modalContent__body__block"
-              data-error="brou!"
-              data-error-visible="false"
-            >
-              <label for="textArea">Votre message</label>
-              <textarea
-                id="textArea"
-                class="
-                  modalContent__body__inputsTxt
-                  modalContent__body__inputsTxt--changeHeight
-                "
-                name="textArea"
-                placeholder="Ecrivez-moi quelque chose ..."
-                required
-              ></textarea>
-            </div>
-            <!--BtnSubmit-->
-            <input
-              type="submit"
-              id="btnSubmit"
-              name="btnSubmit"
-              value="Envoyer"
-              required
-            />
-          </form>
-        </div>
+          <!--tags-sport-->
+          <span role="button" tabindex="0" data-value="sport" class="tagName">
+            #Sport
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-animals-->
+          <span role="button" tabindex="0" data-value="animals" class="tagName">
+            #Animals
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-events-->
+          <span role="button" tabindex="0" data-value="events" class="tagName">
+            #Events
+            <span class="tagName__bgd"></span>
+          </span>
+        </nav>
       </div>
-    </div>
-
-    <script type="text/javascript" src="index.js"></script>
+    </header>
+    <main class="mainContent">
+      <h1 class="mainContent__title" id="mainTitleIndex">Nos Photographes</h1>
+      <ul id="photographerIndex">
+        <!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 01<li>-->
+        <li class="body__blockIntro">
+          <a class="blockIntro__link" href="./page.html">
+            <h2 class="blockIntro">
+              <span class="blockIntro__title">Undefined</span>
+            </h2>
+            <span class="blockIntro__link__blockImg">
+              <!--Future img-->Undefined link
+            </span>
+          </a>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2"> Ma Devise </span>
+            <span class="blockIntro__blocktxt3">Prix/jour</span>
+          </p>
+          <ul class="blockIntro__ul"></ul>
+        </li>
+        <!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 02<li>-->
+        <li class="body__blockIntro">
+          <a class="blockIntro__link" href="./page.html">
+            <h2 class="blockIntro">
+              <span class="blockIntro__title">Undefined</span>
+            </h2>
+            <span class="blockIntro__link__blockImg">
+              <!--Future img-->Undefined link
+            </span>
+          </a>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2"> Ma Devise </span>
+            <span class="blockIntro__blocktxt3">Prix/jour</span>
+          </p>
+          <ul class="blockIntro__ul"></ul>
+        </li>
+        <!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 03<li>-->
+        <li class="body__blockIntro">
+          <a class="blockIntro__link" href="./page.html">
+            <h2 class="blockIntro">
+              <span class="blockIntro__title">Undefined</span>
+            </h2>
+            <span class="blockIntro__link__blockImg">
+              <!--Future img-->Undefined link
+            </span>
+          </a>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2"> Ma Devise </span>
+            <span class="blockIntro__blocktxt3">Prix/jour</span>
+          </p>
+          <ul class="blockIntro__ul"></ul>
+        </li>
+      </ul>
+    </main>
+    <script src="./index.js"></script>
   </body>
 </html>

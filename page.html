@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>FishEyes | Photographers's Page</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+  </head>
+  <body class="body">
+    <!-- ___________________________________________ -->
+    <!--MODAL PHOTOGRAPHIES-->
+    <div
+      class="modalPhotographies modalPhotographies--change"
+      role="dialog"
+      aria-label="image closeup view"
+      aria-modal="false"
+      tabindex="2"
+    >
+      <div class="modalPhotographies__content">
+        <div class="modalPhotographies__content__body">
+          <div class="modalPhotographies__content__body__bgd">
+            <div class="modalPhotographies__content__body__BlockIconeX">
+              <button
+                class="modalPhotographies__content__body__BlockIconeX__iconeX"
+                tabindex="4"
+              >
+                <img src="./img/crossIcone.png" alt="Close dialog" />
+              </button>
+            </div>
+            <div>
+              <button
+                id="nextBtn"
+                tabindex="3"
+                class="
+                  modalPhotographies__content__body__iconeToSwitch
+                  modalPhotographies__content__body__iconeToSwitch--change
+                "
+              >
+                <img src="img/iconeL.png" alt="Next image" />
+              </button>
+            </div>
+
+            <figure class="modalPhotographies__content__body__blockPhoto">
+              <div id="imgContent">
+                <img
+                  class="modalPhotographies__content__body__photo"
+                  src="./img/thumb-img.png"
+                  alt=""
+                />
+              </div>
+
+              <figcaption class="modalPhotographies__content__body__legend">
+                <span id="modalLegend">Legende de la photo</span>
+              </figcaption>
+            </figure>
+            <div>
+              <button
+                id="previousBtn"
+                tabindex="2"
+                class="modalPhotographies__content__body__iconeToSwitch"
+              >
+                <img src="img/iconeL.png" alt="Previous image" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ___________________________________________ -->
+    <!--MODAL FORMULAIRE-->
+    <div
+      role="dialog"
+      id="modal-form"
+      class="modal"
+      aria-labelledby="contactez-moi"
+      aria-modal="false"
+      tabindex="0"
+    >
+      <div class="modalContent">
+        <div class="modalContent__body">
+          <div class="modalContent__body__blockTitle">
+            <h1
+              class="modalContent__body__blockTitle__Title"
+              data-photographer="Undefined"
+              id="contactez-moi"
+            >
+              Contactez-moi
+            </h1>
+          </div>
+          <form
+            name="modalContent__body__contact"
+            class="modalContent__body__form"
+            id="myForm"
+            action="page.html"
+            method="GET"
+            novalidate
+          >
+            <!--Prenom-->
+            <div
+              class="modalContent__body__block"
+              data-error="Commencez par une majuscule; des lettres uniquement !"
+              data-error-visible="false"
+            >
+              <label for="firstName">Prénom</label>
+              <input
+                tabindex="0"
+                type="text"
+                class="modalContent__body__inputsTxt"
+                id="firstName"
+                name="firstName"
+                pattern="[A-Z][a-z'-]+"
+                placeholder="Prénom"
+                required
+              />
+            </div>
+
+            <!--Nom-->
+            <div
+              class="modalContent__body__block"
+              data-error="Le nom doit être entièrement en majuscule !"
+              data-error-visible="false"
+            >
+              <label for="familyName">Nom</label>
+              <input
+                tabindex="0"
+                type="text"
+                class="modalContent__body__inputsTxt"
+                id="familyName"
+                name="familyName"
+                pattern="[A-Z]+"
+                placeholder="Nom"
+                required
+              />
+            </div>
+
+            <!--E-mail-->
+            <div
+              class="modalContent__body__block"
+              data-error="Il faut rentrer une adresse e-mail valide !"
+              data-error-visible="false"
+            >
+              <label for="email">Email</label>
+              <input
+                tabindex="0"
+                type="email"
+                class="modalContent__body__inputsTxt"
+                id="email"
+                name="email"
+                pattern="[a-zA-Z0-9._\-]+@[a-zA-Z0-9._\-]+\.[a-zA-Z]{2,10}"
+                placeholder="E-mail"
+                required
+              />
+            </div>
+
+            <!--textArea-->
+            <div
+              class="modalContent__body__block"
+              data-error="min 10 et max 150 caractères !"
+              data-error-visible="false"
+            >
+              <label for="textArea">Votre message</label>
+              <textarea
+                tabindex="0"
+                id="textArea"
+                class="
+                  modalContent__body__inputsTxt
+                  modalContent__body__inputsTxt--changeHeight
+                "
+                minlength="10"
+                maxlength="150"
+                name="textArea"
+                placeholder="Ecrivez-moi quelque chose ..."
+                required
+              ></textarea>
+            </div>
+            <!--BtnSubmit-->
+            <div class="modalContent__body__BlockBTnSub">
+              <input
+                tabindex="0"
+                type="submit"
+                id="btnSubmit"
+                name="btnSubmit"
+                value="Envoyer"
+              />
+            </div>
+
+            <!--X BUTTON-->
+            <button
+              class="iconeX"
+              aria-label="Close Contact form"
+              tabindex="0"
+            ></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <header aria-label="en-tête de la page des photographe">
+      <!--Le logo-->
+      <a
+        href="./index.html"
+        class="logo headerIndex__banner__linkLogo"
+        tabindex="0"
+      >
+        <img class="logo__img" src="img/logo.png" alt="FishEyes Home page" />
+      </a>
+    </header>
+    <main>
+      <!-- ___________________________________________ -->
+      <!-- ___________________________________________ -->
+      <!-- BlockIntroducePages -->
+      <div class="body__blockIntro body__blockIntro--page">
+        <div class="blockIntro blockIntro--pages">
+          <h1 class="blockIntro__titlePages">Undefined</h1>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1p">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2p">???</span>
+          </p>
+          <ul class="blockIntro__ul blockIntro__ul--page">
+            <li class="blockIntro__ul__linksTags">
+              <span class="tagName tagName--change">
+                #tag
+                <span class="tagName__bgd"></span>
+              </span>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <span class="tagName tagName--change">
+                #tag
+                <span class="tagName__bgd"></span>
+              </span>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <span class="tagName tagName--change">
+                #tag
+                <span class="tagName__bgd"></span>
+              </span>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <span class="tagName tagName--change">
+                #tag
+                <span class="tagName__bgd"></span>
+              </span>
+            </li>
+            <li class="blockIntro__ul__linksTags">
+              <span class="tagName tagName--change">
+                #tag
+                <span class="tagName__bgd"></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="blockIntro__contentForAttach">
+          <button class="btn blockIntro__contentForAttach__btn openModalForm">
+            Contactez-moi
+            <span class="btn__bgd"></span>
+          </button>
+
+          <span class="blockIntro__link blockIntro__link--page">
+            <span
+              class="
+                blockIntro__link__blockImg blockIntro__link__blockImg--change
+              "
+            >
+            </span>
+          </span>
+        </div>
+      </div>
+      <!-- __________________________________________ -->
+      <!--Select options//la liste déroulante-->
+      <div class="block">
+        <label class="block__label" for="sort-select">Trier par</label>
+        <div class="block__content" data-value="&#xf078;">
+          <select
+            class="block__select"
+            name="sort"
+            id="sort-select"
+            onfocus="getFocus()"
+            onblur="getBlur()"
+          >
+            <option class="block__select1" value="popularite" selected>
+              Popularité
+            </option>
+            <option class="block__select2" value="date">Date</option>
+            <option class="block__select3" value="titre">Titre</option>
+          </select>
+        </div>
+      </div>
+
+      <ul id="photosBody" class="block__bodyPhotos">
+        <li class="block__bodyPhotos__li">
+          <!-- ___________________________________________ -->
+          <!--BlockVideo-01-->
+          <figure class="blockPhoto__content" data-value>
+            <button class="blockPhoto__content__linkImg">
+              <span class="blockPhoto__content__linkImg__blockImg">
+                <span
+                  class="blockPhoto__content__linkImg__blockImg__empty"
+                ></span>
+              </span>
+            </button>
+            <figcaption data-value class="blockPhoto__content__legend">
+              <span class="blockPhoto__content__legend__photoName"
+                >Undefined</span
+              >
+              <div>
+                <button class="heart">
+                  <span data-add class="heart__nbs">0</span>
+                  <span class="heart__img"
+                    ><img src="./img/Vector.png" alt="J'aime"
+                  /></span>
+                </button>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- ___________________________________________ -->
+        </li>
+        <li class="block__bodyPhotos__li">
+          <!-- ___________________________________________ -->
+          <!--BlockPhotos 01-->
+          <figure class="blockPhoto__content" data-value>
+            <button class="blockPhoto__content__linkImg">
+              <span class="blockPhoto__content__linkImg__blockImg">
+                <span
+                  class="blockPhoto__content__linkImg__blockImg__empty"
+                ></span>
+              </span>
+            </button>
+            <figcaption data-value class="blockPhoto__content__legend">
+              <span class="blockPhoto__content__legend__photoName"
+                >Undefined</span
+              >
+              <div>
+                <button class="heart">
+                  <span data-add class="heart__nbs">0</span>
+                  <span class="heart__img"
+                    ><img src="./img/Vector.png" alt="J'aime"
+                  /></span>
+                </button>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- ___________________________________________ -->
+        </li>
+        <li class="block__bodyPhotos__li">
+          <!-- ___________________________________________ -->
+          <!--BlockPhotos 02-->
+          <figure class="blockPhoto__content" data-value>
+            <button class="blockPhoto__content__linkImg">
+              <span class="blockPhoto__content__linkImg__blockImg">
+                <span
+                  class="blockPhoto__content__linkImg__blockImg__empty"
+                ></span>
+              </span>
+            </button>
+            <figcaption data-value class="blockPhoto__content__legend">
+              <span class="blockPhoto__content__legend__photoName"
+                >Undefined</span
+              >
+              <div>
+                <button class="heart">
+                  <span data-add class="heart__nbs">0</span>
+                  <span class="heart__img"
+                    ><img src="./img/Vector.png" alt="J'aime"
+                  /></span>
+                </button>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- ___________________________________________ -->
+        </li>
+      </ul>
+      <!-- Btn pour le responsive "contactez-moi" -->
+
+      <button class="btn openModalForm" id="btnResponsive">
+        Contactez-moi
+        <span class="btn__bgd"></span>
+      </button>
+
+      <!-- Block en bas avec prix et nbs de likes -->
+      <!-- ___________________________________________ -->
+      <div class="blockPrice">
+        <span class="blockPrice__nbsOfLikes"
+          >0
+          <img
+            class="blockPrice____nbsOfLikes__heartIcone"
+            src="./img/heart__black.png"
+            alt="j'aime"
+        /></span>
+        <span class="blockPrice__thePrice"
+          ><span class="blockPrice__thePrice__data">0€/jour</span></span
+        >
+      </div>
+      <!-- ___________________________________________ -->
+      <!--heart-->
+      <!-- <span class="heart">
+      <span aria-label="nombre de j'aime" class="heart__nbs">12</span>
+      <span class="heart__img"
+        ><img src="./img/Vector.png" alt="J'aime"
+      /></span>
+    </span> -->
+      <!-- ___________________________________________ -->
+      <!--Btns-->
+      <!-- <button class="btn">
+      Engagez-moi
+      <span class="btn__bgd"></span>
+    </button>
+
+    <button class="btn">
+      Contactez-moi
+      <span class="btn__bgd"></span>
+    </button> -->
+    </main>
+    <script src="./page.js"></script>
+  </body>
+</html>

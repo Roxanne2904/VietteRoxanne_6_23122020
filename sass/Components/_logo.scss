@@ -1,7 +1,10 @@
-.logo{
+.logo {
+  display: inline-block;
+  &__img {
     max-width: $sizelogoWidth;
-    padding:12px;
-    &__img{
-        max-width: $sizelogoWidth;
+    padding: 5px 2px 0 2px;
+    @include media-between(phone, tablet) {
+      max-width: 160px;
     }
+  }
 }
