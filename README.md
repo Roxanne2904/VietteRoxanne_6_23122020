@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # VietteRoxanne_6_23122020
 P6 projet Openclassrooms
 
@@ -90,4 +90,4 @@ P6 projet Openclassrooms
    [.JSON](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeData.json)
 2. Data Final:
    [.JSON](./data/photographes.json)
->>>>>>> c75b2436d40a91e8439d3da3b83838997f6dc907
+
