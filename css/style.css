@@ -321,6 +321,7 @@ html {
 
 .heart {
   display: block;
+  cursor: pointer;
 }
 .heart__nbs {
   font-size: 1.5rem;
@@ -471,7 +472,7 @@ html {
   border: #000000 2px solid;
 }
 .modal .modalContent__body__inputsTxt:valid {
-  border: #1c9754 2px solid;
+  border: rgb(28, 151, 84) 2px solid;
 }
 .modal .modalContent__body__inputsTxt--changeHeight {
   height: 170px;
