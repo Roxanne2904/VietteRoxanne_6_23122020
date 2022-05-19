@@ -1,0 +1,202 @@
+//BLOCKPHOTOS
+.blockPhoto__content {
+  width: 89.21%;
+  @include media-between(phone, tablet) {
+    width: 100%;
+  }
+  &__linkImg {
+    width: -moz-available;
+    &__blockImg {
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      background-color: $colorGrey;
+      &__video {
+        height: 300px;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: $radiusBlocks;
+        @include media-between(phone, tablet) {
+          height: 190px;
+        }
+      }
+      &__img {
+        object-fit: cover;
+        height: 300px;
+        width: 100%;
+        display: block;
+        border-radius: $radiusBlocks;
+        @include media-between(phone, tablet) {
+          height: 190px;
+        }
+      }
+      &__empty {
+        height: 300px;
+        width: 350px;
+        display: block;
+        background: $colorGrey;
+        border-radius: $radiusBlocks;
+      }
+    }
+  }
+  &__legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    color: $colorPrimary;
+    padding: 10px 0;
+    @include media-between(phone, tablet) {
+      font-size: 0.875rem;
+      padding: 0 0 0 6px;
+    }
+    &__photoName {
+      max-width: 80%;
+      @include media-between(phone, tablet) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+//____________________________
+//INDEX et PAGES -Block introduction/présentation des photographes;
+//____________________________
+#photographerIndex {
+  //Valable pour la page index uniquement:
+  //block <ul> qui contient les <li> :" blockIntro" = les blocks présentation des photographes;
+  display: contents;
+  list-style-type: none;
+}
+.body__blockIntro {
+  width: 33%;
+  padding: 0 0 60px 0;
+  @include media-between(phone, desktop) {
+    width: 100%;
+  }
+  @include media-between(desktop, desktopLarge) {
+    width: 50%;
+  }
+  &--page {
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    background-color: $colorOrangeLighter;
+    margin: 40px 0;
+    padding: 0;
+    @include media-between(phone, tablet) {
+      background-color: transparent;
+    }
+  }
+  //-------
+  .blockIntro {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: $colorOrange;
+    &__title {
+      text-align: center;
+      font-size: $fontPhotographerName;
+      padding-top: 20px;
+    }
+    &--pages {
+      align-items: flex-start;
+      padding: 60px 0px 40px 40px;
+      @include media-between(phone, tablet) {
+        padding: inherit;
+        width: 60%;
+      }
+    }
+    &__titlePages {
+      font-size: 4rem;
+      @include media-between(phone, tablet) {
+        font-size: 2.5rem;
+      }
+    }
+    &__link {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      &--page {
+        //concerne l'icone img de la page des photographes;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 50px 0;
+        @include media-between(phone, tablet) {
+          padding: 0 10px;
+          align-items: baseline;
+        }
+      }
+      &__blockImg {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: 199px;
+        height: 199px;
+        border-radius: 50%;
+        background-color: $colorGrey;
+        color: $colorGrey;
+        &--change {
+          @include media-between(phone, tablet) {
+            width: 120px;
+            height: 120px;
+          }
+        }
+        &__img {
+          width: 155%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-44%, -50%);
+        }
+      }
+    }
+    &__blocktxt {
+      //les blocks txt
+      @include blockTxtIntroIndex($blockTxtIntroduction);
+    }
+    &__ul {
+      // blocks <ul> qui contient les tags;
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      &--page {
+        //block <ul> de la page des photographes;
+        justify-content: flex-start;
+        @include media-between(phone, tablet) {
+          flex-wrap: wrap;
+        }
+      }
+    }
+    &__linksTags {
+      //les liens  <li> #tags
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    &__contentForAttach {
+      //Block <div> uniquement présent dans la page photographe;
+      display: flex;
+      width: 70%;
+      justify-content: space-between;
+      margin: 0 0 0 30px;
+      @include media-between(phone, tablet) {
+        margin: 0;
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+      }
+      &__btn {
+        margin: 60px 0;
+        @include media-between(phone, tablet) {
+          display: none;
+        }
+      }
+      // + icone voir plus haut à "&__link" et &--page;
+      //(la sémantique n'a pas été changé pour faire correspondre la page et l'index en même temps);
+      // dans le html, l'icone photographe est dans ce bloc;
+    }
+  }
+}

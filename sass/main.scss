@@ -1,1 +1,21 @@
-@import "./Utils/variables";
+//Utils
+@import "./Utils/variables.scss";
+@import "./Utils/mixins.scss";
+
+//Base
+@import "./Base/base.scss";
+
+//Components
+@import "./Components/logo.scss";
+@import "./Components/buttons.scss";
+@import "./Components/modal.scss";
+@import "./Components/icones.scss";
+@import "./Components/photographers's introduction.scss";
+
+//layout
+//rien pour le moment;
+
+//page
+@import "./pages/index.scss";
+@import "./pages/pagePhotographer.scss";
+

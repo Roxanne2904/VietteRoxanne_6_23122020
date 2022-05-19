@@ -1,0 +1,43 @@
+//______________________
+//closebtn (the X)
+//______________________
+.iconeX {
+  @include iconeClose-block;
+  transition: 0.3s;
+  @include media-between(phone, tablet) {
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: 20px;
+  }
+  &::after {
+    @include iconeClose-line;
+    background-color: $colorTertiary;
+    transform: rotateZ(45deg);
+    @include media-between(phone, tablet) {
+      @include iconeClose-line-Phone-;
+    }
+  }
+  &::before {
+    @include iconeClose-line;
+    background-color: $colorTertiary;
+    transform: rotateZ(-45deg);
+    @include media-between(phone, tablet) {
+      @include iconeClose-line-Phone-;
+    }
+  }
+  // &--change {
+  //   display: block;
+
+  //   &::after {
+  //     @include iconeClose-line;
+  //     background-color: $colorPrimary;
+  //     transform: rotateZ(45deg);
+  //   }
+  //   &::before {
+  //     @include iconeClose-line;
+  //     background-color: $colorPrimary;
+  //     transform: rotateZ(-45deg);
+  //   }
+  // }
+}

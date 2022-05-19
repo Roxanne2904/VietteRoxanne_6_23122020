@@ -2,10 +2,150 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <title>FishEyes</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
   </head>
-  <body></body>
+  <body class="body body--index">
+    <!--Le lien pour remonter en haut de la page-->
+    <a href="#mainTitleIndex" id="linkToGoUp" tabindex="0"
+      >Passer au contenu
+    </a>
+    <header class="headerIndex" aria-label="main page header">
+      <div class="headerIndex__banner">
+        <!--Le logo-->
+        <a
+          href="./index.html"
+          class="logo headerIndex__banner__linkLogo"
+          tabindex="0"
+        >
+          <img class="logo__img" src="img/logo.png" alt="FishEyes Home page" />
+        </a>
+        <!-- ___________________________________________ -->
+        <nav
+          class="headerIndex__banner__nav"
+          aria-label="photographer categories"
+        >
+          <!--tags-portrait-->
+          <span
+            role="button"
+            tabindex="0"
+            data-value="portrait"
+            class="tagName"
+          >
+            #Portrait
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-art-->
+          <span role="button" tabindex="0" data-value="art" class="tagName">
+            #Art
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-fashion-->
+          <span role="button" tabindex="0" data-value="fashion" class="tagName">
+            #Fashion
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-architecture-->
+          <span
+            role="button"
+            tabindex="0"
+            data-value="architecture"
+            class="tagName"
+          >
+            #Architecture
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-travel-->
+          <span role="button" tabindex="0" data-value="travel" class="tagName">
+            #Travel
+            <span class="tagName__bgd"></span>
+          </span>
+
+          <!--tags-sport-->
+          <span role="button" tabindex="0" data-value="sport" class="tagName">
+            #Sport
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-animals-->
+          <span role="button" tabindex="0" data-value="animals" class="tagName">
+            #Animals
+            <span class="tagName__bgd"></span>
+          </span>
+          <!--tags-events-->
+          <span role="button" tabindex="0" data-value="events" class="tagName">
+            #Events
+            <span class="tagName__bgd"></span>
+          </span>
+        </nav>
+      </div>
+    </header>
+    <main class="mainContent">
+      <h1 class="mainContent__title" id="mainTitleIndex">Nos Photographes</h1>
+      <ul id="photographerIndex">
+        <!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 01<li>-->
+        <li class="body__blockIntro">
+          <a class="blockIntro__link" href="./page.html">
+            <h2 class="blockIntro">
+              <span class="blockIntro__title">Undefined</span>
+            </h2>
+            <span class="blockIntro__link__blockImg">
+              <!--Future img-->Undefined link
+            </span>
+          </a>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2"> Ma Devise </span>
+            <span class="blockIntro__blocktxt3">Prix/jour</span>
+          </p>
+          <ul class="blockIntro__ul"></ul>
+        </li>
+        <!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 02<li>-->
+        <li class="body__blockIntro">
+          <a class="blockIntro__link" href="./page.html">
+            <h2 class="blockIntro">
+              <span class="blockIntro__title">Undefined</span>
+            </h2>
+            <span class="blockIntro__link__blockImg">
+              <!--Future img-->Undefined link
+            </span>
+          </a>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2"> Ma Devise </span>
+            <span class="blockIntro__blocktxt3">Prix/jour</span>
+          </p>
+          <ul class="blockIntro__ul"></ul>
+        </li>
+        <!-- ___________________________________________ -->
+        <!--BlockIntroduceIndex 03<li>-->
+        <li class="body__blockIntro">
+          <a class="blockIntro__link" href="./page.html">
+            <h2 class="blockIntro">
+              <span class="blockIntro__title">Undefined</span>
+            </h2>
+            <span class="blockIntro__link__blockImg">
+              <!--Future img-->Undefined link
+            </span>
+          </a>
+          <p class="blockIntro__blocktxt">
+            <strong class="blockIntro__blocktxt1">Ville, Pays</strong>
+            <span class="blockIntro__blocktxt2"> Ma Devise </span>
+            <span class="blockIntro__blocktxt3">Prix/jour</span>
+          </p>
+          <ul class="blockIntro__ul"></ul>
+        </li>
+      </ul>
+    </main>
+    <script src="./index.js"></script>
+  </body>
 </html>

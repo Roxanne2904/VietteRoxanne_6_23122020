@@ -1,0 +1,174 @@
+//LES BOUTONS
+//______________________________________
+//btn submit
+#btnSubmit {
+  @include btn-appearance;
+  padding: 0 50px;
+  transition: transform 200ms;
+  border: none;
+  @include media-between(phone, tablet) {
+    height: 35px;
+  }
+  &:focus {
+    transform: scale(1.05);
+  }
+}
+//______________________________________
+//btns
+.btn {
+  position: relative;
+  padding: 0 20px;
+  @include btn-appearance;
+  z-index: 1;
+  &:focus {
+    color: black;
+    font-weight: bold;
+    & .btn__bgd {
+      //bien penser à mettre un espace !
+      opacity: 1;
+    }
+  }
+  &__bgd {
+    @include btn-focus;
+  }
+}
+//LA LISTE DEROULANTE 'SELECT'
+//______________________________________
+.block {
+  display: flex;
+  margin: 0 0 60px;
+  @include media-between(phone, tablet) {
+    display: none;
+  }
+  &__label {
+    margin: 0 20px 0 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+  }
+  &__content {
+    position: relative;
+    width: 170px;
+    height: 75px;
+    overflow: hidden;
+    border-radius: $radiusBlocks;
+    background-color: transparent;
+    border: solid transparent 2px;
+    padding: 2px;
+    // transition: all 100ms ease-in-out;
+    &::after {
+      content: attr(data-value); // unicode de font awesome
+      font-family: "Font Awesome 5 Free"; // il faut changer la police
+      font-weight: 900; // important !
+      position: absolute;
+      top: 38%;
+      right: 0;
+      padding: 0 20px;
+      color: $colorTertiary;
+      font-size: 1.1rem;
+      pointer-events: none; //on peut passer au travers de l'élément pour atteindre des contrôles qui serait en dessous...
+    }
+  }
+  &__select {
+    appearance: none; // retire la flèche
+    outline: 0;
+    border: 0; //retire la bordure
+    background: $colorPrimary; // couleur de la liste
+    background-image: none;
+    box-shadow: none;
+    font-size: 1.125rem;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    color: $colorTertiary;
+    cursor: pointer;
+    border-radius: $radiusBlocks;
+  }
+}
+//TAGS
+//______________________________________
+.tagName {
+  display: block;
+  position: relative;
+  @include tags-appearance;
+  z-index: 1; //visuel de base en z-index 1
+  @include media-between(tablet, desktop) {
+    font-size: 0.95rem;
+  }
+  @include media-between(desktop, desktopLarge) {
+    font-size: 1rem;
+  }
+  &:hover {
+    @include media-min(wideScreen) {
+      color: $colorTertiary;
+      font-weight: inherit;
+      & .tagName__bgd {
+        opacity: 1;
+      }
+    }
+  }
+  &__bgd {
+    @include tags-focus;
+  }
+}
+//.tagName--change est pour les tags de "page.html"
+.tagName--change {
+  cursor: default;
+  font-size: 1.125rem;
+  padding: 0 8px;
+  border-radius: 12px;
+  @include media-between(phone, tablet) {
+    font-size: 0.75rem;
+    padding: 1px 5px;
+    margin: 7px 3px 3px 0;
+  }
+  &:hover {
+    color: $colorPrimary;
+    font-weight: bold;
+    & .tagName__bgd {
+      opacity: 0;
+    }
+  }
+}
+//.tagName--changeForIndexBlock est pour les tags des block présentations dans "index.html"
+.tagName--changeForIndexBlock {
+  cursor: default;
+  &:hover {
+    color: $colorPrimary;
+    font-weight: bold;
+    & .tagName__bgd {
+      opacity: 0;
+    }
+  }
+}
+
+.tagName__onclick {
+  color: $colorTertiary;
+  background-color: $colorPrimary;
+  font-weight: inherit;
+}
+//______________________
+//LikesBtn
+//______________________
+.heart {
+  display: block;
+  cursor: pointer;
+  &__nbs {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    @include media-between(phone, tablet) {
+      font-size: 0.875rem;
+    }
+  }
+  &__img {
+    height: 18.35px;
+    position: relative;
+    top: 0.5px;
+    & img {
+      @include media-between(phone, tablet) {
+        width: 12px;
+      }
+    }
+  }
+}
