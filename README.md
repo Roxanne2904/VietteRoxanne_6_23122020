@@ -1,6 +1,3 @@
-
-# VietteRoxanne_6_23122020
-P6 projet Openclassrooms
 # **Projet FishEyes**
 
 ## **VietteRoxanne_6_23122020**
