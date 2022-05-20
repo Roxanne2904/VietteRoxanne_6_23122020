@@ -1,6 +1,4 @@
 # **Projet FishEyes**
-
-## **VietteRoxanne_6_23122020**
 ## I started this project on 17/05/2021
 *Training begins on 23/12/2020*
 
@@ -9,7 +7,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d155f434-6cf3-4be8-add6-e8b1f031aceb/deploy-status)](https://app.netlify.com/sites/oc-rv-fisheyes/deploys)
 
 [FishEyes](https://oc-rv-fisheyes.netlify.app/)
-### GOAL
+### Goal
 
 ---
 
